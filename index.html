@@ -931,126 +931,104 @@
 
 <!-- ═══ SLIDE 6: MODEL SOLAR SYSTEM & JOBS ═══ -->
 <section>
-  <h2>Models &amp; Jobs</h2>
-  <p class="lead">Six models, one fallback chain - each job pinned to its ideal model.</p>
+  <h2>Models &amp; Routing</h2>
+  <p class="lead">Primary, fallbacks, and specialized models — aligned to the live Henry page in Mission Control.</p>
 
   <div class="arch-layout">
-    <!-- SVG: Solar system / orbital diagram -->
     <div class="arch-visual">
       <svg viewBox="0 0 380 380" style="width:100%;height:100%;">
-        <!-- Orbital rings -->
-        <circle cx="190" cy="190" r="60" fill="none" stroke="rgba(255,204,51,0.15)" stroke-width="1"/>
-        <circle cx="190" cy="190" r="100" fill="none" stroke="rgba(92,154,255,0.12)" stroke-width="1" stroke-dasharray="3 4"/>
-        <circle cx="190" cy="190" r="140" fill="none" stroke="rgba(56,232,255,0.1)" stroke-width="1" stroke-dasharray="2 5"/>
-        <circle cx="190" cy="190" r="175" fill="none" stroke="rgba(74,237,181,0.08)" stroke-width="1" stroke-dasharray="2 6"/>
+        <circle cx="190" cy="190" r="60" fill="none" stroke="rgba(92,154,255,0.16)" stroke-width="1"/>
+        <circle cx="190" cy="190" r="100" fill="none" stroke="rgba(167,139,250,0.12)" stroke-width="1" stroke-dasharray="3 4"/>
+        <circle cx="190" cy="190" r="140" fill="none" stroke="rgba(80,240,255,0.10)" stroke-width="1" stroke-dasharray="2 5"/>
+        <circle cx="190" cy="190" r="175" fill="none" stroke="rgba(96,255,200,0.08)" stroke-width="1" stroke-dasharray="2 6"/>
 
-        <!-- Center: Default (Nemotron) -->
         <circle cx="190" cy="190" r="36" fill="rgba(112,176,255,0.1)"/>
         <circle cx="190" cy="190" r="30" fill="rgba(112,176,255,0.22)" stroke="var(--blue)" stroke-width="2"/>
         <text x="190" y="184" text-anchor="middle" fill="var(--blue)" font-size="9" font-weight="700" font-family="JetBrains Mono">NEMOTRON</text>
         <text x="190" y="195" text-anchor="middle" fill="var(--text)" font-size="7">120B · TritonAI</text>
-        <text x="190" y="206" text-anchor="middle" fill="var(--blue)" font-size="6" font-weight="700">DEFAULT</text>
+        <text x="190" y="206" text-anchor="middle" fill="var(--blue)" font-size="6" font-weight="700">PRIMARY</text>
 
-        <!-- Ring 1: Opus (interactive) -->
-        <circle cx="190" cy="130" r="26" fill="rgba(255,204,51,0.06)"/>
-        <circle cx="190" cy="130" r="22" fill="rgba(255,221,68,0.28)" stroke="var(--amber)" stroke-width="2.2"/>
-        <text x="190" y="127" text-anchor="middle" fill="var(--amber)" font-size="9" font-weight="700">Opus</text>
-        <text x="190" y="138" text-anchor="middle" fill="var(--text)" font-size="6">Interactive</text>
+        <circle cx="190" cy="130" r="26" fill="rgba(167,139,250,0.10)"/>
+        <circle cx="190" cy="130" r="22" fill="rgba(167,139,250,0.28)" stroke="var(--violet)" stroke-width="2.2"/>
+        <text x="190" y="127" text-anchor="middle" fill="var(--violet)" font-size="9" font-weight="700">Codex</text>
+        <text x="190" y="138" text-anchor="middle" fill="var(--text)" font-size="6">Fallback 1</text>
 
-        <!-- Ring 1: Sonnet -->
         <circle cx="248" cy="218" r="26" fill="rgba(80,240,255,0.1)"/>
         <circle cx="248" cy="218" r="22" fill="rgba(80,240,255,0.28)" stroke="var(--cyan)" stroke-width="2.2"/>
-        <text x="248" y="215" text-anchor="middle" fill="var(--cyan)" font-size="9" font-weight="700">Sonnet</text>
-        <text x="248" y="226" text-anchor="middle" fill="var(--text)" font-size="6">Reasoning</text>
+        <text x="248" y="215" text-anchor="middle" fill="var(--cyan)" font-size="8" font-weight="700">Gemini</text>
+        <text x="248" y="226" text-anchor="middle" fill="var(--text)" font-size="6">Fallback 2</text>
 
-        <!-- Ring 2: Codex -->
-        <circle cx="110" cy="250" r="26" fill="rgba(205,180,255,0.1)"/>
-        <circle cx="110" cy="250" r="22" fill="rgba(205,180,255,0.28)" stroke="var(--violet)" stroke-width="2.2"/>
-        <text x="110" y="247" text-anchor="middle" fill="var(--violet)" font-size="9" font-weight="700">Codex</text>
-        <text x="110" y="258" text-anchor="middle" fill="var(--text)" font-size="6">Code Gen</text>
+        <circle cx="110" cy="250" r="26" fill="rgba(96,255,200,0.1)"/>
+        <circle cx="110" cy="250" r="22" fill="rgba(96,255,200,0.28)" stroke="var(--emerald)" stroke-width="2.2"/>
+        <text x="110" y="247" text-anchor="middle" fill="var(--emerald)" font-size="8" font-weight="700">Gemma 4</text>
+        <text x="110" y="258" text-anchor="middle" fill="var(--text)" font-size="6">Fallback 3</text>
 
-        <!-- Ring 2: Gemini Flash -->
-        <circle cx="300" cy="140" r="26" fill="rgba(56,232,255,0.05)"/>
-        <circle cx="300" cy="140" r="22" fill="rgba(80,240,255,0.22)" stroke="var(--cyan)" stroke-width="1.5"/>
-        <text x="300" y="137" text-anchor="middle" fill="var(--cyan)" font-size="8" font-weight="700">Gemini</text>
-        <text x="300" y="148" text-anchor="middle" fill="var(--text)" font-size="6">Flash</text>
+        <circle cx="300" cy="140" r="26" fill="rgba(167,139,250,0.08)"/>
+        <circle cx="300" cy="140" r="22" fill="rgba(167,139,250,0.24)" stroke="var(--violet)" stroke-width="1.8"/>
+        <text x="300" y="137" text-anchor="middle" fill="var(--violet)" font-size="8" font-weight="700">Codex</text>
+        <text x="300" y="148" text-anchor="middle" fill="var(--text)" font-size="6">Builder</text>
 
-        <!-- Ring 3: Gemma 4 (local) -->
         <circle cx="60" cy="130" r="26" fill="rgba(96,255,200,0.1)"/>
         <circle cx="60" cy="130" r="22" fill="rgba(96,255,200,0.28)" stroke="var(--emerald)" stroke-width="2.2"/>
         <text x="60" y="127" text-anchor="middle" fill="var(--emerald)" font-size="8" font-weight="700">Gemma 4</text>
-        <text x="60" y="138" text-anchor="middle" fill="var(--text)" font-size="6">Local</text>
+        <text x="60" y="138" text-anchor="middle" fill="var(--text)" font-size="6">Ops</text>
 
-        <!-- Animated orbiting particles -->
-        <g class="orbit-slow">
-          <circle cx="190" cy="50" r="3.5" fill="var(--amber)" opacity="0.7"/>
-        </g>
-        <g class="orbit-med">
-          <circle cx="330" cy="190" r="3" fill="var(--cyan)" opacity="0.6"/>
-        </g>
+        <g class="orbit-slow"><circle cx="190" cy="50" r="3.5" fill="var(--violet)" opacity="0.7"/></g>
+        <g class="orbit-med"><circle cx="330" cy="190" r="3" fill="var(--cyan)" opacity="0.6"/></g>
 
-        <!-- Capability / cost scale -->
-        <text x="190" y="370" text-anchor="middle" fill="var(--text)" font-size="7" font-weight="600" font-family="JetBrains Mono">← capability · cost →</text>
+        <text x="190" y="370" text-anchor="middle" fill="var(--text)" font-size="7" font-weight="600" font-family="JetBrains Mono">primary → fallback → specialized</text>
         <line x1="100" y1="358" x2="280" y2="358" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
-        <circle cx="100" cy="358" r="4" fill="var(--amber)" opacity="0.7"/>
-        <circle cx="145" cy="358" r="3.5" fill="var(--cyan)" opacity="0.6"/>
-        <circle cx="190" cy="358" r="3" fill="var(--violet)" opacity="0.6"/>
-        <circle cx="225" cy="358" r="3" fill="var(--blue)" opacity="0.5"/>
-        <circle cx="255" cy="358" r="2.5" fill="var(--cyan)" opacity="0.5"/>
-        <circle cx="280" cy="358" r="3" fill="var(--emerald)" opacity="0.6"/>
+        <circle cx="100" cy="358" r="4" fill="var(--blue)" opacity="0.7"/>
+        <circle cx="145" cy="358" r="3.5" fill="var(--violet)" opacity="0.6"/>
+        <circle cx="190" cy="358" r="3" fill="var(--cyan)" opacity="0.6"/>
+        <circle cx="235" cy="358" r="3" fill="var(--emerald)" opacity="0.6"/>
+        <circle cx="280" cy="358" r="3" fill="var(--violet)" opacity="0.6"/>
       </svg>
     </div>
 
-    <!-- Job list -->
     <div class="arch-jobs">
       <div class="job-row">
-        <div class="job-dot" style="background:var(--amber);"></div>
-        <div class="job-info"><div class="job-name">Interactive Chat</div><div class="job-desc">Drafting, analysis, sub-agent orchestration</div></div>
-        <div class="job-sched">On-demand</div>
-        <div class="job-model-tag jt-amber">Opus</div>
-      </div>
-      <div class="job-row">
-        <div class="job-dot" style="background:var(--cyan);"></div>
-        <div class="job-info"><div class="job-name">Opportunity Scan</div><div class="job-desc">Knowledge graph cross-reference, blueprints</div></div>
-        <div class="job-sched">Daily 7AM</div>
-        <div class="job-model-tag jt-cyan">Sonnet</div>
-      </div>
-      <div class="job-row">
-        <div class="job-dot" style="background:var(--cyan);"></div>
-        <div class="job-info"><div class="job-name">AI News · Evening Wrap</div><div class="job-desc">Curated digest, email triage + draft replies</div></div>
-        <div class="job-sched">Daily</div>
-        <div class="job-model-tag jt-cyan">Sonnet</div>
+        <div class="job-dot" style="background:var(--blue);"></div>
+        <div class="job-info"><div class="job-name">Henry Primary</div><div class="job-desc">Main orchestration, message handling, cron baseline</div></div>
+        <div class="job-sched">24/7</div>
+        <div class="job-model-tag" style="background:rgba(112,176,255,0.18);color:var(--blue);border-color:rgba(112,176,255,0.35);">Nemotron</div>
       </div>
       <div class="job-row">
         <div class="job-dot" style="background:var(--violet);"></div>
-        <div class="job-info"><div class="job-name">Enhancement Sprint</div><div class="job-desc">Autonomous coding on Mission Control</div></div>
-        <div class="job-sched">Daily 6:30</div>
+        <div class="job-info"><div class="job-name">Fallback 1</div><div class="job-desc">GPT-5.4 / GPT-5.4 Mini via OpenAI Codex OAuth</div></div>
+        <div class="job-sched">As needed</div>
         <div class="job-model-tag jt-violet">Codex</div>
       </div>
       <div class="job-row">
-        <div class="job-dot" style="background:var(--violet);"></div>
-        <div class="job-info"><div class="job-name">Architecture Review</div><div class="job-desc">Monthly system audit + memory consolidation</div></div>
-        <div class="job-sched">Monthly</div>
-        <div class="job-model-tag jt-violet">Codex</div>
-      </div>
-      <div class="job-row">
-        <div class="job-dot" style="background:var(--cyan); opacity:0.6;"></div>
-        <div class="job-info"><div class="job-name">Morning Briefing · IT Jobs</div><div class="job-desc">Calendar + email summary, UC job postings</div></div>
-        <div class="job-sched">Daily 6:25</div>
-        <div class="job-model-tag jt-cyan" style="opacity:0.7;">Gemini</div>
+        <div class="job-dot" style="background:var(--cyan);"></div>
+        <div class="job-info"><div class="job-name">Fallback 2</div><div class="job-desc">Gemini 2.0 Flash for cloud failover</div></div>
+        <div class="job-sched">As needed</div>
+        <div class="job-model-tag jt-cyan">Gemini</div>
       </div>
       <div class="job-row">
         <div class="job-dot" style="background:var(--emerald);"></div>
-        <div class="job-info"><div class="job-name">Health · Graph · Disk · Cron</div><div class="job-desc">API monitoring, graph rebuild, backups, audit</div></div>
+        <div class="job-info"><div class="job-name">Fallback 3</div><div class="job-desc">Gemma 4 local on the Mac mini</div></div>
+        <div class="job-sched">As needed</div>
+        <div class="job-model-tag jt-emerald">Gemma 4</div>
+      </div>
+      <div class="job-row">
+        <div class="job-dot" style="background:var(--violet);"></div>
+        <div class="job-info"><div class="job-name">Specialized: Builder</div><div class="job-desc">Code generation and sprint execution</div></div>
+        <div class="job-sched">Pipeline</div>
+        <div class="job-model-tag jt-violet">Codex</div>
+      </div>
+      <div class="job-row">
+        <div class="job-dot" style="background:var(--emerald);"></div>
+        <div class="job-info"><div class="job-name">Specialized: Gemma 4 Ops</div><div class="job-desc">6 cron jobs pinned: health, disk, git, graph, alerts</div></div>
         <div class="job-sched">Hourly+</div>
         <div class="job-model-tag jt-emerald">Gemma 4</div>
       </div>
 
       <div class="fallback-row">
-        <div class="fb-label">Fallback</div>
+        <div class="fb-label">Live chain</div>
         <div class="fb-node" style="color:var(--blue);">Nemotron</div>
         <div class="fb-arrow">→</div>
-        <div class="fb-node">Sonnet</div>
+        <div class="fb-node" style="color:var(--violet);">GPT-5.4</div>
         <div class="fb-arrow">→</div>
         <div class="fb-node">Gemini</div>
         <div class="fb-arrow">→</div>
@@ -1059,7 +1037,6 @@
     </div>
   </div>
 </section>
-
 <!-- ═══ SLIDE 5: DEMO ═══ -->
 <section class="center-slide" data-background-color="#0a0a0f">
   <div style="margin-top: 2.5em;">
