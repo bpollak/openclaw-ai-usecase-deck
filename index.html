@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenClaw - AI Use Case Meeting</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css">
+<style>
+  :root {
+    --bg: #050508;
+    --bg2: #0a0a12;
+    --surface: rgba(255,255,255,0.08);
+    --border: rgba(255,255,255,0.15);
+    --text: #e8e8f0;
+    --text-dim: #b0b0c8;
+    --white: #ffffff;
+    --blue: #70b0ff;
+    --cyan: #50f0ff;
+    --emerald: #60ffc8;
+    --amber: #ffdd44;
+    --rose: #ff90a8;
+    --violet: #cdb4ff;
+    --glow-blue: rgba(112,176,255,0.3);
+    --glow-cyan: rgba(80,240,255,0.25);
+    --glow-emerald: rgba(96,255,200,0.25);
+    --r-background-color: #050508;
+    --r-main-color: #e8e8f0;
+    --r-heading-color: #ffffff;
+    --r-link-color: #70b0ff;
+  }
+
+  .reveal {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 32px; color: var(--text);
+  }
+  .reveal .slides { text-align: left; }
+  .reveal .slides section {
+    padding: 40px 56px; box-sizing: border-box;
+    background: var(--bg);
+  }
+  .reveal .slides section.center-slide { text-align: center; }
+
+  .reveal h2 {
+    font-size: 1.5em; font-weight: 700; color: var(--white);
+    letter-spacing: -0.02em; margin: 0 0 0.05em 0;
+  }
+  .reveal p { font-size: 0.52em; line-height: 1.6; color: var(--text); margin: 0 0 0.4em 0; }
+  .lead { font-size: 0.52em !important; color: var(--text) !important; max-width: 700px; }
+  .reveal strong { color: var(--white); }
+
+  /* ── SLIDE 1: Animated constellation title ── */
+  .title-bg {
+    position: absolute; inset: 0; overflow: hidden;
+  }
+  .title-bg svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+  .title-word {
+    font-size: 4.8em; font-weight: 700; letter-spacing: -0.04em;
+    background: linear-gradient(135deg, #88ccff 0%, #60f8ff 40%, #70ffcc 100%);
+    filter: drop-shadow(0 0 30px rgba(80,240,255,0.3));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    position: relative; z-index: 2;
+  }
+  .title-sub {
+    font-size: 0.6em; color: var(--text); font-weight: 400;
+    letter-spacing: 0.12em; text-transform: uppercase; margin-top: 0.4em;
+    position: relative; z-index: 2;
+  }
+  .title-meta {
+    font-size: 0.44em; color: var(--text); font-weight: 400;
+    position: relative; z-index: 2; opacity: 0.8;
+  }
+  .title-badge {
+    display: inline-block; padding: 0.12em 0.7em; border-radius: 999px;
+    font-size: 0.38em; font-weight: 600; letter-spacing: 0.08em;
+    border: 1px solid rgba(79,143,255,0.3); color: var(--blue);
+    background: var(--glow-blue); position: relative; z-index: 2;
+  }
+
+  /* ── SLIDE 2: Hub & spoke visual ── */
+  .hub-layout { display: flex; gap: 2em; align-items: center; margin-top: 0.3em; }
+  .hub-visual { flex: 0 0 420px; height: 440px; position: relative; }
+  .hub-text { flex: 1; }
+
+  .concept-item {
+    display: flex; align-items: flex-start; gap: 0.5em;
+    padding: 0.3em 0; margin-bottom: 0.1em;
+  }
+  .concept-icon {
+    flex-shrink: 0; width: 32px; height: 32px;
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+  }
+  .concept-icon svg { width: 18px; height: 18px; }
+  .ci-blue { background: var(--glow-blue); }
+  .ci-cyan { background: var(--glow-cyan); }
+  .ci-emerald { background: var(--glow-emerald); }
+  .ci-amber { background: rgba(251,191,36,0.12); }
+  .ci-violet { background: rgba(167,139,250,0.12); }
+  .ci-rose { background: rgba(251,113,133,0.12); }
+  .concept-label { font-size: 0.44em; font-weight: 700; color: var(--white); line-height: 1.3; }
+  .concept-desc { font-size: 0.37em; color: var(--text); line-height: 1.45; margin-top: 0.05em; }
+
+  /* ── SLIDE 3: Isometric-style cards ── */
+  .impl-grid {
+    display: grid; grid-template-columns: 340px 1fr; gap: 1em;
+    align-items: start; margin-top: 0.2em;
+  }
+  .impl-visual { position: relative; height: 400px; }
+  .impl-cards { display: flex; flex-direction: column; gap: 0.3em; }
+
+  .impl-card {
+    display: flex; align-items: center; gap: 0.5em;
+    padding: 0.35em 0.6em; border-radius: 10px;
+    background: var(--surface); border: 1px solid var(--border);
+  }
+  .impl-card-icon {
+    flex-shrink: 0; width: 36px; height: 36px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1em;
+  }
+  .impl-card-text { flex: 1; }
+  .impl-card-label { font-size: 0.28em; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 0.08em; }
+  .impl-card-value { font-size: 0.42em; font-weight: 700; color: var(--white); margin-top: 0.03em; }
+  .impl-card-sub { font-size: 0.28em; color: var(--text); margin-top: 0.03em; }
+
+  /* ── SLIDE 4: Model solar system ── */
+  .arch-layout { display: flex; gap: 0.8em; align-items: flex-start; margin-top: 0.15em; }
+  .arch-visual { flex: 0 0 380px; height: 380px; position: relative; }
+  .arch-jobs { flex: 1; }
+
+  .job-row {
+    display: flex; align-items: center; gap: 0.4em;
+    padding: 0.22em 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .job-row:last-child { border-bottom: none; }
+  .job-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .job-info { flex: 1; min-width: 0; }
+  .job-name { font-size: 0.38em; font-weight: 700; color: var(--white); }
+  .job-desc { font-size: 0.26em; color: var(--text); }
+  .job-sched { font-size: 0.26em; color: var(--text); flex-shrink: 0; width: 70px; text-align: right; }
+  .job-model-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.22em; font-weight: 500; padding: 0.15em 0.45em;
+    border-radius: 4px; flex-shrink: 0;
+  }
+  .jt-amber { background: rgba(251,191,36,0.1); color: var(--amber); }
+  .jt-blue { background: var(--glow-blue); color: var(--blue); }
+  .jt-violet { background: rgba(167,139,250,0.1); color: var(--violet); }
+  .jt-cyan { background: var(--glow-cyan); color: var(--cyan); }
+  .jt-emerald { background: var(--glow-emerald); color: var(--emerald); }
+
+  /* Fallback chain */
+  .fallback-row {
+    display: flex; align-items: center; gap: 0.15em;
+    margin-top: 0.3em; padding: 0.25em 0.5em;
+    background: var(--surface); border-radius: 8px; border: 1px solid var(--border);
+  }
+  .fb-label { font-size: 0.22em; font-weight: 600; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; margin-right: 0.3em; }
+  .fb-node {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.24em; font-weight: 500; padding: 0.1em 0.4em;
+    border-radius: 4px; background: rgba(255,255,255,0.05); color: var(--text);
+    border: 1px solid var(--border);
+  }
+  .fb-arrow { font-size: 0.24em; color: var(--text-dim); }
+
+  /* ── Hero slides ── */
+  .hero-word {
+    font-size: 2.4em; font-weight: 700; letter-spacing: -0.03em;
+    background: linear-gradient(135deg, #88ccff, #60f8ff);
+    filter: drop-shadow(0 0 20px rgba(80,240,255,0.3));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .hero-sub2 { font-size: 0.55em; color: var(--text-dim); margin-top: 0.3em; }
+
+  .links-row { display: flex; justify-content: center; gap: 2em; margin-top: 1.5em; }
+  .link-item { text-align: center; }
+  .link-label { font-size: 0.32em; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-bottom: 0.1em; }
+  .link-item a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.38em; font-weight: 500; color: var(--blue); text-decoration: none;
+  }
+
+  .reveal .slide-number { font-family: 'JetBrains Mono', monospace; font-size: 0.32em; font-weight: 500; color: var(--text-dim); background: transparent; }
+  .reveal .progress { height: 2px; }
+  .reveal .progress span { background: linear-gradient(to right, var(--blue), var(--cyan)); }
+  .reveal .controls { color: var(--blue); }
+  .reveal .controls { bottom: 50% !important; transform: translateY(50%); }
+
+  /* Pulse animation for hub center */
+  @keyframes pulse { 0%,100% { opacity: 0.6; } 50% { opacity: 1; } }
+  @keyframes orbit { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+  .pulse { animation: pulse 3s ease-in-out infinite; }
+  .orbit-slow { animation: orbit 30s linear infinite; transform-origin: 170px 190px; }
+  .orbit-med { animation: orbit 20s linear infinite reverse; transform-origin: 170px 190px; }
+  .float { animation: float 4s ease-in-out infinite; }
+  .float-delay { animation: float 4s ease-in-out infinite; animation-delay: 1.5s; }
+</style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<!-- ═══ SLIDE 1: CONSTELLATION TITLE ═══ -->
+<section class="center-slide" data-background-color="#0a0a0f">
+  <div class="title-bg">
+    <svg viewBox="0 0 1280 720">
+      <!-- Constellation lines -->
+      <g stroke="rgba(112,176,255,0.3)" stroke-width="1.5" fill="none">
+        <line x1="100" y1="120" x2="300" y2="200"/>
+        <line x1="300" y1="200" x2="500" y2="140"/>
+        <line x1="500" y1="140" x2="640" y2="280"/>
+        <line x1="640" y1="280" x2="900" y2="220"/>
+        <line x1="900" y1="220" x2="1100" y2="300"/>
+        <line x1="1100" y1="300" x2="1180" y2="180"/>
+        <line x1="640" y1="280" x2="700" y2="450"/>
+        <line x1="700" y1="450" x2="500" y2="520"/>
+        <line x1="500" y1="520" x2="300" y2="480"/>
+        <line x1="300" y1="480" x2="180" y2="560"/>
+        <line x1="700" y1="450" x2="950" y2="500"/>
+        <line x1="950" y1="500" x2="1100" y2="580"/>
+        <line x1="300" y1="200" x2="300" y2="480"/>
+        <line x1="900" y1="220" x2="950" y2="500"/>
+      </g>
+      <!-- Constellation dots -->
+      <g fill="rgba(112,176,255,0.7)">
+        <circle cx="100" cy="120" r="3.5"/>
+        <circle cx="300" cy="200" r="5"/>
+        <circle cx="500" cy="140" r="3.5"/>
+        <circle cx="900" cy="220" r="3.5"/>
+        <circle cx="1100" cy="300" r="3.5"/>
+        <circle cx="1180" cy="180" r="3"/>
+        <circle cx="500" cy="520" r="3.5"/>
+        <circle cx="300" cy="480" r="3.5"/>
+        <circle cx="180" cy="560" r="3"/>
+        <circle cx="950" cy="500" r="3.5"/>
+        <circle cx="1100" cy="580" r="3"/>
+      </g>
+      <!-- Center glow node -->
+      <circle cx="640" cy="280" r="40" fill="rgba(112,176,255,0.06)"/>
+      <circle cx="640" cy="280" r="10" fill="var(--blue)" class="pulse"/>
+      <circle cx="640" cy="280" r="25" fill="none" stroke="rgba(112,176,255,0.3)" stroke-width="2" class="pulse"/>
+      <circle cx="700" cy="450" r="8" fill="var(--cyan)" class="pulse" style="animation-delay:1s"/>
+      <circle cx="700" cy="450" r="22" fill="rgba(80,240,255,0.08)"/>
+      <!-- Scattered small dots -->
+      <g fill="rgba(255,255,255,0.1)">
+        <circle cx="50" cy="400" r="1.5"/><circle cx="200" cy="80" r="1.5"/><circle cx="400" cy="600" r="1.5"/>
+        <circle cx="750" cy="100" r="1.5"/><circle cx="1050" cy="450" r="1.5"/><circle cx="850" cy="650" r="1.5"/>
+        <circle cx="150" cy="650" r="1.5"/><circle cx="1200" cy="100" r="1.5"/>
+      </g>
+    </svg>
+  </div>
+  <div style="margin-top: 1.6em; position: relative; z-index: 2;">
+    <div class="title-badge">AI Use Case Meeting · April 3, 2026</div>
+    <div class="title-word" style="margin-top: 0.15em;">OpenClaw</div>
+    <div class="title-sub">AI-Powered Personal Automation</div>
+    <div style="margin-top: 2.2em;">
+      <div class="title-meta">Brett Pollak · Executive Director, Workplace Technology</div>
+      <div class="title-meta" style="margin-top: 0.15em;">UC San Diego</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SLIDE 2: HUB & SPOKE - WHAT IS OPENCLAW ═══ -->
+<section>
+  <h2>What is OpenClaw?</h2>
+  <p class="lead">An open-source, self-hosted gateway that connects your chat apps to AI agents - with 35+ model providers, multi-channel support, and a full agent runtime.</p>
+
+  <div class="hub-layout">
+    <!-- SVG Hub & Spoke diagram -->
+    <div class="hub-visual">
+      <svg viewBox="-30 -10 400 410" style="width: 100%; height: 100%;">
+        <!-- Outer ring -->
+        <circle cx="170" cy="190" r="150" fill="none" stroke="rgba(112,176,255,0.18)" stroke-width="1.2" stroke-dasharray="4 4"/>
+        <circle cx="170" cy="190" r="105" fill="none" stroke="rgba(80,240,255,0.15)" stroke-width="1" stroke-dasharray="3 5"/>
+
+        <!-- Spoke lines -->
+        <g stroke="rgba(255,255,255,0.22)" stroke-width="1.5">
+          <line x1="170" y1="190" x2="170" y2="42"/>
+          <line x1="170" y1="190" x2="310" y2="110"/>
+          <line x1="170" y1="190" x2="318" y2="250"/>
+          <line x1="170" y1="190" x2="240" y2="335"/>
+          <line x1="170" y1="190" x2="100" y2="335"/>
+          <line x1="170" y1="190" x2="22" y2="250"/>
+          <line x1="170" y1="190" x2="30" y2="110"/>
+        </g>
+
+        <!-- Center hub -->
+        <circle cx="170" cy="190" r="46" fill="rgba(112,176,255,0.06)"/>
+        <circle cx="170" cy="190" r="38" fill="rgba(112,176,255,0.15)" stroke="var(--blue)" stroke-width="2.5"/>
+        <circle cx="170" cy="190" r="24" fill="rgba(112,176,255,0.25)"/>
+        <text x="170" y="186" text-anchor="middle" fill="var(--blue)" font-size="9" font-weight="700" letter-spacing="1" font-family="JetBrains Mono">OPEN</text>
+        <text x="170" y="198" text-anchor="middle" fill="var(--cyan)" font-size="9" font-weight="700" letter-spacing="1" font-family="JetBrains Mono">CLAW</text>
+
+        <!-- Spoke nodes with icons -->
+        <!-- Top: Models -->
+        <circle cx="170" cy="42" r="36" fill="rgba(255,221,68,0.12)"/>
+        <circle cx="170" cy="42" r="32" fill="rgba(255,221,68,0.28)" stroke="var(--amber)" stroke-width="2.2"/>
+        <text x="170" y="37" text-anchor="middle" fill="var(--amber)" font-size="16">🧠</text>
+        <text x="170" y="52" text-anchor="middle" fill="var(--amber)" font-size="7" font-weight="700">35+ MODELS</text>
+
+        <!-- Top-right: Channels -->
+        <circle cx="310" cy="110" r="36" fill="rgba(80,240,255,0.1)"/>
+        <circle cx="310" cy="110" r="32" fill="rgba(80,240,255,0.28)" stroke="var(--cyan)" stroke-width="2.2"/>
+        <text x="310" y="105" text-anchor="middle" fill="var(--cyan)" font-size="16">💬</text>
+        <text x="310" y="120" text-anchor="middle" fill="var(--cyan)" font-size="7" font-weight="700">CHANNELS</text>
+
+        <!-- Right: Tools -->
+        <circle cx="318" cy="250" r="36" fill="rgba(205,180,255,0.1)"/>
+        <circle cx="318" cy="250" r="32" fill="rgba(205,180,255,0.28)" stroke="var(--violet)" stroke-width="2.2"/>
+        <text x="318" y="245" text-anchor="middle" fill="var(--violet)" font-size="16">🔧</text>
+        <text x="318" y="260" text-anchor="middle" fill="var(--violet)" font-size="7" font-weight="700">TOOLS</text>
+
+        <!-- Bottom-right: Agents -->
+        <circle cx="240" cy="335" r="36" fill="rgba(96,255,200,0.1)"/>
+        <circle cx="240" cy="335" r="32" fill="rgba(96,255,200,0.28)" stroke="var(--emerald)" stroke-width="2.2"/>
+        <text x="240" y="330" text-anchor="middle" fill="var(--emerald)" font-size="16">⚡</text>
+        <text x="240" y="345" text-anchor="middle" fill="var(--emerald)" font-size="7" font-weight="700">AGENTS</text>
+
+        <!-- Bottom-left: Media -->
+        <circle cx="100" cy="335" r="36" fill="rgba(255,144,168,0.1)"/>
+        <circle cx="100" cy="335" r="32" fill="rgba(255,144,168,0.28)" stroke="var(--rose)" stroke-width="2.2"/>
+        <text x="100" y="330" text-anchor="middle" fill="var(--rose)" font-size="16">📎</text>
+        <text x="100" y="345" text-anchor="middle" fill="var(--rose)" font-size="7" font-weight="700">MEDIA</text>
+
+        <!-- Left: Nodes -->
+        <circle cx="22" cy="250" r="36" fill="rgba(112,176,255,0.1)"/>
+        <circle cx="22" cy="250" r="32" fill="rgba(112,176,255,0.28)" stroke="var(--blue)" stroke-width="2.2"/>
+        <text x="22" y="245" text-anchor="middle" fill="var(--blue)" font-size="16">📱</text>
+        <text x="22" y="260" text-anchor="middle" fill="var(--blue)" font-size="7" font-weight="700">NODES</text>
+
+        <!-- Top-left: Cron -->
+        <circle cx="30" cy="110" r="36" fill="rgba(96,255,200,0.1)"/>
+        <circle cx="30" cy="110" r="32" fill="rgba(96,255,200,0.28)" stroke="var(--emerald)" stroke-width="2.2"/>
+        <text x="30" y="105" text-anchor="middle" fill="var(--emerald)" font-size="16">⏰</text>
+        <text x="30" y="120" text-anchor="middle" fill="var(--emerald)" font-size="7" font-weight="700">CRON</text>
+
+        <!-- Animated orbiting dot -->
+        <g class="orbit-slow">
+          <circle cx="170" cy="40" r="4" fill="var(--cyan)" opacity="0.8"/>
+        </g>
+        <g class="orbit-med">
+          <circle cx="275" cy="190" r="3.5" fill="var(--emerald)" opacity="0.7"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Text descriptions -->
+    <div class="hub-text">
+      <div class="concept-item">
+        <div class="concept-icon ci-emerald"><svg viewBox="0 0 18 18" fill="none"><path d="M4 14V8l5-4 5 4v6" stroke="var(--emerald)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><rect x="7" y="10" width="4" height="4" stroke="var(--emerald)" stroke-width="1.2"/></svg></div>
+        <div><div class="concept-label">Self-Hosted Gateway</div><div class="concept-desc">Runs on your hardware - Mac, Linux, or server. Your data never leaves your control. MIT licensed, open source.</div></div>
+      </div>
+      <div class="concept-item">
+        <div class="concept-icon ci-cyan"><svg viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="6" stroke="var(--cyan)" stroke-width="1.2"/><path d="M6 9h6M9 6v6" stroke="var(--cyan)" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+        <div><div class="concept-label">Multi-Channel</div><div class="concept-desc">One gateway serves WhatsApp, Telegram, Discord, iMessage, Slack, Teams, and more - simultaneously.</div></div>
+      </div>
+      <div class="concept-item">
+        <div class="concept-icon ci-amber"><svg viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="4" stroke="var(--amber)" stroke-width="1.5"/><path d="M9 2v2M9 14v2M2 9h2M14 9h2" stroke="var(--amber)" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+        <div><div class="concept-label">35+ Model Providers</div><div class="concept-desc">Anthropic, OpenAI, Google, self-hosted (Ollama, vLLM, SGLang) - any OpenAI-compatible endpoint. Multi-model routing with automatic failover.</div></div>
+      </div>
+      <div class="concept-item">
+        <div class="concept-icon ci-violet"><svg viewBox="0 0 18 18" fill="none"><rect x="3" y="3" width="12" height="12" rx="2" stroke="var(--violet)" stroke-width="1.2"/><path d="M7 9l2 2 4-4" stroke="var(--violet)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><div class="concept-label">Agent-Native Runtime</div><div class="concept-desc">Built-in tool use, sessions, persistent memory, cron scheduling, sub-agent orchestration, and workflow pipelines.</div></div>
+      </div>
+      <div class="concept-item">
+        <div class="concept-icon ci-blue"><svg viewBox="0 0 18 18" fill="none"><circle cx="6" cy="7" r="3" stroke="var(--blue)" stroke-width="1.2"/><circle cx="12" cy="11" r="3" stroke="var(--blue)" stroke-width="1.2"/><line x1="8.5" y1="9" x2="9.5" y2="9.5" stroke="var(--blue)" stroke-width="1.2"/></svg></div>
+        <div><div class="concept-label">Mobile &amp; Browser Nodes</div><div class="concept-desc">Pair iOS, Android, and browser nodes for camera, Canvas, screen recording, location, and voice workflows.</div></div>
+      </div>
+      <div class="concept-item">
+        <div class="concept-icon ci-rose"><svg viewBox="0 0 18 18" fill="none"><path d="M3 9l4 4L15 5" stroke="var(--rose)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><div class="concept-label">Media &amp; Automation</div><div class="concept-desc">Images, audio, documents in/out. Browser automation, web search, exec sandboxing, skills, and plugin extensions.</div></div>
+      </div>
+
+      <div style="margin-top:0.4em; padding-top:0.35em; border-top:1px solid rgba(112,176,255,0.15);">
+        <div style="font-size:0.28em; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--cyan); margin-bottom:0.3em;">Workspace Files — Included Out of the Box</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.12em 0.8em; font-size:0.26em; line-height:1.5;">
+          <div><span style="color:var(--rose); font-family:'JetBrains Mono'; font-weight:700;">SOUL.md</span> <span style="color:var(--text);">— identity, tone, values</span></div>
+          <div><span style="color:var(--amber); font-family:'JetBrains Mono'; font-weight:700;">AGENTS.md</span> <span style="color:var(--text);">— safety rules, constraints</span></div>
+          <div><span style="color:var(--cyan); font-family:'JetBrains Mono'; font-weight:700;">USER.md</span> <span style="color:var(--text);">— context about the human</span></div>
+          <div><span style="color:var(--blue); font-family:'JetBrains Mono'; font-weight:700;">MEMORY.md</span> <span style="color:var(--text);">— agent-curated long-term memory</span></div>
+          <div><span style="color:var(--emerald); font-family:'JetBrains Mono'; font-weight:700;">HEARTBEAT.md</span> <span style="color:var(--text);">— proactive monitoring checklist</span></div>
+          <div><span style="color:var(--violet); font-family:'JetBrains Mono'; font-weight:700;">TOOLS.md</span> <span style="color:var(--text);">— environment-specific notes</span></div>
+          <div><span style="color:var(--blue); font-family:'JetBrains Mono'; font-weight:700;">IDENTITY.md</span> <span style="color:var(--text);">— agent name, avatar, emoji</span></div>
+          <div><span style="color:var(--text-dim); font-family:'JetBrains Mono'; font-weight:700;">memory/</span> <span style="color:var(--text);">— daily session logs</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SLIDE 3: IMPLEMENTATION - VISUAL STACK ═══ -->
+<section>
+  <h2>Our Implementation</h2>
+  <p class="lead">A Mac mini as the nerve center - connecting institutional, cloud, and local AI.</p>
+
+  <div class="impl-grid">
+    <!-- Visual: layered architecture diagram -->
+    <div class="impl-visual">
+      <svg viewBox="0 0 340 400" style="width:100%;height:100%;">
+        <!-- Background grid -->
+        <g stroke="rgba(255,255,255,0.05)" stroke-width="0.5">
+          <line x1="0" y1="80" x2="340" y2="80"/><line x1="0" y1="160" x2="340" y2="160"/>
+          <line x1="0" y1="240" x2="340" y2="240"/><line x1="0" y1="320" x2="340" y2="320"/>
+        </g>
+
+        <!-- Layer labels -->
+        <text x="8" y="72" fill="var(--text)" font-size="7" font-weight="700" letter-spacing="1.5" font-family="JetBrains Mono" text-transform="uppercase">INTERFACE</text>
+        <text x="8" y="152" fill="var(--text)" font-size="7" font-weight="700" letter-spacing="1.5" font-family="JetBrains Mono">AGENT</text>
+        <text x="8" y="232" fill="var(--text)" font-size="7" font-weight="700" letter-spacing="1.5" font-family="JetBrains Mono">MODELS</text>
+        <text x="8" y="312" fill="var(--text)" font-size="7" font-weight="700" letter-spacing="1.5" font-family="JetBrains Mono">DATA</text>
+
+        <!-- Interface layer -->
+        <g class="float">
+          <rect x="60" y="84" width="100" height="50" rx="8" fill="rgba(74,237,181,0.1)" stroke="var(--emerald)" stroke-width="1.5"/>
+          <text x="110" y="106" text-anchor="middle" font-size="16">📱</text>
+          <text x="110" y="124" text-anchor="middle" fill="var(--emerald)" font-size="9" font-weight="700">Telegram</text>
+        </g>
+        <g class="float-delay">
+          <rect x="180" y="84" width="100" height="50" rx="8" fill="rgba(184,156,255,0.1)" stroke="var(--violet)" stroke-width="1.5"/>
+          <text x="230" y="106" text-anchor="middle" font-size="16">📊</text>
+          <text x="230" y="124" text-anchor="middle" fill="var(--violet)" font-size="9" font-weight="700">Mission Ctrl</text>
+        </g>
+
+        <!-- Connection lines down -->
+        <line x1="110" y1="134" x2="170" y2="170" stroke="rgba(74,237,181,0.3)" stroke-width="1.2"/>
+        <line x1="230" y1="134" x2="170" y2="170" stroke="rgba(184,156,255,0.3)" stroke-width="1.2"/>
+
+        <!-- Agent core -->
+        <rect x="110" y="164" width="120" height="56" rx="12" fill="rgba(112,176,255,0.22)" stroke="var(--blue)" stroke-width="2"/>
+        <circle cx="170" cy="184" r="12" fill="rgba(92,154,255,0.25)"/>
+        <text x="170" y="187" text-anchor="middle" fill="var(--blue)" font-size="12" font-weight="700" font-family="JetBrains Mono">⚙</text>
+        <text x="170" y="210" text-anchor="middle" fill="var(--white)" font-size="9" font-weight="700">OpenClaw Agent</text>
+
+        <!-- Lines to models -->
+        <line x1="135" y1="220" x2="60" y2="258" stroke="rgba(92,154,255,0.25)" stroke-width="1.2"/>
+        <line x1="160" y1="220" x2="140" y2="258" stroke="rgba(255,204,51,0.25)" stroke-width="1.2"/>
+        <line x1="180" y1="220" x2="210" y2="258" stroke="rgba(56,232,255,0.25)" stroke-width="1.2"/>
+        <line x1="205" y1="220" x2="290" y2="258" stroke="rgba(74,237,181,0.25)" stroke-width="1.2"/>
+
+        <!-- Model boxes -->
+        <rect x="20" y="250" width="80" height="48" rx="6" fill="rgba(92,154,255,0.1)" stroke="var(--blue)" stroke-width="1.5"/>
+        <text x="60" y="269" text-anchor="middle" fill="var(--blue)" font-size="8" font-weight="700">Nemotron</text>
+        <text x="60" y="280" text-anchor="middle" fill="var(--text)" font-size="6.5">TritonAI · SDSC</text>
+        <text x="60" y="292" text-anchor="middle" fill="var(--blue)" font-size="6" font-weight="700">ON-PREM</text>
+
+        <rect x="110" y="250" width="55" height="48" rx="6" fill="rgba(255,204,51,0.1)" stroke="var(--amber)" stroke-width="1.5"/>
+        <text x="137.5" y="269" text-anchor="middle" fill="var(--amber)" font-size="8" font-weight="700">Opus</text>
+        <text x="137.5" y="280" text-anchor="middle" fill="var(--text)" font-size="6.5">Anthropic</text>
+        <text x="137.5" y="292" text-anchor="middle" fill="var(--amber)" font-size="6" font-weight="700">CLOUD</text>
+
+        <rect x="175" y="250" width="65" height="48" rx="6" fill="rgba(56,232,255,0.1)" stroke="var(--cyan)" stroke-width="1.5"/>
+        <text x="207.5" y="269" text-anchor="middle" fill="var(--cyan)" font-size="8" font-weight="700">Sonnet</text>
+        <text x="207.5" y="280" text-anchor="middle" fill="var(--text)" font-size="6.5">Anthropic</text>
+        <text x="207.5" y="292" text-anchor="middle" fill="var(--cyan)" font-size="6" font-weight="700">CLOUD</text>
+
+        <rect x="250" y="250" width="70" height="48" rx="6" fill="rgba(74,237,181,0.1)" stroke="var(--emerald)" stroke-width="1.5"/>
+        <text x="285" y="269" text-anchor="middle" fill="var(--emerald)" font-size="8" font-weight="700">Gemma 4</text>
+        <text x="285" y="280" text-anchor="middle" fill="var(--text)" font-size="6.5">Ollama</text>
+        <text x="285" y="292" text-anchor="middle" fill="var(--emerald)" font-size="6" font-weight="700">LOCAL</text>
+
+        <!-- Data layer -->
+        <line x1="170" y1="220" x2="80" y2="334" stroke="rgba(255,126,149,0.2)" stroke-width="1"/>
+        <line x1="170" y1="220" x2="170" y2="334" stroke="rgba(92,154,255,0.2)" stroke-width="1"/>
+        <line x1="170" y1="220" x2="270" y2="334" stroke="rgba(184,156,255,0.2)" stroke-width="1"/>
+
+        <rect x="35" y="326" width="88" height="42" rx="6" fill="rgba(255,126,149,0.08)" stroke="var(--rose)" stroke-width="1.2"/>
+        <text x="79" y="346" text-anchor="middle" fill="var(--rose)" font-size="7.5" font-weight="700">Knowledge Graph</text>
+        <text x="79" y="358" text-anchor="middle" fill="var(--text)" font-size="6.5">136 nodes · 156 edges</text>
+
+        <rect x="130" y="326" width="80" height="42" rx="6" fill="rgba(92,154,255,0.08)" stroke="var(--blue)" stroke-width="1.2"/>
+        <text x="170" y="346" text-anchor="middle" fill="var(--blue)" font-size="7.5" font-weight="700">Memory</text>
+        <text x="170" y="358" text-anchor="middle" fill="var(--text)" font-size="6.5">Daily notes + LTM</text>
+
+        <rect x="218" y="326" width="88" height="42" rx="6" fill="rgba(184,156,255,0.08)" stroke="var(--violet)" stroke-width="1.2"/>
+        <text x="262" y="346" text-anchor="middle" fill="var(--violet)" font-size="7.5" font-weight="700">25 Cron Jobs</text>
+        <text x="262" y="358" text-anchor="middle" fill="var(--text)" font-size="6.5">Hourly → Monthly</text>
+      </svg>
+    </div>
+
+    <!-- Right: cards list -->
+    <div class="impl-cards">
+      <div class="impl-card">
+        <div class="impl-card-icon" style="background:rgba(79,143,255,0.08);">🖥</div>
+        <div class="impl-card-text">
+          <div class="impl-card-label">Hardware</div>
+          <div class="impl-card-value">Mac mini · Apple Silicon</div>
+          <div class="impl-card-sub">Always on, low power - runs agent + local models</div>
+        </div>
+      </div>
+      <div class="impl-card">
+        <div class="impl-card-icon" style="background:rgba(79,143,255,0.08);">🏛</div>
+        <div class="impl-card-text">
+          <div class="impl-card-label">Institutional</div>
+          <div class="impl-card-value">TritonAI · Nemotron 120B</div>
+          <div class="impl-card-sub">On-prem at SDSC - zero cloud cost, data stays on campus</div>
+        </div>
+      </div>
+      <div class="impl-card">
+        <div class="impl-card-icon" style="background:rgba(251,191,36,0.08);">☁️</div>
+        <div class="impl-card-text">
+          <div class="impl-card-label">Cloud</div>
+          <div class="impl-card-value">Opus · Sonnet · Codex · Gemini</div>
+          <div class="impl-card-sub">Anthropic, OpenAI, Google - for reasoning + code gen</div>
+        </div>
+      </div>
+      <div class="impl-card">
+        <div class="impl-card-icon" style="background:rgba(52,211,153,0.08);">💎</div>
+        <div class="impl-card-text">
+          <div class="impl-card-label">Local</div>
+          <div class="impl-card-value">Gemma 4 27B via Ollama</div>
+          <div class="impl-card-sub">Runs on Mac mini - fully offline, lightweight jobs</div>
+        </div>
+      </div>
+      <div class="impl-card">
+        <div class="impl-card-icon" style="background:rgba(52,211,153,0.08);">📱</div>
+        <div class="impl-card-text">
+          <div class="impl-card-label">Interface</div>
+          <div class="impl-card-value">Telegram · Text &amp; Voice</div>
+          <div class="impl-card-sub">Real-time conversation from phone, anywhere</div>
+        </div>
+      </div>
+      <div class="impl-card">
+        <div class="impl-card-icon" style="background:rgba(167,139,250,0.08);">📊</div>
+        <div class="impl-card-text">
+          <div class="impl-card-label">Dashboard</div>
+          <div class="impl-card-value">Mission Control · Next.js</div>
+          <div class="impl-card-sub">Live view of jobs, graph, meetings, docs</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SLIDE 4: OPPORTUNITY SCAN DEEP DIVE ═══ -->
+<section data-background-color="#050508">
+  <h2>Use Case: Daily Opportunity Scan</h2>
+  <p class="lead">An autonomous agent that surfaces the single best campus app idea every morning — scored, sourced, and mapped to real data.</p>
+
+  <div style="display: flex; gap: 1em; margin-top: 0.2em; align-items: flex-start;">
+
+    <!-- LEFT: Pipeline visual -->
+    <div style="flex: 0 0 320px;">
+      <svg viewBox="0 0 320 420" style="width: 100%; height: 420px;">
+        <!-- Pipeline steps -->
+        <!-- Step 1: Load Context -->
+        <rect x="10" y="10" width="300" height="52" rx="10" fill="rgba(112,176,255,0.08)" stroke="var(--blue)" stroke-width="1.8"/>
+        <text x="30" y="32" fill="var(--blue)" font-size="11" font-weight="700" font-family="JetBrains Mono">① Load Context</text>
+        <text x="30" y="48" fill="var(--text)" font-size="7.5">Knowledge graph (136 nodes) + UCSD data catalog (88KB)</text>
+        <text x="280" y="38" text-anchor="middle" fill="var(--blue)" font-size="14">🧠</text>
+
+        <!-- Arrow -->
+        <line x1="160" y1="62" x2="160" y2="78" stroke="var(--cyan)" stroke-width="1.5" opacity="0.5"/>
+        <polygon points="155,75 165,75 160,82" fill="var(--cyan)" opacity="0.5"/>
+
+        <!-- Step 2: Research -->
+        <rect x="10" y="82" width="300" height="52" rx="10" fill="rgba(80,240,255,0.08)" stroke="var(--cyan)" stroke-width="1.8"/>
+        <text x="30" y="104" fill="var(--cyan)" font-size="11" font-weight="700" font-family="JetBrains Mono">② Targeted Research</text>
+        <text x="30" y="120" fill="var(--text)" font-size="7.5">3 web searches — higher ed AI, admin pain points, tech trends</text>
+        <text x="280" y="110" text-anchor="middle" fill="var(--cyan)" font-size="14">🔍</text>
+
+        <!-- Arrow -->
+        <line x1="160" y1="134" x2="160" y2="150" stroke="var(--amber)" stroke-width="1.5" opacity="0.5"/>
+        <polygon points="155,147 165,147 160,154" fill="var(--amber)" opacity="0.5"/>
+
+        <!-- Step 3: Score -->
+        <rect x="10" y="154" width="300" height="72" rx="10" fill="rgba(255,221,68,0.08)" stroke="var(--amber)" stroke-width="1.8"/>
+        <text x="30" y="176" fill="var(--amber)" font-size="11" font-weight="700" font-family="JetBrains Mono">③ Score &amp; Select</text>
+        <text x="30" y="192" fill="var(--text)" font-size="7.5">Weighted rubric (100-point scale):</text>
+        <text x="40" y="206" fill="var(--text-dim)" font-size="7" font-family="JetBrains Mono">Signal Recency 2× · Impact 3× · Brett Relevance 2×</text>
+        <text x="40" y="218" fill="var(--text-dim)" font-size="7" font-family="JetBrains Mono">Data Feasibility 2× · Competitive Urgency 1×</text>
+        <text x="280" y="194" text-anchor="middle" fill="var(--amber)" font-size="14">⚖️</text>
+
+        <!-- Arrow -->
+        <line x1="160" y1="226" x2="160" y2="242" stroke="var(--violet)" stroke-width="1.5" opacity="0.5"/>
+        <polygon points="155,239 165,239 160,246" fill="var(--violet)" opacity="0.5"/>
+
+        <!-- Step 4: Map Data -->
+        <rect x="10" y="246" width="300" height="52" rx="10" fill="rgba(205,180,255,0.08)" stroke="var(--violet)" stroke-width="1.8"/>
+        <text x="30" y="268" fill="var(--violet)" font-size="11" font-weight="700" font-family="JetBrains Mono">④ Map Data Sources</text>
+        <text x="30" y="284" fill="var(--text)" font-size="7.5">Match to UCSD systems — owner, access tier (P1-P3), gaps</text>
+        <text x="280" y="274" text-anchor="middle" fill="var(--violet)" font-size="14">🗃️</text>
+
+        <!-- Arrow -->
+        <line x1="160" y1="298" x2="160" y2="314" stroke="var(--emerald)" stroke-width="1.5" opacity="0.5"/>
+        <polygon points="155,311 165,311 160,318" fill="var(--emerald)" opacity="0.5"/>
+
+        <!-- Step 5: Deliver -->
+        <rect x="10" y="318" width="300" height="52" rx="10" fill="rgba(96,255,200,0.08)" stroke="var(--emerald)" stroke-width="1.8"/>
+        <text x="30" y="340" fill="var(--emerald)" font-size="11" font-weight="700" font-family="JetBrains Mono">⑤ Save &amp; Deliver</text>
+        <text x="30" y="356" fill="var(--text)" font-size="7.5">→ Mission Control pipeline + Telegram briefing at 7:00 AM</text>
+        <text x="280" y="346" text-anchor="middle" fill="var(--emerald)" font-size="14">📡</text>
+
+        <!-- Bottom: timing -->
+        <text x="160" y="400" text-anchor="middle" fill="var(--text-dim)" font-size="8" font-family="JetBrains Mono">⏱ ~4 min · Claude Sonnet · Fully autonomous</text>
+      </svg>
+    </div>
+
+    <!-- RIGHT: Details -->
+    <div style="flex: 1; padding-top: 0.1em;">
+
+      <div class="concept-item">
+        <div class="concept-icon ci-blue"><svg viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="6" stroke="var(--blue)" stroke-width="1.5"/><path d="M9 6v3l2 1" stroke="var(--blue)" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+        <div><div class="concept-label">Runs Daily at 7:00 AM</div><div class="concept-desc">No human trigger. The agent wakes up, loads context, researches, scores, and delivers — every morning before Brett's first meeting.</div></div>
+      </div>
+
+      <div class="concept-item">
+        <div class="concept-icon ci-amber"><svg viewBox="0 0 18 18" fill="none"><path d="M9 2l2 5h5l-4 3 1.5 5L9 12.5 4.5 15 6 10 2 7h5z" stroke="var(--amber)" stroke-width="1.2" fill="none"/></svg></div>
+        <div><div class="concept-label">Knowledge-Graph-Aware Scoring</div><div class="concept-desc">Ideas aren't scored generically — they're weighted against Brett's <strong>active projects</strong>, <strong>strategic priorities</strong>, and <strong>upcoming events</strong> from the knowledge graph.</div></div>
+      </div>
+
+      <div class="concept-item">
+        <div class="concept-icon ci-violet"><svg viewBox="0 0 18 18" fill="none"><rect x="3" y="3" width="12" height="12" rx="2" stroke="var(--violet)" stroke-width="1.5"/><path d="M7 7h4M7 11h2" stroke="var(--violet)" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+        <div><div class="concept-label">Data Feasibility Check</div><div class="concept-desc">Every idea is cross-referenced against UCSD's <strong>enterprise data catalog</strong> — which systems have the data, who owns them, and what access tier (P1-P3) is required.</div></div>
+      </div>
+
+      <div class="concept-item">
+        <div class="concept-icon ci-emerald"><svg viewBox="0 0 18 18" fill="none"><polyline points="4,14 8,6 12,10 16,4" fill="none" stroke="var(--emerald)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><div class="concept-label">Feeds the Software Blueprint</div><div class="concept-desc">Top-scoring ideas flow into Mission Control's pipeline. When Brett approves one, it becomes the <strong>brief</strong> for the Software Blueprint — triggering the full multi-agent build pipeline automatically.</div></div>
+      </div>
+
+      <div class="concept-item">
+        <div class="concept-icon ci-rose"><svg viewBox="0 0 18 18" fill="none"><path d="M4 9h10M11 5l4 4-4 4" stroke="var(--rose)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><div class="concept-label">Idea → App in One Day</div><div class="concept-desc">7:00 AM: scan surfaces idea + data sources. Brett approves. Blueprint plans, builds, tests, deploys. By end of day: <strong>live app on Vercel</strong> with GitHub repo, UCSD SSO, and docs.</div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SLIDE 5: SOFTWARE BLUEPRINT ═══ -->
+<section data-background-color="#050508">
+  <div style="display: flex; gap: 1.2em; align-items: flex-start;">
+
+    <!-- LEFT: Title + Key points -->
+    <div style="flex: 1;">
+      <h2 style="margin-bottom:0.15em;">Use Case: Software Blueprint</h2>
+      <p class="lead" style="margin-bottom:0.3em;">One approved idea → six agents → live production app.</p>
+
+      <div style="background:rgba(255,221,68,0.08); border:1px solid rgba(255,221,68,0.3); border-radius:8px; padding:0.3em 0.5em; margin-bottom:0.4em; display:flex; align-items:center; gap:0.4em;">
+        <span style="font-size:1.1em;">⬆</span>
+        <span style="color:var(--amber); font-size:0.55em; font-weight:600; font-family:'JetBrains Mono',monospace;">Input: Opportunity Scan brief + UCSD data source mapping</span>
+      </div>
+
+      <div class="concept-item">
+        <div class="concept-icon ci-amber"><svg viewBox="0 0 18 18" fill="none"><path d="M9 3v12M5 7l4-4 4 4" stroke="var(--amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><div class="concept-label">One Command to Ship</div><div class="concept-desc"><code style="color:var(--cyan);font-size:0.9em;">blueprint new data-portal --type fullstack --db postgres</code><br/>6-agent pipeline — live in ~15 min from idea.</div></div>
+      </div>
+
+      <div class="concept-item">
+        <div class="concept-icon ci-violet"><svg viewBox="0 0 18 18" fill="none"><circle cx="6" cy="7" r="3" stroke="var(--violet)" stroke-width="1.2"/><circle cx="12" cy="11" r="3" stroke="var(--violet)" stroke-width="1.2"/><line x1="8.5" y1="9" x2="9.5" y2="9.5" stroke="var(--violet)" stroke-width="1.2"/></svg></div>
+        <div><div class="concept-label">6 Specialized Agent Roles</div><div class="concept-desc"><strong>Planner</strong> → <strong>Architect</strong> → <strong>Builder</strong> → <strong>QA</strong> → <strong>Deploy</strong> → <strong>Docs</strong>. Each uses the right model. Builder defaults to <strong>Nemotron on-prem</strong> for UCSD apps.</div></div>
+      </div>
+
+      <div class="concept-item">
+        <div class="concept-icon" style="background:rgba(255,221,68,0.12);"><svg viewBox="0 0 18 18" fill="none"><rect x="4" y="4" width="10" height="10" rx="2" stroke="var(--amber)" stroke-width="1.5"/><path d="M7 9l2 2 3-4" stroke="var(--amber)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><div class="concept-label">Human Gates — Not Fully Autonomous</div><div class="concept-desc">Three approval points via Telegram: plan, spec, and localhost preview. The agent proposes — Brett decides.</div></div>
+      </div>
+
+      <div class="concept-item">
+        <div class="concept-icon ci-emerald"><svg viewBox="0 0 18 18" fill="none"><path d="M4 14C4 14 6 6 9 6C12 6 14 14 14 14" stroke="var(--emerald)" stroke-width="1.5" stroke-linecap="round" fill="none"/><circle cx="9" cy="5" r="2" stroke="var(--emerald)" stroke-width="1.2"/></svg></div>
+        <div><div class="concept-label">Self-Correcting QA Loop</div><div class="concept-desc">Build fails → error feedback to Builder → up to 3 GAN-style iterations. Escalates to human only after max retries.</div></div>
+      </div>
+
+      <div class="concept-item">
+        <div class="concept-icon ci-rose"><svg viewBox="0 0 18 18" fill="none"><path d="M3 9l4 4L15 5" stroke="var(--rose)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><div class="concept-label">Real-Time Status Broadcast</div><div class="concept-desc">Each agent broadcasts state to Mission Control — live animation shows which agent is working, waiting, or complete.</div></div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: Pipeline stages visual (top-aligned with title) -->
+    <div style="flex: 0 0 420px; margin-top: -0.5em;">
+      <svg viewBox="0 0 420 590" style="width: 100%; height: 590px;">
+        <!-- Stage 1: Planner -->
+        <rect x="10" y="8" width="360" height="72" rx="8" fill="rgba(112,176,255,0.08)" stroke="var(--blue)" stroke-width="1.8"/>
+        <text x="30" y="26" fill="var(--blue)" font-size="13" font-weight="700" font-family="JetBrains Mono">① Planner Agent</text>
+        <text x="340" y="32" text-anchor="middle" fill="var(--blue)" font-size="18">📝</text>
+        <text x="30" y="40" fill="var(--text)" font-size="9">Claude Code analyzes the brief, makes binding decisions on:</text>
+        <text x="30" y="52" fill="var(--text-dim)" font-size="8" font-family="JetBrains Mono">DB type · Auth · API surface · Data model → PLAN.md</text>
+        <text x="30" y="64" fill="var(--blue)" font-size="8" font-family="JetBrains Mono" opacity="0.8">Opus → Sonnet (fallback)</text>
+
+        <rect x="65" y="86" width="250" height="20" rx="10" fill="rgba(255,221,68,0.15)" stroke="var(--amber)" stroke-width="1.2" stroke-dasharray="3 2"/>
+        <text x="190" y="100" text-anchor="middle" fill="var(--amber)" font-size="8.5" font-weight="600">⏸ Brett approves plan via Telegram</text>
+        <line x1="190" y1="106" x2="190" y2="116" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+
+        <!-- Stage 2: Architect -->
+        <rect x="10" y="116" width="360" height="72" rx="8" fill="rgba(80,240,255,0.08)" stroke="var(--cyan)" stroke-width="1.8"/>
+        <text x="30" y="134" fill="var(--cyan)" font-size="13" font-weight="700" font-family="JetBrains Mono">② Architect Agent</text>
+        <text x="340" y="140" text-anchor="middle" fill="var(--cyan)" font-size="18">🏗️</text>
+        <text x="30" y="148" fill="var(--text)" font-size="9">Henry reads PLAN.md, produces full system design:</text>
+        <text x="30" y="160" fill="var(--text-dim)" font-size="8" font-family="JetBrains Mono">Components · Routes · Data flow · Tech stack → SPEC.md</text>
+        <text x="30" y="172" fill="var(--cyan)" font-size="8" font-family="JetBrains Mono" opacity="0.8">Opus → Sonnet → Nemotron (fallback)</text>
+
+        <rect x="65" y="194" width="250" height="20" rx="10" fill="rgba(255,221,68,0.15)" stroke="var(--amber)" stroke-width="1.2" stroke-dasharray="3 2"/>
+        <text x="190" y="208" text-anchor="middle" fill="var(--amber)" font-size="8.5" font-weight="600">⏸ Brett approves spec via Telegram</text>
+        <line x1="190" y1="214" x2="190" y2="224" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+
+        <!-- Stage 3: Builder -->
+        <rect x="10" y="224" width="360" height="82" rx="8" fill="rgba(205,180,255,0.08)" stroke="var(--violet)" stroke-width="1.8"/>
+        <text x="30" y="240" fill="var(--violet)" font-size="13" font-weight="700" font-family="JetBrains Mono">③ Builder Agent</text>
+        <text x="340" y="248" text-anchor="middle" fill="var(--violet)" font-size="18">🔨</text>
+        <text x="30" y="254" fill="var(--text)" font-size="9">Reads SPEC.md, scaffolds Next.js project, writes all code:</text>
+        <text x="30" y="266" fill="var(--text-dim)" font-size="8" font-family="JetBrains Mono">React · API routes · Tailwind · DB schema</text>
+        <text x="30" y="278" fill="var(--amber)" font-size="8" font-family="JetBrains Mono" opacity="0.8">🔒 Secret detection · no hardcoded keys</text>
+        <text x="30" y="290" fill="var(--violet)" font-size="8" font-family="JetBrains Mono" opacity="0.8">Opus → Codex → Sonnet | UCSD: Nemotron on-prem</text>
+        <line x1="190" y1="302" x2="190" y2="312" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+
+        <!-- Stage 4: QA (loop) -->
+        <rect x="10" y="312" width="360" height="82" rx="8" fill="rgba(96,255,200,0.08)" stroke="var(--emerald)" stroke-width="1.8"/>
+        <text x="30" y="328" fill="var(--emerald)" font-size="13" font-weight="700" font-family="JetBrains Mono">④ QA / Evaluation</text>
+        <text x="340" y="336" text-anchor="middle" fill="var(--emerald)" font-size="18">✅</text>
+        <text x="30" y="342" fill="var(--text)" font-size="9">Automated quality gate — no human involvement:</text>
+        <text x="30" y="354" fill="var(--text-dim)" font-size="8" font-family="JetBrains Mono">npm install → TS build → type check → Vercel compat</text>
+        <text x="30" y="366" fill="var(--amber)" font-size="8" font-family="JetBrains Mono" opacity="0.8">🔒 npm audit · dep scan · SAST check</text>
+        <text x="30" y="378" fill="var(--emerald)" font-size="8">Fail? Error feedback sent back to Builder — up to 3 GAN-style iterations</text>
+        <path d="M370 370 C 400 370, 400 250, 370 250" fill="none" stroke="var(--emerald)" stroke-width="1.2" stroke-dasharray="3 2" opacity="0.6"/>
+        <polygon points="370,253 367,247 373,247" fill="var(--emerald)" opacity="0.6"/>
+        <text x="402" y="315" fill="var(--emerald)" font-size="8" opacity="0.7" font-family="JetBrains Mono">retry</text>
+
+        <rect x="45" y="396" width="290" height="20" rx="10" fill="rgba(255,221,68,0.15)" stroke="var(--amber)" stroke-width="1.2" stroke-dasharray="3 2"/>
+        <text x="190" y="410" text-anchor="middle" fill="var(--amber)" font-size="8.5" font-weight="600">⏸ Brett reviews localhost preview + screenshot</text>
+        <line x1="190" y1="416" x2="190" y2="426" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+
+        <!-- Stage 5: Deploy -->
+        <rect x="10" y="426" width="360" height="76" rx="8" fill="rgba(255,144,168,0.08)" stroke="var(--rose)" stroke-width="1.8"/>
+        <text x="30" y="442" fill="var(--rose)" font-size="13" font-weight="700" font-family="JetBrains Mono">⑤ Deploy Agent</text>
+        <text x="340" y="450" text-anchor="middle" fill="var(--rose)" font-size="18">🚀</text>
+        <text x="30" y="456" fill="var(--text)" font-size="9">Automated deployment pipeline:</text>
+        <text x="30" y="468" fill="var(--text-dim)" font-size="8" font-family="JetBrains Mono">git init → gh repo create → git push → vercel --prod</text>
+        <text x="30" y="480" fill="var(--amber)" font-size="8" font-family="JetBrains Mono" opacity="0.8">🔒 Env secrets validation · no hardcoded creds</text>
+        <text x="30" y="490" fill="var(--rose)" font-size="8" font-family="JetBrains Mono" opacity="0.8">No LLM — CLI automation (git, gh, vercel)</text>
+        <line x1="190" y1="502" x2="190" y2="512" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+
+        <!-- Stage 6: Docs -->
+        <rect x="10" y="512" width="360" height="68" rx="8" fill="rgba(112,176,255,0.06)" stroke="var(--blue)" stroke-width="1.2"/>
+        <text x="30" y="528" fill="var(--blue)" font-size="13" font-weight="700" font-family="JetBrains Mono">⑥ Docs Agent</text>
+        <text x="340" y="536" text-anchor="middle" fill="var(--blue)" font-size="18">📚</text>
+        <text x="30" y="542" fill="var(--text)" font-size="9">Henry auto-generates project documentation:</text>
+        <text x="30" y="554" fill="var(--text-dim)" font-size="8" font-family="JetBrains Mono">README · CHANGELOG · JSDoc/TSDoc · AGENTS.md</text>
+        <text x="30" y="566" fill="var(--blue)" font-size="8" font-family="JetBrains Mono" opacity="0.8">Opus → Sonnet → Nemotron (fallback)</text>
+      </svg>
+    </div>
+  </div>
+</section>
+<!-- ═══ SLIDE 6: MORNING BRIEFING ═══ -->
+<section data-background-color="#050508">
+  <h2>Use Case: Morning Briefing</h2>
+  <p class="lead">Every morning, Henry assembles Brett’s day: calendar, email, and action items — then delivers a concise executive briefing to Telegram.</p>
+
+  <div style="display:flex; gap:1em; margin-top:0.2em; align-items:flex-start;">
+    <div style="flex:0 0 320px;">
+      <svg viewBox="0 0 320 400" style="width:100%; height:400px;">
+        <rect x="10" y="10" width="300" height="52" rx="10" fill="rgba(112,176,255,0.08)" stroke="var(--blue)" stroke-width="1.8"/>
+        <text x="30" y="32" fill="var(--blue)" font-size="11" font-weight="700" font-family="JetBrains Mono">① Pull Calendar + Email</text>
+        <text x="30" y="48" fill="var(--text)" font-size="7.5">MS Graph → today’s meetings, unread mail, urgent senders</text>
+        <text x="280" y="38" text-anchor="middle" fill="var(--blue)" font-size="14">📅</text>
+        <line x1="160" y1="62" x2="160" y2="78" stroke="var(--cyan)" stroke-width="1.5" opacity="0.5"/><polygon points="155,75 165,75 160,82" fill="var(--cyan)" opacity="0.5"/>
+
+        <rect x="10" y="82" width="300" height="52" rx="10" fill="rgba(80,240,255,0.08)" stroke="var(--cyan)" stroke-width="1.8"/>
+        <text x="30" y="104" fill="var(--cyan)" font-size="11" font-weight="700" font-family="JetBrains Mono">② Triage</text>
+        <text x="30" y="120" fill="var(--text)" font-size="7.5">Top 5 meetings · top 5 emails · what actually needs Brett</text>
+        <text x="280" y="110" text-anchor="middle" fill="var(--cyan)" font-size="14">✉️</text>
+        <line x1="160" y1="134" x2="160" y2="150" stroke="var(--amber)" stroke-width="1.5" opacity="0.5"/><polygon points="155,147 165,147 160,154" fill="var(--amber)" opacity="0.5"/>
+
+        <rect x="10" y="154" width="300" height="64" rx="10" fill="rgba(255,221,68,0.08)" stroke="var(--amber)" stroke-width="1.8"/>
+        <text x="30" y="176" fill="var(--amber)" font-size="11" font-weight="700" font-family="JetBrains Mono">③ Extract Action Items</text>
+        <text x="30" y="192" fill="var(--text)" font-size="7.5">Reply needed? Decision pending? Deadline approaching?</text>
+        <text x="40" y="206" fill="var(--text-dim)" font-size="7" font-family="JetBrains Mono">If yes → create task in Mission Control backlog</text>
+        <text x="280" y="190" text-anchor="middle" fill="var(--amber)" font-size="14">✅</text>
+        <line x1="160" y1="218" x2="160" y2="234" stroke="var(--violet)" stroke-width="1.5" opacity="0.5"/><polygon points="155,231 165,231 160,238" fill="var(--violet)" opacity="0.5"/>
+
+        <rect x="10" y="238" width="300" height="52" rx="10" fill="rgba(205,180,255,0.08)" stroke="var(--violet)" stroke-width="1.8"/>
+        <text x="30" y="260" fill="var(--violet)" font-size="11" font-weight="700" font-family="JetBrains Mono">④ Save to Docs</text>
+        <text x="30" y="276" fill="var(--text)" font-size="7.5">calendar-briefing-YYYY-MM-DD.md for later reference</text>
+        <text x="280" y="266" text-anchor="middle" fill="var(--violet)" font-size="14">📄</text>
+        <line x1="160" y1="290" x2="160" y2="306" stroke="var(--emerald)" stroke-width="1.5" opacity="0.5"/><polygon points="155,303 165,303 160,310" fill="var(--emerald)" opacity="0.5"/>
+
+        <rect x="10" y="310" width="300" height="52" rx="10" fill="rgba(96,255,200,0.08)" stroke="var(--emerald)" stroke-width="1.8"/>
+        <text x="30" y="332" fill="var(--emerald)" font-size="11" font-weight="700" font-family="JetBrains Mono">⑤ Deliver</text>
+        <text x="30" y="348" fill="var(--text)" font-size="7.5">Telegram message before the first meeting of the day</text>
+        <text x="280" y="338" text-anchor="middle" fill="var(--emerald)" font-size="14">📲</text>
+        <text x="160" y="388" text-anchor="middle" fill="var(--text-dim)" font-size="8" font-family="JetBrains Mono">⏱ 6:25 AM daily · Gemini Flash</text>
+      </svg>
+    </div>
+    <div style="flex:1; padding-top:0.1em;">
+      <div class="concept-item"><div class="concept-icon ci-blue">📬</div><div><div class="concept-label">Executive Scan, Not Inbox Dump</div><div class="concept-desc">The point isn’t to summarize everything. It’s to show Brett what matters in under 30 seconds of reading.</div></div></div>
+      <div class="concept-item"><div class="concept-icon ci-amber">🧠</div><div><div class="concept-label">Filters for Real Work</div><div class="concept-desc">Only creates tasks for items requiring Brett’s action — replies, decisions, deadlines. Skips noise, invites, and automated messages.</div></div></div>
+      <div class="concept-item"><div class="concept-icon ci-violet">🔗</div><div><div class="concept-label">Bridges Communication → Execution</div><div class="concept-desc">Email and calendar don’t just get summarized — they become structured backlog items in Mission Control.</div></div></div>
+      <div class="concept-item"><div class="concept-icon ci-emerald">☀️</div><div><div class="concept-label">Reliable Morning Ritual</div><div class="concept-desc">Runs daily without prompting. If the briefing is missing, a watchdog alerts Brett that the pipeline broke.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SLIDE 7: MEETING DEBRIEF ═══ -->
+<section data-background-color="#050508">
+  <h2>Use Case: Meeting Debrief</h2>
+  <p class="lead">Granola meeting notes become structured decisions, action items, and relationship intelligence — without Brett re-reading transcripts.</p>
+  <div style="display:flex; gap:1em; margin-top:0.2em; align-items:flex-start;">
+    <div style="flex:0 0 320px;">
+      <svg viewBox="0 0 320 400" style="width:100%; height:400px;">
+        <rect x="10" y="10" width="300" height="52" rx="10" fill="rgba(112,176,255,0.08)" stroke="var(--blue)" stroke-width="1.8"/>
+        <text x="30" y="32" fill="var(--blue)" font-size="11" font-weight="700" font-family="JetBrains Mono">① Sync Granola</text>
+        <text x="30" y="48" fill="var(--text)" font-size="7.5">Pull summaries + full transcripts for today’s meetings</text>
+        <text x="280" y="38" text-anchor="middle" fill="var(--blue)" font-size="14">🎙️</text>
+        <line x1="160" y1="62" x2="160" y2="78" stroke="var(--cyan)" stroke-width="1.5" opacity="0.5"/><polygon points="155,75 165,75 160,82" fill="var(--cyan)" opacity="0.5"/>
+        <rect x="10" y="82" width="300" height="52" rx="10" fill="rgba(80,240,255,0.08)" stroke="var(--cyan)" stroke-width="1.8"/>
+        <text x="30" y="104" fill="var(--cyan)" font-size="11" font-weight="700" font-family="JetBrains Mono">② Extract Meaning</text>
+        <text x="30" y="120" fill="var(--text)" font-size="7.5">Decisions · commitments Brett made · follow-ups · owners</text>
+        <text x="280" y="110" text-anchor="middle" fill="var(--cyan)" font-size="14">🧾</text>
+        <line x1="160" y1="134" x2="160" y2="150" stroke="var(--amber)" stroke-width="1.5" opacity="0.5"/><polygon points="155,147 165,147 160,154" fill="var(--amber)" opacity="0.5"/>
+        <rect x="10" y="154" width="300" height="64" rx="10" fill="rgba(255,221,68,0.08)" stroke="var(--amber)" stroke-width="1.8"/>
+        <text x="30" y="176" fill="var(--amber)" font-size="11" font-weight="700" font-family="JetBrains Mono">③ Filter Ruthlessly</text>
+        <text x="30" y="192" fill="var(--text)" font-size="7.5">Only keep tasks Brett actually owns</text>
+        <text x="40" y="206" fill="var(--text-dim)" font-size="7" font-family="JetBrains Mono">Avoid clutter from self-driving work by others</text>
+        <text x="280" y="190" text-anchor="middle" fill="var(--amber)" font-size="14">🎯</text>
+        <line x1="160" y1="218" x2="160" y2="234" stroke="var(--violet)" stroke-width="1.5" opacity="0.5"/><polygon points="155,231 165,231 160,238" fill="var(--violet)" opacity="0.5"/>
+        <rect x="10" y="238" width="300" height="52" rx="10" fill="rgba(205,180,255,0.08)" stroke="var(--violet)" stroke-width="1.8"/>
+        <text x="30" y="260" fill="var(--violet)" font-size="11" font-weight="700" font-family="JetBrains Mono">④ Create Tasks</text>
+        <text x="30" y="276" fill="var(--text)" font-size="7.5">Push action items into Mission Control backlog</text>
+        <text x="280" y="266" text-anchor="middle" fill="var(--violet)" font-size="14">📌</text>
+        <line x1="160" y1="290" x2="160" y2="306" stroke="var(--emerald)" stroke-width="1.5" opacity="0.5"/><polygon points="155,303 165,303 160,310" fill="var(--emerald)" opacity="0.5"/>
+        <rect x="10" y="310" width="300" height="52" rx="10" fill="rgba(96,255,200,0.08)" stroke="var(--emerald)" stroke-width="1.8"/>
+        <text x="30" y="332" fill="var(--emerald)" font-size="11" font-weight="700" font-family="JetBrains Mono">⑤ Debrief + Relationship Layer</text>
+        <text x="30" y="348" fill="var(--text)" font-size="7.5">Docs save now; Friday relationship health on top later</text>
+        <text x="280" y="338" text-anchor="middle" fill="var(--emerald)" font-size="14">🤝</text>
+        <text x="160" y="388" text-anchor="middle" fill="var(--text-dim)" font-size="8" font-family="JetBrains Mono">⏱ 6:15 PM daily · Sonnet / Codex Mini path</text>
+      </svg>
+    </div>
+    <div style="flex:1; padding-top:0.1em;">
+      <div class="concept-item"><div class="concept-icon ci-blue">🗣️</div><div><div class="concept-label">Meetings Become Memory</div><div class="concept-desc">Instead of disappearing into a notes app, key decisions and commitments become reusable operational context.</div></div></div>
+      <div class="concept-item"><div class="concept-icon ci-amber">🧹</div><div><div class="concept-label">Prevents Backlog Pollution</div><div class="concept-desc">The filter is the product: only tasks Brett owns or will otherwise lose track of get added.</div></div></div>
+      <div class="concept-item"><div class="concept-icon ci-violet">📚</div><div><div class="concept-label">Transcript → Executive Brief</div><div class="concept-desc">Long transcripts are compressed into decisions, actions, and context-rich summaries Brett can scan instantly.</div></div></div>
+      <div class="concept-item"><div class="concept-icon ci-emerald">🕸️</div><div><div class="concept-label">Feeds Relationship Intelligence</div><div class="concept-desc">The same meeting corpus later powers neglected relationship detection, follow-up prompts, and open-loop tracking.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SLIDE 8: AI INTELLIGENCE BRIEFING ═══ -->
+<section data-background-color="#050508">
+  <h2>Use Case: AI Intelligence Briefing</h2>
+  <p class="lead">Henry doesn’t send generic AI news. He curates a targeted intelligence brief based on Brett’s actual projects, vendors, and strategic priorities.</p>
+  <div style="display:flex; gap:1em; margin-top:0.2em; align-items:flex-start;">
+    <div style="flex:0 0 320px;">
+      <svg viewBox="0 0 320 400" style="width:100%; height:400px;">
+        <rect x="10" y="10" width="300" height="52" rx="10" fill="rgba(112,176,255,0.08)" stroke="var(--blue)" stroke-width="1.8"/>
+        <text x="30" y="32" fill="var(--blue)" font-size="11" font-weight="700" font-family="JetBrains Mono">① Load Knowledge Graph</text>
+        <text x="30" y="48" fill="var(--text)" font-size="7.5">Projects · vendors · talks · people · technologies</text>
+        <text x="280" y="38" text-anchor="middle" fill="var(--blue)" font-size="14">🕸️</text>
+        <line x1="160" y1="62" x2="160" y2="78" stroke="var(--cyan)" stroke-width="1.5" opacity="0.5"/><polygon points="155,75 165,75 160,82" fill="var(--cyan)" opacity="0.5"/>
+        <rect x="10" y="82" width="300" height="52" rx="10" fill="rgba(80,240,255,0.08)" stroke="var(--cyan)" stroke-width="1.8"/>
+        <text x="30" y="104" fill="var(--cyan)" font-size="11" font-weight="700" font-family="JetBrains Mono">② Form Targeted Searches</text>
+        <text x="30" y="120" fill="var(--text)" font-size="7.5">No generic “AI news” — query around Brett’s graph nodes</text>
+        <text x="280" y="110" text-anchor="middle" fill="var(--cyan)" font-size="14">🔎</text>
+        <line x1="160" y1="134" x2="160" y2="150" stroke="var(--amber)" stroke-width="1.5" opacity="0.5"/><polygon points="155,147 165,147 160,154" fill="var(--amber)" opacity="0.5"/>
+        <rect x="10" y="154" width="300" height="64" rx="10" fill="rgba(255,221,68,0.08)" stroke="var(--amber)" stroke-width="1.8"/>
+        <text x="30" y="176" fill="var(--amber)" font-size="11" font-weight="700" font-family="JetBrains Mono">③ Score Relevance</text>
+        <text x="30" y="192" fill="var(--text)" font-size="7.5">Each article scored against graph connections</text>
+        <text x="40" y="206" fill="var(--text-dim)" font-size="7" font-family="JetBrains Mono">Project match · vendor match · higher-ed relevance</text>
+        <text x="280" y="190" text-anchor="middle" fill="var(--amber)" font-size="14">⚡</text>
+        <line x1="160" y1="218" x2="160" y2="234" stroke="var(--violet)" stroke-width="1.5" opacity="0.5"/><polygon points="155,231 165,231 160,238" fill="var(--violet)" opacity="0.5"/>
+        <rect x="10" y="238" width="300" height="52" rx="10" fill="rgba(205,180,255,0.08)" stroke="var(--violet)" stroke-width="1.8"/>
+        <text x="30" y="260" fill="var(--violet)" font-size="11" font-weight="700" font-family="JetBrains Mono">④ Synthesize Signal</text>
+        <text x="30" y="276" fill="var(--text)" font-size="7.5">Not just headlines — why it matters to Brett specifically</text>
+        <text x="280" y="266" text-anchor="middle" fill="var(--violet)" font-size="14">💡</text>
+        <line x1="160" y1="290" x2="160" y2="306" stroke="var(--emerald)" stroke-width="1.5" opacity="0.5"/><polygon points="155,303 165,303 160,310" fill="var(--emerald)" opacity="0.5"/>
+        <rect x="10" y="310" width="300" height="52" rx="10" fill="rgba(96,255,200,0.08)" stroke="var(--emerald)" stroke-width="1.8"/>
+        <text x="30" y="332" fill="var(--emerald)" font-size="11" font-weight="700" font-family="JetBrains Mono">⑤ Deliver Brief</text>
+        <text x="30" y="348" fill="var(--text)" font-size="7.5">5–7 articles max, graph-linked, actionable</text>
+        <text x="280" y="338" text-anchor="middle" fill="var(--emerald)" font-size="14">🧠</text>
+        <text x="160" y="388" text-anchor="middle" fill="var(--text-dim)" font-size="8" font-family="JetBrains Mono">⏱ 6:35 AM daily · Sonnet / Codex Mini path</text>
+      </svg>
+    </div>
+    <div style="flex:1; padding-top:0.1em;">
+      <div class="concept-item"><div class="concept-icon ci-blue">🎯</div><div><div class="concept-label">Personalized, Not Generic</div><div class="concept-desc">The briefing is tuned to TritonAI, Brett’s talks, vendor evaluations, and higher-ed AI strategy — not mass-market AI hype.</div></div></div>
+      <div class="concept-item"><div class="concept-icon ci-amber">🔗</div><div><div class="concept-label">Every Article Must Connect to the Graph</div><div class="concept-desc">If a story doesn’t connect to Brett’s projects or priorities, it doesn’t make the brief.</div></div></div>
+      <div class="concept-item"><div class="concept-icon ci-violet">📣</div><div><div class="concept-label">Useful for Talks and Strategy</div><div class="concept-desc">This is less “news” and more briefing material for presentations, cabinet conversations, and strategic decisions.</div></div></div>
+      <div class="concept-item"><div class="concept-icon ci-emerald">📄</div><div><div class="concept-label">Saved as Reusable Docs</div><div class="concept-desc">Every intelligence run lands in Docs, creating a searchable history of AI market and peer-institution signals.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SLIDE 9: CAMPUS PAIN SIGNALS ═══ -->
+<section data-background-color="#050508">
+  <h2>Use Case: Campus Pain Signal Monitor</h2>
+  <p class="lead">Henry listens to the voice of campus — Reddit, student news, senate resolutions, outages — then maps pain points to systems UCSD could actually improve.</p>
+  <div style="display:flex; gap:1em; margin-top:0.2em; align-items:flex-start;">
+    <div style="flex:0 0 320px;">
+      <svg viewBox="0 0 320 400" style="width:100%; height:400px;">
+        <rect x="10" y="10" width="300" height="52" rx="10" fill="rgba(112,176,255,0.08)" stroke="var(--blue)" stroke-width="1.8"/>
+        <text x="30" y="32" fill="var(--blue)" font-size="11" font-weight="700" font-family="JetBrains Mono">① Fetch Public Signals</text>
+        <text x="30" y="48" fill="var(--text)" font-size="7.5">r/UCSD · Guardian · AS Senate · Academic Senate · status page</text>
+        <text x="280" y="38" text-anchor="middle" fill="var(--blue)" font-size="14">📡</text>
+        <line x1="160" y1="62" x2="160" y2="78" stroke="var(--cyan)" stroke-width="1.5" opacity="0.5"/><polygon points="155,75 165,75 160,82" fill="var(--cyan)" opacity="0.5"/>
+        <rect x="10" y="82" width="300" height="52" rx="10" fill="rgba(80,240,255,0.08)" stroke="var(--cyan)" stroke-width="1.8"/>
+        <text x="30" y="104" fill="var(--cyan)" font-size="11" font-weight="700" font-family="JetBrains Mono">② Filter for Real Pain</text>
+        <text x="30" y="120" fill="var(--text)" font-size="7.5">Advising · registration · aid · IT outages · payroll · policy</text>
+        <text x="280" y="110" text-anchor="middle" fill="var(--cyan)" font-size="14">🎛️</text>
+        <line x1="160" y1="134" x2="160" y2="150" stroke="var(--amber)" stroke-width="1.5" opacity="0.5"/><polygon points="155,147 165,147 160,154" fill="var(--amber)" opacity="0.5"/>
+        <rect x="10" y="154" width="300" height="64" rx="10" fill="rgba(255,221,68,0.08)" stroke="var(--amber)" stroke-width="1.8"/>
+        <text x="30" y="176" fill="var(--amber)" font-size="11" font-weight="700" font-family="JetBrains Mono">③ Score + Cross-Reference</text>
+        <text x="30" y="192" fill="var(--text)" font-size="7.5">How frequent? How painful? Can UCSD data support a fix?</text>
+        <text x="40" y="206" fill="var(--text-dim)" font-size="7" font-family="JetBrains Mono">Activity Hub views · enterprise systems · feasibility</text>
+        <text x="280" y="190" text-anchor="middle" fill="var(--amber)" font-size="14">📊</text>
+        <line x1="160" y1="218" x2="160" y2="234" stroke="var(--violet)" stroke-width="1.5" opacity="0.5"/><polygon points="155,231 165,231 160,238" fill="var(--violet)" opacity="0.5"/>
+        <rect x="10" y="238" width="300" height="52" rx="10" fill="rgba(205,180,255,0.08)" stroke="var(--violet)" stroke-width="1.8"/>
+        <text x="30" y="260" fill="var(--violet)" font-size="11" font-weight="700" font-family="JetBrains Mono">④ Propose Solution Angles</text>
+        <text x="30" y="276" fill="var(--text)" font-size="7.5">One sentence per pain signal: what TritonAI could do</text>
+        <text x="280" y="266" text-anchor="middle" fill="var(--violet)" font-size="14">💭</text>
+        <line x1="160" y1="290" x2="160" y2="306" stroke="var(--emerald)" stroke-width="1.5" opacity="0.5"/><polygon points="155,303 165,303 160,310" fill="var(--emerald)" opacity="0.5"/>
+        <rect x="10" y="310" width="300" height="52" rx="10" fill="rgba(96,255,200,0.08)" stroke="var(--emerald)" stroke-width="1.8"/>
+        <text x="30" y="332" fill="var(--emerald)" font-size="11" font-weight="700" font-family="JetBrains Mono">⑤ Spot Patterns</text>
+        <text x="30" y="348" fill="var(--text)" font-size="7.5">Which problems are recurring across campus, not one-offs?</text>
+        <text x="280" y="338" text-anchor="middle" fill="var(--emerald)" font-size="14">📈</text>
+        <text x="160" y="388" text-anchor="middle" fill="var(--text-dim)" font-size="8" font-family="JetBrains Mono">⏱ 7:30 AM daily · Sonnet / Codex Mini path</text>
+      </svg>
+    </div>
+    <div style="flex:1; padding-top:0.1em;">
+      <div class="concept-item"><div class="concept-icon ci-blue">🎓</div><div><div class="concept-label">Captures the Voice of Campus</div><div class="concept-desc">Instead of waiting for complaints to climb formal channels, Henry listens where pain actually shows up first.</div></div></div>
+      <div class="concept-item"><div class="concept-icon ci-amber">🗃️</div><div><div class="concept-label">Pain + Data Feasibility</div><div class="concept-desc">The magic is not just spotting pain — it’s knowing whether UCSD actually has the systems and data to solve it.</div></div></div>
+      <div class="concept-item"><div class="concept-icon ci-violet">🏫</div><div><div class="concept-label">Turns Signals into Institutional Product Ideas</div><div class="concept-desc">This is the front end of the innovation funnel: pain signals become candidate agents, dashboards, and campus tools.</div></div></div>
+      <div class="concept-item"><div class="concept-icon ci-emerald">🧭</div><div><div class="concept-label">Good for Prioritization</div><div class="concept-desc">It helps answer a key executive question: which campus problems are loud, repeated, solvable, and worth acting on now?</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SLIDE 6: MODEL SOLAR SYSTEM & JOBS ═══ -->
+<section>
+  <h2>Models &amp; Jobs</h2>
+  <p class="lead">Six models, one fallback chain - each job pinned to its ideal model.</p>
+
+  <div class="arch-layout">
+    <!-- SVG: Solar system / orbital diagram -->
+    <div class="arch-visual">
+      <svg viewBox="0 0 380 380" style="width:100%;height:100%;">
+        <!-- Orbital rings -->
+        <circle cx="190" cy="190" r="60" fill="none" stroke="rgba(255,204,51,0.15)" stroke-width="1"/>
+        <circle cx="190" cy="190" r="100" fill="none" stroke="rgba(92,154,255,0.12)" stroke-width="1" stroke-dasharray="3 4"/>
+        <circle cx="190" cy="190" r="140" fill="none" stroke="rgba(56,232,255,0.1)" stroke-width="1" stroke-dasharray="2 5"/>
+        <circle cx="190" cy="190" r="175" fill="none" stroke="rgba(74,237,181,0.08)" stroke-width="1" stroke-dasharray="2 6"/>
+
+        <!-- Center: Default (Nemotron) -->
+        <circle cx="190" cy="190" r="36" fill="rgba(112,176,255,0.1)"/>
+        <circle cx="190" cy="190" r="30" fill="rgba(112,176,255,0.22)" stroke="var(--blue)" stroke-width="2"/>
+        <text x="190" y="184" text-anchor="middle" fill="var(--blue)" font-size="9" font-weight="700" font-family="JetBrains Mono">NEMOTRON</text>
+        <text x="190" y="195" text-anchor="middle" fill="var(--text)" font-size="7">120B · TritonAI</text>
+        <text x="190" y="206" text-anchor="middle" fill="var(--blue)" font-size="6" font-weight="700">DEFAULT</text>
+
+        <!-- Ring 1: Opus (interactive) -->
+        <circle cx="190" cy="130" r="26" fill="rgba(255,204,51,0.06)"/>
+        <circle cx="190" cy="130" r="22" fill="rgba(255,221,68,0.28)" stroke="var(--amber)" stroke-width="2.2"/>
+        <text x="190" y="127" text-anchor="middle" fill="var(--amber)" font-size="9" font-weight="700">Opus</text>
+        <text x="190" y="138" text-anchor="middle" fill="var(--text)" font-size="6">Interactive</text>
+
+        <!-- Ring 1: Sonnet -->
+        <circle cx="248" cy="218" r="26" fill="rgba(80,240,255,0.1)"/>
+        <circle cx="248" cy="218" r="22" fill="rgba(80,240,255,0.28)" stroke="var(--cyan)" stroke-width="2.2"/>
+        <text x="248" y="215" text-anchor="middle" fill="var(--cyan)" font-size="9" font-weight="700">Sonnet</text>
+        <text x="248" y="226" text-anchor="middle" fill="var(--text)" font-size="6">Reasoning</text>
+
+        <!-- Ring 2: Codex -->
+        <circle cx="110" cy="250" r="26" fill="rgba(205,180,255,0.1)"/>
+        <circle cx="110" cy="250" r="22" fill="rgba(205,180,255,0.28)" stroke="var(--violet)" stroke-width="2.2"/>
+        <text x="110" y="247" text-anchor="middle" fill="var(--violet)" font-size="9" font-weight="700">Codex</text>
+        <text x="110" y="258" text-anchor="middle" fill="var(--text)" font-size="6">Code Gen</text>
+
+        <!-- Ring 2: Gemini Flash -->
+        <circle cx="300" cy="140" r="26" fill="rgba(56,232,255,0.05)"/>
+        <circle cx="300" cy="140" r="22" fill="rgba(80,240,255,0.22)" stroke="var(--cyan)" stroke-width="1.5"/>
+        <text x="300" y="137" text-anchor="middle" fill="var(--cyan)" font-size="8" font-weight="700">Gemini</text>
+        <text x="300" y="148" text-anchor="middle" fill="var(--text)" font-size="6">Flash</text>
+
+        <!-- Ring 3: Gemma 4 (local) -->
+        <circle cx="60" cy="130" r="26" fill="rgba(96,255,200,0.1)"/>
+        <circle cx="60" cy="130" r="22" fill="rgba(96,255,200,0.28)" stroke="var(--emerald)" stroke-width="2.2"/>
+        <text x="60" y="127" text-anchor="middle" fill="var(--emerald)" font-size="8" font-weight="700">Gemma 4</text>
+        <text x="60" y="138" text-anchor="middle" fill="var(--text)" font-size="6">Local</text>
+
+        <!-- Animated orbiting particles -->
+        <g class="orbit-slow">
+          <circle cx="190" cy="50" r="3.5" fill="var(--amber)" opacity="0.7"/>
+        </g>
+        <g class="orbit-med">
+          <circle cx="330" cy="190" r="3" fill="var(--cyan)" opacity="0.6"/>
+        </g>
+
+        <!-- Capability / cost scale -->
+        <text x="190" y="370" text-anchor="middle" fill="var(--text)" font-size="7" font-weight="600" font-family="JetBrains Mono">← capability · cost →</text>
+        <line x1="100" y1="358" x2="280" y2="358" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+        <circle cx="100" cy="358" r="4" fill="var(--amber)" opacity="0.7"/>
+        <circle cx="145" cy="358" r="3.5" fill="var(--cyan)" opacity="0.6"/>
+        <circle cx="190" cy="358" r="3" fill="var(--violet)" opacity="0.6"/>
+        <circle cx="225" cy="358" r="3" fill="var(--blue)" opacity="0.5"/>
+        <circle cx="255" cy="358" r="2.5" fill="var(--cyan)" opacity="0.5"/>
+        <circle cx="280" cy="358" r="3" fill="var(--emerald)" opacity="0.6"/>
+      </svg>
+    </div>
+
+    <!-- Job list -->
+    <div class="arch-jobs">
+      <div class="job-row">
+        <div class="job-dot" style="background:var(--amber);"></div>
+        <div class="job-info"><div class="job-name">Interactive Chat</div><div class="job-desc">Drafting, analysis, sub-agent orchestration</div></div>
+        <div class="job-sched">On-demand</div>
+        <div class="job-model-tag jt-amber">Opus</div>
+      </div>
+      <div class="job-row">
+        <div class="job-dot" style="background:var(--cyan);"></div>
+        <div class="job-info"><div class="job-name">Opportunity Scan</div><div class="job-desc">Knowledge graph cross-reference, blueprints</div></div>
+        <div class="job-sched">Daily 7AM</div>
+        <div class="job-model-tag jt-cyan">Sonnet</div>
+      </div>
+      <div class="job-row">
+        <div class="job-dot" style="background:var(--cyan);"></div>
+        <div class="job-info"><div class="job-name">AI News · Evening Wrap</div><div class="job-desc">Curated digest, email triage + draft replies</div></div>
+        <div class="job-sched">Daily</div>
+        <div class="job-model-tag jt-cyan">Sonnet</div>
+      </div>
+      <div class="job-row">
+        <div class="job-dot" style="background:var(--violet);"></div>
+        <div class="job-info"><div class="job-name">Enhancement Sprint</div><div class="job-desc">Autonomous coding on Mission Control</div></div>
+        <div class="job-sched">Daily 6:30</div>
+        <div class="job-model-tag jt-violet">Codex</div>
+      </div>
+      <div class="job-row">
+        <div class="job-dot" style="background:var(--violet);"></div>
+        <div class="job-info"><div class="job-name">Architecture Review</div><div class="job-desc">Monthly system audit + memory consolidation</div></div>
+        <div class="job-sched">Monthly</div>
+        <div class="job-model-tag jt-violet">Codex</div>
+      </div>
+      <div class="job-row">
+        <div class="job-dot" style="background:var(--cyan); opacity:0.6;"></div>
+        <div class="job-info"><div class="job-name">Morning Briefing · IT Jobs</div><div class="job-desc">Calendar + email summary, UC job postings</div></div>
+        <div class="job-sched">Daily 6:25</div>
+        <div class="job-model-tag jt-cyan" style="opacity:0.7;">Gemini</div>
+      </div>
+      <div class="job-row">
+        <div class="job-dot" style="background:var(--emerald);"></div>
+        <div class="job-info"><div class="job-name">Health · Graph · Disk · Cron</div><div class="job-desc">API monitoring, graph rebuild, backups, audit</div></div>
+        <div class="job-sched">Hourly+</div>
+        <div class="job-model-tag jt-emerald">Gemma 4</div>
+      </div>
+
+      <div class="fallback-row">
+        <div class="fb-label">Fallback</div>
+        <div class="fb-node" style="color:var(--blue);">Nemotron</div>
+        <div class="fb-arrow">→</div>
+        <div class="fb-node">Sonnet</div>
+        <div class="fb-arrow">→</div>
+        <div class="fb-node">Gemini</div>
+        <div class="fb-arrow">→</div>
+        <div class="fb-node" style="color:var(--emerald);">Gemma 4</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SLIDE 5: DEMO ═══ -->
+<section class="center-slide" data-background-color="#0a0a0f">
+  <div style="margin-top: 2.5em;">
+    <div style="font-size: 0.38em; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--cyan); margin-bottom: 0.5em;">Live Demo</div>
+    <div class="hero-word">Mission Control</div>
+    <div class="hero-sub2">Dashboard · Knowledge Graph · Automations</div>
+  </div>
+  <svg viewBox="0 0 400 120" style="width:360px;margin-top:2em;opacity:0.3;">
+    <rect x="10" y="10" width="380" height="100" rx="8" fill="none" stroke="var(--blue)" stroke-width="0.8"/>
+    <rect x="15" y="15" width="120" height="90" rx="4" fill="rgba(79,143,255,0.05)"/>
+    <rect x="142" y="15" width="120" height="42" rx="4" fill="rgba(34,211,238,0.05)"/>
+    <rect x="142" y="63" width="120" height="42" rx="4" fill="rgba(52,211,153,0.05)"/>
+    <rect x="270" y="15" width="115" height="90" rx="4" fill="rgba(167,139,250,0.05)"/>
+    <circle cx="75" cy="50" r="20" fill="none" stroke="rgba(79,143,255,0.15)" stroke-width="0.8"/>
+    <circle cx="75" cy="50" r="4" fill="var(--blue)" opacity="0.3"/>
+  </svg>
+</section>
+
+Reveal.initialize({
+  hash: true,
+  slideNumber: 'c/t',
+  width: 1280,
+  height: 720,
+  margin: 0.04,
+  transition: 'fade',
+  transitionSpeed: 'slow',
+  controlsTutorial: false,
+  progress: true,
+  center: false,
+});
+</script>
+</body>
+</html>
