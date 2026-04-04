@@ -397,98 +397,95 @@
 <!-- ═══ SLIDE 3: IMPLEMENTATION - VISUAL STACK ═══ -->
 <section>
   <h2>Our Implementation</h2>
-  <p class="lead">A Mac mini as the nerve center — agent runtime, memory, automation, and institutional integrations in one working system.</p>
+  <p class="lead">A production personal agent stack — not just a chatbot with tools.</p>
 
-  <div class="impl-grid">
-    <div class="impl-visual">
-      <svg viewBox="0 0 340 430" style="width:100%;height:100%;">
-        <g stroke="rgba(255,255,255,0.05)" stroke-width="0.5">
-          <line x1="0" y1="70" x2="340" y2="70"/><line x1="0" y1="150" x2="340" y2="150"/>
-          <line x1="0" y1="230" x2="340" y2="230"/><line x1="0" y1="310" x2="340" y2="310"/>
-          <line x1="0" y1="390" x2="340" y2="390"/>
-        </g>
+  <div style="display:flex; gap:1.1em; align-items:flex-start; margin-top:0.2em;">
+    <div style="flex:0 0 360px;">
+      <svg viewBox="0 0 360 430" style="width:100%;height:430px;">
+        <rect x="20" y="20" width="320" height="72" rx="12" fill="rgba(74,237,181,0.08)" stroke="var(--emerald)" stroke-width="1.6"/>
+        <text x="38" y="40" fill="var(--emerald)" font-size="8" font-weight="700" letter-spacing="1.5" font-family="JetBrains Mono">INTERFACE</text>
+        <text x="180" y="62" text-anchor="middle" fill="var(--white)" font-size="11" font-weight="700">Telegram · Mission Control</text>
+        <text x="180" y="78" text-anchor="middle" fill="var(--text)" font-size="7.5">Human conversation, alerts, backlog, docs, live status</text>
 
-        <text x="8" y="62" fill="var(--text)" font-size="7" font-weight="700" letter-spacing="1.5" font-family="JetBrains Mono">INTERFACE</text>
-        <text x="8" y="142" fill="var(--text)" font-size="7" font-weight="700" letter-spacing="1.5" font-family="JetBrains Mono">RUNTIME</text>
-        <text x="8" y="222" fill="var(--text)" font-size="7" font-weight="700" letter-spacing="1.5" font-family="JetBrains Mono">MODELS</text>
-        <text x="8" y="302" fill="var(--text)" font-size="7" font-weight="700" letter-spacing="1.5" font-family="JetBrains Mono">MEMORY</text>
-        <text x="8" y="382" fill="var(--text)" font-size="7" font-weight="700" letter-spacing="1.5" font-family="JetBrains Mono">AUTOMATION</text>
+        <line x1="180" y1="92" x2="180" y2="112" stroke="rgba(255,255,255,0.18)" stroke-width="1.4"/>
+        <polygon points="175,108 185,108 180,115" fill="rgba(255,255,255,0.35)"/>
 
-        <rect x="50" y="76" width="95" height="46" rx="8" fill="rgba(74,237,181,0.1)" stroke="var(--emerald)" stroke-width="1.5"/>
-        <text x="97" y="96" text-anchor="middle" font-size="15">📱</text>
-        <text x="97" y="112" text-anchor="middle" fill="var(--emerald)" font-size="9" font-weight="700">Telegram</text>
+        <rect x="20" y="112" width="320" height="72" rx="12" fill="rgba(112,176,255,0.08)" stroke="var(--blue)" stroke-width="1.6"/>
+        <text x="38" y="132" fill="var(--blue)" font-size="8" font-weight="700" letter-spacing="1.5" font-family="JetBrains Mono">RUNTIME</text>
+        <text x="180" y="154" text-anchor="middle" fill="var(--white)" font-size="11" font-weight="700">OpenClaw on Mac mini</text>
+        <text x="180" y="170" text-anchor="middle" fill="var(--text)" font-size="7.5">Sessions · tools · cron · orchestration · background tasks</text>
 
-        <rect x="190" y="76" width="100" height="46" rx="8" fill="rgba(184,156,255,0.1)" stroke="var(--violet)" stroke-width="1.5"/>
-        <text x="240" y="96" text-anchor="middle" font-size="15">📊</text>
-        <text x="240" y="112" text-anchor="middle" fill="var(--violet)" font-size="9" font-weight="700">Mission Control</text>
+        <line x1="180" y1="184" x2="180" y2="204" stroke="rgba(255,255,255,0.18)" stroke-width="1.4"/>
+        <polygon points="175,200 185,200 180,207" fill="rgba(255,255,255,0.35)"/>
 
-        <line x1="97" y1="122" x2="170" y2="160" stroke="rgba(74,237,181,0.3)" stroke-width="1.2"/>
-        <line x1="240" y1="122" x2="170" y2="160" stroke="rgba(184,156,255,0.3)" stroke-width="1.2"/>
+        <rect x="20" y="204" width="320" height="92" rx="12" fill="rgba(167,139,250,0.08)" stroke="var(--violet)" stroke-width="1.6"/>
+        <text x="38" y="224" fill="var(--violet)" font-size="8" font-weight="700" letter-spacing="1.5" font-family="JetBrains Mono">INTELLIGENCE LAYER</text>
+        <rect x="38" y="240" width="64" height="38" rx="8" fill="rgba(92,154,255,0.10)" stroke="var(--blue)" stroke-width="1.1"/>
+        <text x="70" y="257" text-anchor="middle" fill="var(--blue)" font-size="7.5" font-weight="700">Nemotron</text>
+        <text x="70" y="269" text-anchor="middle" fill="var(--text)" font-size="6">Primary</text>
+        <rect x="114" y="240" width="56" height="38" rx="8" fill="rgba(167,139,250,0.10)" stroke="var(--violet)" stroke-width="1.1"/>
+        <text x="142" y="257" text-anchor="middle" fill="var(--violet)" font-size="7.5" font-weight="700">Codex</text>
+        <text x="142" y="269" text-anchor="middle" fill="var(--text)" font-size="6">Code</text>
+        <rect x="182" y="240" width="56" height="38" rx="8" fill="rgba(80,240,255,0.10)" stroke="var(--cyan)" stroke-width="1.1"/>
+        <text x="210" y="257" text-anchor="middle" fill="var(--cyan)" font-size="7.5" font-weight="700">Gemini</text>
+        <text x="210" y="269" text-anchor="middle" fill="var(--text)" font-size="6">Fallback</text>
+        <rect x="250" y="240" width="56" height="38" rx="8" fill="rgba(96,255,200,0.10)" stroke="var(--emerald)" stroke-width="1.1"/>
+        <text x="278" y="257" text-anchor="middle" fill="var(--emerald)" font-size="7.5" font-weight="700">Gemma</text>
+        <text x="278" y="269" text-anchor="middle" fill="var(--text)" font-size="6">Local</text>
+        <text x="180" y="289" text-anchor="middle" fill="var(--text-dim)" font-size="7" font-family="JetBrains Mono">Routed by job type, cost, and failover path</text>
 
-        <rect x="110" y="154" width="120" height="56" rx="12" fill="rgba(112,176,255,0.22)" stroke="var(--blue)" stroke-width="2"/>
-        <circle cx="170" cy="174" r="12" fill="rgba(92,154,255,0.25)"/>
-        <text x="170" y="177" text-anchor="middle" fill="var(--blue)" font-size="12" font-weight="700" font-family="JetBrains Mono">⚙</text>
-        <text x="170" y="200" text-anchor="middle" fill="var(--white)" font-size="9" font-weight="700">OpenClaw Runtime</text>
+        <line x1="180" y1="296" x2="180" y2="316" stroke="rgba(255,255,255,0.18)" stroke-width="1.4"/>
+        <polygon points="175,312 185,312 180,319" fill="rgba(255,255,255,0.35)"/>
 
-        <line x1="170" y1="210" x2="60" y2="246" stroke="rgba(92,154,255,0.25)" stroke-width="1.2"/>
-        <line x1="170" y1="210" x2="140" y2="246" stroke="rgba(167,139,250,0.25)" stroke-width="1.2"/>
-        <line x1="170" y1="210" x2="220" y2="246" stroke="rgba(56,232,255,0.25)" stroke-width="1.2"/>
-        <line x1="170" y1="210" x2="295" y2="246" stroke="rgba(74,237,181,0.25)" stroke-width="1.2"/>
-
-        <rect x="18" y="238" width="84" height="48" rx="6" fill="rgba(92,154,255,0.1)" stroke="var(--blue)" stroke-width="1.5"/>
-        <text x="60" y="257" text-anchor="middle" fill="var(--blue)" font-size="8" font-weight="700">Nemotron</text>
-        <text x="60" y="268" text-anchor="middle" fill="var(--text)" font-size="6.5">TritonAI · SDSC</text>
-        <text x="60" y="280" text-anchor="middle" fill="var(--blue)" font-size="6" font-weight="700">PRIMARY</text>
-
-        <rect x="110" y="238" width="60" height="48" rx="6" fill="rgba(167,139,250,0.1)" stroke="var(--violet)" stroke-width="1.5"/>
-        <text x="140" y="257" text-anchor="middle" fill="var(--violet)" font-size="8" font-weight="700">Codex</text>
-        <text x="140" y="268" text-anchor="middle" fill="var(--text)" font-size="6.5">OAuth</text>
-        <text x="140" y="280" text-anchor="middle" fill="var(--violet)" font-size="6" font-weight="700">CODE</text>
-
-        <rect x="178" y="238" width="70" height="48" rx="6" fill="rgba(56,232,255,0.1)" stroke="var(--cyan)" stroke-width="1.5"/>
-        <text x="213" y="257" text-anchor="middle" fill="var(--cyan)" font-size="8" font-weight="700">Gemini</text>
-        <text x="213" y="268" text-anchor="middle" fill="var(--text)" font-size="6.5">2.0 Flash</text>
-        <text x="213" y="280" text-anchor="middle" fill="var(--cyan)" font-size="6" font-weight="700">FALLBACK</text>
-
-        <rect x="256" y="238" width="64" height="48" rx="6" fill="rgba(74,237,181,0.1)" stroke="var(--emerald)" stroke-width="1.5"/>
-        <text x="288" y="257" text-anchor="middle" fill="var(--emerald)" font-size="8" font-weight="700">Gemma 4</text>
-        <text x="288" y="268" text-anchor="middle" fill="var(--text)" font-size="6.5">Ollama</text>
-        <text x="288" y="280" text-anchor="middle" fill="var(--emerald)" font-size="6" font-weight="700">LOCAL</text>
-
-        <line x1="170" y1="210" x2="70" y2="326" stroke="rgba(255,126,149,0.2)" stroke-width="1"/>
-        <line x1="170" y1="210" x2="170" y2="326" stroke="rgba(92,154,255,0.2)" stroke-width="1"/>
-        <line x1="170" y1="210" x2="270" y2="326" stroke="rgba(184,156,255,0.2)" stroke-width="1"/>
-
-        <rect x="20" y="318" width="92" height="44" rx="6" fill="rgba(255,126,149,0.08)" stroke="var(--rose)" stroke-width="1.2"/>
-        <text x="66" y="338" text-anchor="middle" fill="var(--rose)" font-size="7.5" font-weight="700">Knowledge Graph</text>
-        <text x="66" y="350" text-anchor="middle" fill="var(--text)" font-size="6.5">161 nodes</text>
-
-        <rect x="124" y="318" width="92" height="44" rx="6" fill="rgba(92,154,255,0.08)" stroke="var(--blue)" stroke-width="1.2"/>
-        <text x="170" y="338" text-anchor="middle" fill="var(--blue)" font-size="7.5" font-weight="700">Vector Memory</text>
-        <text x="170" y="350" text-anchor="middle" fill="var(--text)" font-size="6.5">LanceDB + embeddings</text>
-
-        <rect x="228" y="318" width="92" height="44" rx="6" fill="rgba(184,156,255,0.08)" stroke="var(--violet)" stroke-width="1.2"/>
-        <text x="274" y="338" text-anchor="middle" fill="var(--violet)" font-size="7.5" font-weight="700">Workspace Files</text>
-        <text x="274" y="350" text-anchor="middle" fill="var(--text)" font-size="6.5">SOUL · USER · MEMORY</text>
-
-        <rect x="40" y="398" width="120" height="22" rx="5" fill="rgba(255,221,68,0.08)" stroke="var(--amber)" stroke-width="1.1"/>
-        <text x="100" y="412" text-anchor="middle" fill="var(--amber)" font-size="7" font-weight="700">25 Cron Jobs</text>
-        <rect x="180" y="398" width="120" height="22" rx="5" fill="rgba(80,240,255,0.08)" stroke="var(--cyan)" stroke-width="1.1"/>
-        <text x="240" y="412" text-anchor="middle" fill="var(--cyan)" font-size="7" font-weight="700">MS Graph · Granola · GitHub · Vercel</text>
+        <rect x="20" y="316" width="320" height="92" rx="12" fill="rgba(255,221,68,0.08)" stroke="var(--amber)" stroke-width="1.6"/>
+        <text x="38" y="336" fill="var(--amber)" font-size="8" font-weight="700" letter-spacing="1.5" font-family="JetBrains Mono">STATE + ACTION LAYER</text>
+        <text x="40" y="358" fill="var(--white)" font-size="8.5" font-weight="700">Knowledge Graph · LanceDB · Workspace Files</text>
+        <text x="40" y="374" fill="var(--white)" font-size="8.5" font-weight="700">25 Cron Jobs · Watchdogs · Background Agents</text>
+        <text x="40" y="390" fill="var(--white)" font-size="8.5" font-weight="700">MS Graph · Granola · GitHub · Vercel · Telegram</text>
       </svg>
     </div>
 
-    <div class="impl-cards">
-      <div class="impl-card"><div class="impl-card-icon" style="background:rgba(79,143,255,0.08);">🖥</div><div class="impl-card-text"><div class="impl-card-label">Hardware</div><div class="impl-card-value">Mac mini · Apple Silicon</div><div class="impl-card-sub">Always on, low power — runs runtime, local models, and automations</div></div></div>
-      <div class="impl-card"><div class="impl-card-icon" style="background:rgba(79,143,255,0.08);">🏛</div><div class="impl-card-text"><div class="impl-card-label">Primary Model Layer</div><div class="impl-card-value">TritonAI · Nemotron 120B</div><div class="impl-card-sub">On-prem at SDSC — zero cloud cost, campus data stays on campus</div></div></div>
-      <div class="impl-card"><div class="impl-card-icon" style="background:rgba(34,197,94,0.08);">🟢</div><div class="impl-card-text"><div class="impl-card-label">Specialized Code Model</div><div class="impl-card-value">OpenAI Codex · GPT-5.4</div><div class="impl-card-sub">Used for code generation and builder workflows via OAuth</div></div></div>
-      <div class="impl-card"><div class="impl-card-icon" style="background:rgba(52,211,153,0.08);">💎</div><div class="impl-card-text"><div class="impl-card-label">Local Model Layer</div><div class="impl-card-value">Gemma 4 via Ollama</div><div class="impl-card-sub">Offline fallback + ops jobs pinned locally on the Mac mini</div></div></div>
-      <div class="impl-card"><div class="impl-card-icon" style="background:rgba(255,126,149,0.08);">🕸️</div><div class="impl-card-text"><div class="impl-card-label">Memory Layer</div><div class="impl-card-value">Knowledge Graph + LanceDB + Markdown</div><div class="impl-card-sub">Graph relationships, semantic memory, and transparent workspace files</div></div></div>
-      <div class="impl-card"><div class="impl-card-icon" style="background:rgba(255,221,68,0.08);">⏱️</div><div class="impl-card-text"><div class="impl-card-label">Automation Layer</div><div class="impl-card-value">25 Cron Jobs + Watchdogs</div><div class="impl-card-sub">Morning briefings, opportunity scan, graph rebuild, health and disk checks</div></div></div>
-      <div class="impl-card"><div class="impl-card-icon" style="background:rgba(80,240,255,0.08);">🔌</div><div class="impl-card-text"><div class="impl-card-label">Integration Layer</div><div class="impl-card-value">MS Graph · Granola · GitHub · Vercel · Telegram</div><div class="impl-card-sub">Turns email, meetings, code, deploys, and messaging into one connected system</div></div></div>
-      <div class="impl-card"><div class="impl-card-icon" style="background:rgba(167,139,250,0.08);">📊</div><div class="impl-card-text"><div class="impl-card-label">Mission Control</div><div class="impl-card-value">Live operational dashboard</div><div class="impl-card-sub">Jobs, graph, docs, backlog, automations, and model routing in one place</div></div></div>
-    </div>
+    <div style="flex:1; padding-top:0.25em;">
+      <div class="concept-item">
+        <div class="concept-icon ci-blue">🧠</div>
+        <div>
+          <div class="concept-label">Stateful, Not Stateless</div>
+          <div class="concept-desc">Henry remembers across conversations using three memory systems: markdown workspace files, a knowledge graph, and vector recall via LanceDB.</div>
+        </div>
+      </div>
 
+      <div class="concept-item">
+        <div class="concept-icon ci-violet">🎛️</div>
+        <div>
+          <div class="concept-label">Model Routing, Not One-Model AI</div>
+          <div class="concept-desc">Nemotron handles the default path, Codex handles code generation, Gemini is available for fallback, and Gemma 4 runs lightweight local ops work.</div>
+        </div>
+      </div>
+
+      <div class="concept-item">
+        <div class="concept-icon ci-amber">⏱️</div>
+        <div>
+          <div class="concept-label">Proactive, Not Just Conversational</div>
+          <div class="concept-desc">25 cron jobs run independently: briefings, opportunity scans, health checks, graph rebuilds, token refresh, and operational watchdogs.</div>
+        </div>
+      </div>
+
+      <div class="concept-item">
+        <div class="concept-icon ci-rose">🔌</div>
+        <div>
+          <div class="concept-label">Integrated Into Real Work</div>
+          <div class="concept-desc">This is wired into Microsoft Graph, Granola, GitHub, Vercel, and Telegram — so the agent operates on actual calendars, meetings, code, and deployments.</div>
+        </div>
+      </div>
+
+      <div class="concept-item">
+        <div class="concept-icon ci-emerald">🔍</div>
+        <div>
+          <div class="concept-label">Transparent by Design</div>
+          <div class="concept-desc">Memory lives in files you can inspect. Outputs land in docs. Mission Control shows jobs, graph state, tasks, and routing live.</div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 <!-- ═══ SLIDE 4: OPPORTUNITY SCAN DEEP DIVE ═══ -->
