@@ -932,7 +932,7 @@
 <!-- ═══ SLIDE 6: MODEL SOLAR SYSTEM & JOBS ═══ -->
 <section>
   <h2>Models &amp; Routing</h2>
-  <p class="lead">Primary, fallbacks, and specialized models — aligned to the live Henry page in Mission Control.</p>
+  <p class="lead">Exact fallback chain and specialized model roles from Mission Control’s Henry page.</p>
 
   <div class="arch-layout">
     <div class="arch-visual">
@@ -944,95 +944,79 @@
 
         <circle cx="190" cy="190" r="36" fill="rgba(112,176,255,0.1)"/>
         <circle cx="190" cy="190" r="30" fill="rgba(112,176,255,0.22)" stroke="var(--blue)" stroke-width="2"/>
-        <text x="190" y="184" text-anchor="middle" fill="var(--blue)" font-size="9" font-weight="700" font-family="JetBrains Mono">NEMOTRON</text>
-        <text x="190" y="195" text-anchor="middle" fill="var(--text)" font-size="7">120B · TritonAI</text>
+        <text x="190" y="184" text-anchor="middle" fill="var(--blue)" font-size="9" font-weight="700" font-family="JetBrains Mono">TRITONAI</text>
+        <text x="190" y="195" text-anchor="middle" fill="var(--text)" font-size="7">Nemotron 3 Super 120B</text>
         <text x="190" y="206" text-anchor="middle" fill="var(--blue)" font-size="6" font-weight="700">PRIMARY</text>
 
         <circle cx="190" cy="130" r="26" fill="rgba(167,139,250,0.10)"/>
         <circle cx="190" cy="130" r="22" fill="rgba(167,139,250,0.28)" stroke="var(--violet)" stroke-width="2.2"/>
-        <text x="190" y="127" text-anchor="middle" fill="var(--violet)" font-size="9" font-weight="700">Codex</text>
+        <text x="190" y="127" text-anchor="middle" fill="var(--violet)" font-size="8" font-weight="700">ANTHROPIC</text>
         <text x="190" y="138" text-anchor="middle" fill="var(--text)" font-size="6">Fallback 1</text>
 
         <circle cx="248" cy="218" r="26" fill="rgba(80,240,255,0.1)"/>
         <circle cx="248" cy="218" r="22" fill="rgba(80,240,255,0.28)" stroke="var(--cyan)" stroke-width="2.2"/>
-        <text x="248" y="215" text-anchor="middle" fill="var(--cyan)" font-size="8" font-weight="700">Gemini</text>
+        <text x="248" y="215" text-anchor="middle" fill="var(--cyan)" font-size="8" font-weight="700">GOOGLE</text>
         <text x="248" y="226" text-anchor="middle" fill="var(--text)" font-size="6">Fallback 2</text>
 
         <circle cx="110" cy="250" r="26" fill="rgba(96,255,200,0.1)"/>
         <circle cx="110" cy="250" r="22" fill="rgba(96,255,200,0.28)" stroke="var(--emerald)" stroke-width="2.2"/>
-        <text x="110" y="247" text-anchor="middle" fill="var(--emerald)" font-size="8" font-weight="700">Gemma 4</text>
+        <text x="110" y="247" text-anchor="middle" fill="var(--emerald)" font-size="8" font-weight="700">GEMMA 4</text>
         <text x="110" y="258" text-anchor="middle" fill="var(--text)" font-size="6">Fallback 3</text>
 
-        <circle cx="300" cy="140" r="26" fill="rgba(167,139,250,0.08)"/>
-        <circle cx="300" cy="140" r="22" fill="rgba(167,139,250,0.24)" stroke="var(--violet)" stroke-width="1.8"/>
-        <text x="300" y="137" text-anchor="middle" fill="var(--violet)" font-size="8" font-weight="700">Codex</text>
-        <text x="300" y="148" text-anchor="middle" fill="var(--text)" font-size="6">Builder</text>
+        <circle cx="300" cy="140" r="26" fill="rgba(34,197,94,0.08)"/>
+        <circle cx="300" cy="140" r="22" fill="rgba(34,197,94,0.24)" stroke="#22c55e" stroke-width="1.8"/>
+        <text x="300" y="137" text-anchor="middle" fill="#22c55e" font-size="8" font-weight="700">CODEX</text>
+        <text x="300" y="148" text-anchor="middle" fill="var(--text)" font-size="6">Specialized</text>
 
         <circle cx="60" cy="130" r="26" fill="rgba(96,255,200,0.1)"/>
         <circle cx="60" cy="130" r="22" fill="rgba(96,255,200,0.28)" stroke="var(--emerald)" stroke-width="2.2"/>
-        <text x="60" y="127" text-anchor="middle" fill="var(--emerald)" font-size="8" font-weight="700">Gemma 4</text>
+        <text x="60" y="127" text-anchor="middle" fill="var(--emerald)" font-size="8" font-weight="700">GEMMA 4</text>
         <text x="60" y="138" text-anchor="middle" fill="var(--text)" font-size="6">Ops</text>
-
-        <g class="orbit-slow"><circle cx="190" cy="50" r="3.5" fill="var(--violet)" opacity="0.7"/></g>
-        <g class="orbit-med"><circle cx="330" cy="190" r="3" fill="var(--cyan)" opacity="0.6"/></g>
-
-        <text x="190" y="370" text-anchor="middle" fill="var(--text)" font-size="7" font-weight="600" font-family="JetBrains Mono">primary → fallback → specialized</text>
-        <line x1="100" y1="358" x2="280" y2="358" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
-        <circle cx="100" cy="358" r="4" fill="var(--blue)" opacity="0.7"/>
-        <circle cx="145" cy="358" r="3.5" fill="var(--violet)" opacity="0.6"/>
-        <circle cx="190" cy="358" r="3" fill="var(--cyan)" opacity="0.6"/>
-        <circle cx="235" cy="358" r="3" fill="var(--emerald)" opacity="0.6"/>
-        <circle cx="280" cy="358" r="3" fill="var(--violet)" opacity="0.6"/>
       </svg>
     </div>
 
     <div class="arch-jobs">
       <div class="job-row">
         <div class="job-dot" style="background:var(--blue);"></div>
-        <div class="job-info"><div class="job-name">Henry Primary</div><div class="job-desc">Main orchestration, message handling, cron baseline</div></div>
-        <div class="job-sched">24/7</div>
-        <div class="job-model-tag" style="background:rgba(112,176,255,0.18);color:var(--blue);border-color:rgba(112,176,255,0.35);">Nemotron</div>
+        <div class="job-info"><div class="job-name">① TritonAI</div><div class="job-desc">Nemotron 3 Super 120B</div></div>
+        <div class="job-sched">Primary</div>
+        <div class="job-model-tag" style="background:rgba(112,176,255,0.18);color:var(--blue);border-color:rgba(112,176,255,0.35);">Free · 1M ctx</div>
       </div>
       <div class="job-row">
         <div class="job-dot" style="background:var(--violet);"></div>
-        <div class="job-info"><div class="job-name">Fallback 1</div><div class="job-desc">GPT-5.4 / GPT-5.4 Mini via OpenAI Codex OAuth</div></div>
-        <div class="job-sched">As needed</div>
-        <div class="job-model-tag jt-violet">Codex</div>
+        <div class="job-info"><div class="job-name">② Anthropic</div><div class="job-desc">Claude Sonnet 4 · Opus 4</div></div>
+        <div class="job-sched">Fallback 1</div>
+        <div class="job-model-tag jt-violet">Premium · 200K ctx</div>
       </div>
       <div class="job-row">
         <div class="job-dot" style="background:var(--cyan);"></div>
-        <div class="job-info"><div class="job-name">Fallback 2</div><div class="job-desc">Gemini 2.0 Flash for cloud failover</div></div>
-        <div class="job-sched">As needed</div>
-        <div class="job-model-tag jt-cyan">Gemini</div>
+        <div class="job-info"><div class="job-name">③ Google</div><div class="job-desc">Gemini 2.0 Flash</div></div>
+        <div class="job-sched">Fallback 2</div>
+        <div class="job-model-tag jt-cyan">Free tier · 128K ctx</div>
       </div>
       <div class="job-row">
         <div class="job-dot" style="background:var(--emerald);"></div>
-        <div class="job-info"><div class="job-name">Fallback 3</div><div class="job-desc">Gemma 4 local on the Mac mini</div></div>
-        <div class="job-sched">As needed</div>
-        <div class="job-model-tag jt-emerald">Gemma 4</div>
+        <div class="job-info"><div class="job-name">④ Gemma 4 (Local)</div><div class="job-desc">27B Dense · Ollama · Mac mini</div></div>
+        <div class="job-sched">Fallback 3</div>
+        <div class="job-model-tag jt-emerald">Free · 128K ctx</div>
       </div>
       <div class="job-row">
-        <div class="job-dot" style="background:var(--violet);"></div>
-        <div class="job-info"><div class="job-name">Specialized: Builder</div><div class="job-desc">Code generation and sprint execution</div></div>
-        <div class="job-sched">Pipeline</div>
-        <div class="job-model-tag jt-violet">Codex</div>
+        <div class="job-dot" style="background:#22c55e;"></div>
+        <div class="job-info"><div class="job-name">OpenAI Codex</div><div class="job-desc">gpt-5.4 · gpt-5.4-mini</div></div>
+        <div class="job-sched">Specialized</div>
+        <div class="job-model-tag" style="background:rgba(34,197,94,0.18);color:#22c55e;border-color:rgba(34,197,94,0.35);">Code generation</div>
       </div>
       <div class="job-row">
         <div class="job-dot" style="background:var(--emerald);"></div>
-        <div class="job-info"><div class="job-name">Specialized: Gemma 4 Ops</div><div class="job-desc">6 cron jobs pinned: health, disk, git, graph, alerts</div></div>
-        <div class="job-sched">Hourly+</div>
-        <div class="job-model-tag jt-emerald">Gemma 4</div>
+        <div class="job-info"><div class="job-name">Gemma 4 Ops</div><div class="job-desc">6 cron jobs pinned</div></div>
+        <div class="job-sched">Specialized</div>
+        <div class="job-model-tag jt-emerald">Health · Disk · Git · Graph · Alerts</div>
       </div>
-
-      <div class="fallback-row">
-        <div class="fb-label">Live chain</div>
-        <div class="fb-node" style="color:var(--blue);">Nemotron</div>
-        <div class="fb-arrow">→</div>
-        <div class="fb-node" style="color:var(--violet);">GPT-5.4</div>
-        <div class="fb-arrow">→</div>
-        <div class="fb-node">Gemini</div>
-        <div class="fb-arrow">→</div>
-        <div class="fb-node" style="color:var(--emerald);">Gemma 4</div>
+      <div class="job-row">
+        <div class="job-dot" style="background:#7c3aed;"></div>
+        <div class="job-info"><div class="job-name">Nomic Embed</div><div class="job-desc">nomic-embed-text · Ollama</div></div>
+        <div class="job-sched">Specialized</div>
+        <div class="job-model-tag" style="background:rgba(124,58,237,0.18);color:#a78bfa;border-color:rgba(124,58,237,0.35);">Memory vector search</div>
       </div>
     </div>
   </div>
