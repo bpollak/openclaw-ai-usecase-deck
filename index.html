@@ -127,7 +127,13 @@
   .reveal .slide-number { font-family: 'JetBrains Mono', monospace; font-size: 0.32em; font-weight: 500; color: var(--text-dim); background: transparent; }
   .reveal .progress { height: 2px; }
   .reveal .progress span { background: linear-gradient(to right, var(--blue), var(--cyan)); }
-  .reveal .controls { color: var(--blue); }
+  .reveal .controls {
+    color: var(--blue);
+    right: auto !important;
+    left: 16px !important;
+    bottom: 50% !important;
+    transform: translateY(50%);
+  }
 
   @keyframes pulse { 0%,100% { opacity: 0.6; } 50% { opacity: 1; } }
   @keyframes orbit { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
