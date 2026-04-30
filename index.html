@@ -123,6 +123,129 @@
   .light-slide h2 { font-size: 1.2em; margin-bottom: 0.2em; }
   .light-slide .caption { color: #64748b; }
 
+  /* ── Telegram chat mock (slide 8) ── */
+  .phone-mock {
+    max-width: 760px; margin: 0.4em auto 0 auto;
+    border-radius: 22px; background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08); padding: 0.7em 0.9em;
+  }
+  .chat-header {
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding-bottom: 0.35em; margin-bottom: 0.5em;
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: 0.30em; color: var(--text-dim);
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .chat-source { color: var(--cyan); font-weight: 600; letter-spacing: 0.04em; }
+  .chat-bubble {
+    background: rgba(112,176,255,0.07);
+    border: 1px solid rgba(112,176,255,0.18);
+    border-radius: 14px 14px 14px 4px;
+    padding: 0.45em 0.7em; margin-bottom: 0.4em;
+    max-width: 94%;
+  }
+  .bubble-meta {
+    font-size: 0.26em; color: var(--blue);
+    font-weight: 600; margin-bottom: 0.15em;
+    letter-spacing: 0.04em; font-family: 'JetBrains Mono', monospace;
+  }
+  .bubble-icon { font-size: 1.2em; margin-right: 0.2em; }
+  .bubble-text { font-size: 0.34em; color: var(--text); line-height: 1.5; }
+  .bubble-text .mono { font-family: 'JetBrains Mono', monospace; font-size: 0.92em; color: var(--cyan); }
+  .bubble-text .blink {
+    color: var(--cyan); font-family: 'JetBrains Mono', monospace;
+    font-size: 0.94em; text-decoration: underline; text-underline-offset: 3px;
+  }
+
+  /* ── Document preview stack (slide 9) ── */
+  .doc-stack {
+    max-width: 940px; margin: 0.3em auto 0 auto;
+    display: flex; flex-direction: column; gap: 0.35em;
+  }
+  .doc-card {
+    border-radius: 10px; padding: 0.5em 0.75em;
+    border-left: 4px solid; background: rgba(0,0,0,0.03);
+  }
+  .doc-evening { border-color: #f59e0b; background: rgba(245,158,11,0.06); }
+  .doc-night   { border-color: #6366f1; background: rgba(99,102,241,0.06); }
+  .doc-weekly  { border-color: #10b981; background: rgba(16,185,129,0.06); }
+  .doc-header {
+    display: flex; gap: 0.6em; align-items: baseline;
+    font-size: 0.28em; font-family: 'JetBrains Mono', monospace;
+    color: #475569; margin-bottom: 0.2em;
+  }
+  .doc-time { font-weight: 700; color: #0f172a; }
+  .doc-name { font-weight: 600; }
+  .doc-content { font-size: 0.34em; line-height: 1.55; color: #334155; }
+  .doc-content strong { color: #0f172a; }
+  .doc-line { padding: 0.05em 0; display: flex; gap: 0.5em; align-items: baseline; flex-wrap: wrap; }
+  .doc-tag {
+    display: inline-block; padding: 0.05em 0.45em; border-radius: 4px;
+    background: rgba(99,102,241,0.18); color: #4338ca;
+    font-family: 'JetBrains Mono', monospace; font-size: 0.78em;
+    font-weight: 600; flex-shrink: 0;
+  }
+
+  /* ── Stat banner (slide 10) ── */
+  .stat-row {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 0.55em; margin: 0.4em 0 0.6em 0;
+  }
+  .stat-card {
+    background: rgba(112,176,255,0.06);
+    border: 1px solid rgba(112,176,255,0.22);
+    border-radius: 12px; padding: 0.7em 0.6em; text-align: center;
+  }
+  .stat-num {
+    font-size: 1.65em; font-weight: 800; line-height: 1;
+    background: linear-gradient(135deg, var(--blue), var(--cyan));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .stat-unit {
+    font-size: 0.30em; font-weight: 700; color: var(--white);
+    text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.3em;
+  }
+  .stat-note {
+    font-size: 0.24em; color: var(--text-dim);
+    margin-top: 0.35em; line-height: 1.45;
+  }
+  .outcome-summary {
+    display: flex; flex-direction: column; gap: 0.2em; margin-top: 0.3em;
+    border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.4em;
+  }
+  .outcome-row {
+    font-size: 0.34em; color: var(--text-dim); padding: 0.18em 0;
+    line-height: 1.5; display: flex; gap: 0.55em; align-items: baseline;
+  }
+  .outcome-row strong { color: var(--white); }
+  .outcome-icon { font-size: 1.2em; flex-shrink: 0; }
+
+  /* ── Horizon timeline (slide 11) ── */
+  .horizon {
+    display: grid; grid-template-columns: 1fr 1.15fr 1.15fr;
+    gap: 0.7em; margin-top: 0.4em;
+  }
+  .horizon-col {
+    border-radius: 12px; padding: 0.6em 0.7em;
+    border-top: 4px solid;
+  }
+  .horizon-now    { border-color: #10b981; background: rgba(16,185,129,0.05); }
+  .horizon-next   { border-color: #3b82f6; background: rgba(59,130,246,0.06); }
+  .horizon-later  { border-color: #8b5cf6; background: rgba(139,92,246,0.06); }
+  .horizon-label {
+    font-size: 0.30em; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.10em;
+    margin-bottom: 0.5em; color: #0f172a;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .horizon-item {
+    font-size: 0.32em; line-height: 1.5; color: #334155;
+    padding: 0.45em 0; border-top: 1px solid rgba(15,23,42,0.08);
+  }
+  .horizon-item:first-of-type { border-top: none; padding-top: 0; }
+  .horizon-item strong { color: #0f172a; font-weight: 700; display: block; margin-bottom: 0.1em; }
+
   /* ── Reveal chrome ── */
   .reveal .slide-number { font-family: 'JetBrains Mono', monospace; font-size: 0.32em; font-weight: 500; color: var(--text-dim); background: transparent; }
   .reveal .progress { height: 2px; }
@@ -427,132 +550,167 @@
   </div>
 </section>
 
-<!-- ═══ SLIDE 8: WHAT LANDS — MORNING ═══ -->
+<!-- ═══ SLIDE 8: WHAT LANDS — MORNING (Telegram chat mock) ═══ -->
 <section>
   <span class="label">What lands on my screen — Morning</span>
-  <h2>Six briefings before I open a laptop</h2>
-  <p class="lead" style="margin-bottom: 0.5em; font-size: 0.50em !important;">
-    Each runs as a cron, each writes to a known surface — Telegram, dashboard, web, or markdown — so I never have to ask the agent for the same thing twice.
-  </p>
-  <div class="tile-grid">
-    <div class="tile">
-      <div class="tile-title">📅 Calendar briefing</div>
-      <div class="tile-body"><em>&ldquo;4 meetings today. Hari at 10 — project decision pending. 11–1 free for deep work.&rdquo;</em></div>
+  <h2 style="margin-bottom: 0.3em;">Six briefings before I open a laptop</h2>
+
+  <div class="phone-mock">
+    <div class="chat-header">
+      <span class="chat-source">📱 Telegram · OpenClaw</span>
+      <span>Today &nbsp;·&nbsp; 6:30 AM &rarr; 9:00 AM</span>
     </div>
-    <div class="tile">
-      <div class="tile-title">📰 AI news digest</div>
-      <div class="tile-body">8–12 curated items in my voice, linked to relevant past commentary. <a href="https://brettcpollak.com/ai-digest" target="_blank" rel="noopener" style="color:var(--cyan); font-family:'JetBrains Mono'; font-size: 0.92em; text-decoration: underline; text-underline-offset: 3px;">brettcpollak.com/ai-digest&nbsp;↗</a></div>
+
+    <div class="chat-bubble">
+      <div class="bubble-meta"><span class="bubble-icon">📅</span> Calendar briefing &nbsp;·&nbsp; 6:30 AM</div>
+      <div class="bubble-text">4 meetings today. Hari at 10 — project decision pending. 11–1 free for deep work. Coffee with Doris cancelled, want me to rebook?</div>
     </div>
-    <div class="tile">
-      <div class="tile-title">🎯 Opportunity scanner</div>
-      <div class="tile-body"><em>&ldquo;Campus IT is rolling out a new SSO config — relevant to your OpenClaw auth audit thread.&rdquo;</em></div>
+
+    <div class="chat-bubble">
+      <div class="bubble-meta"><span class="bubble-icon">📰</span> AI news digest &nbsp;·&nbsp; 7:00 AM</div>
+      <div class="bubble-text">9 items today. Top three:<br>• OpenAI quietly bumps GPT-5.5 reasoning — 2M context now default<br>• Anthropic ships MCP gateway updates relevant to your auth audit<br>• Google deprecates Gemma 3 (you migrated last week — no action)<br><a class="blink" href="https://brettcpollak.com/ai-digest" target="_blank" rel="noopener">brettcpollak.com/ai-digest &nbsp;↗</a></div>
     </div>
-    <div class="tile">
-      <div class="tile-title">🚨 Campus pain monitor</div>
-      <div class="tile-body"><em>&ldquo;VPN failed for 12 staff over 24h, mostly engineering. Worth flagging in 1:1 with Wayne.&rdquo;</em></div>
+
+    <div class="chat-bubble">
+      <div class="bubble-meta"><span class="bubble-icon">🎯</span> Opportunity scanner &nbsp;·&nbsp; 7:30 AM</div>
+      <div class="bubble-text">Campus IT is rolling out a new SSO config — relevant to your OpenClaw auth audit thread (last touched Apr 22). Linking the wiki page in case it&rsquo;s useful in your 10 AM with Hari.</div>
     </div>
-    <div class="tile">
-      <div class="tile-title">📚 Wiki ingest queue</div>
-      <div class="tile-body">3 new wiki pages drafted from yesterday&rsquo;s interactions, awaiting my review.</div>
+
+    <div class="chat-bubble">
+      <div class="bubble-meta"><span class="bubble-icon">🚨</span> Campus pain monitor &nbsp;·&nbsp; 8:00 AM</div>
+      <div class="bubble-text">VPN failed for 12 staff over 24h — mostly engineering school, 3rd time this week. Pattern looks systemic, not user-error. Worth flagging in your 1:1 with Wayne.</div>
     </div>
-    <div class="tile">
-      <div class="tile-title">📨 UCSD AI Weekly</div>
-      <div class="tile-body">Mondays — tool release notes, TritonAI updates, trainings curated for UCSD staff. <a href="https://brettcpollak.com/ucsd-ai-news#ai-updates" target="_blank" rel="noopener" style="color:var(--cyan); font-family:'JetBrains Mono'; font-size: 0.92em; text-decoration: underline; text-underline-offset: 3px;">brettcpollak.com/ucsd-ai-news&nbsp;↗</a></div>
+
+    <div class="chat-bubble">
+      <div class="bubble-meta"><span class="bubble-icon">📚</span> Wiki ingest queue &nbsp;·&nbsp; 8:30 AM</div>
+      <div class="bubble-text">3 new wiki pages drafted from yesterday&rsquo;s interactions: <span class="mono">people/sarah-chen.md</span>, <span class="mono">vendors/snowflake.md</span>, <span class="mono">decisions/2026-04-29-budget.md</span> — review when ready.</div>
+    </div>
+
+    <div class="chat-bubble">
+      <div class="bubble-meta"><span class="bubble-icon">📨</span> UCSD AI Weekly &nbsp;·&nbsp; Mondays 9:00 AM</div>
+      <div class="bubble-text">This week&rsquo;s edition is published — 8 tool updates, 2 trainings, TritonAI migration recap. <a class="blink" href="https://brettcpollak.com/ucsd-ai-news#ai-updates" target="_blank" rel="noopener">brettcpollak.com/ucsd-ai-news &nbsp;↗</a></div>
     </div>
   </div>
 </section>
 
-<!-- ═══ SLIDE 9: WHAT LANDS — EVENING + WEEKLY ═══ -->
-<section>
+<!-- ═══ SLIDE 9: EVENING + WEEKLY (document preview stack) ═══ -->
+<section class="light-slide" data-background-color="#ffffff">
   <span class="label">What lands — Evening &amp; weekly</span>
-  <h2>End-of-day synthesis becomes long-term memory</h2>
-  <p class="lead" style="margin-bottom: 0.5em; font-size: 0.50em !important;">
-    Evening jobs synthesize the day. Night consolidation moves what mattered into long-term wiki. Weekly jobs surface patterns no individual day can show.
-  </p>
-  <div class="tile-grid">
-    <div class="tile">
-      <div class="tile-title">📧 Email triage + drafts</div>
-      <div class="tile-body">5:30 PM — inbox sorted by reply priority, drafts ready for the top responses, unsubscribes proposed.</div>
+  <h2 style="margin-bottom: 0.2em;">End-of-day synthesis becomes long-term memory</h2>
+  <p class="caption" style="margin-bottom: 0.4em;">Each card below is what actually lands in the corresponding output file or feed.</p>
+
+  <div class="doc-stack">
+    <div class="doc-card doc-evening">
+      <div class="doc-header"><span class="doc-time">5:30 PM</span><span class="doc-name">📧 Email triage + drafts</span></div>
+      <div class="doc-content">
+        <div class="doc-line"><span class="doc-tag">reply-priority</span><span>5 messages need a response today — Doris (intake), Hari (project), Wayne (1:1 prep), 2 vendor follow-ups.</span></div>
+        <div class="doc-line"><span class="doc-tag">drafts-ready</span><span>3 drafts queued in Gmail labeled <strong>~/agent-drafts</strong> — review beats writing from scratch.</span></div>
+        <div class="doc-line"><span class="doc-tag">unsubscribe</span><span>8 newsletters proposed for cleanup based on 30-day open rate.</span></div>
+      </div>
     </div>
-    <div class="tile">
-      <div class="tile-title">🎙 Meeting debrief</div>
-      <div class="tile-body">From Granola transcripts: action items extracted, attendee wiki pages updated, decisions logged.</div>
+
+    <div class="doc-card doc-evening">
+      <div class="doc-header"><span class="doc-time">6:00 PM</span><span class="doc-name">🎙 Meeting debrief</span></div>
+      <div class="doc-content">
+        From today&rsquo;s Granola transcripts → 4 action items extracted, 2 attendee wikis updated (<strong>sarah-chen</strong>, <strong>doris-tao</strong>), 1 architecture decision logged to <strong>decisions/</strong>.
+      </div>
     </div>
-    <div class="tile">
-      <div class="tile-title">🪞 Daily reflection</div>
-      <div class="tile-body"><em>&ldquo;3 meetings, 1 architecture decision, 2 follow-ups due Friday. Pattern: third week of intake delays.&rdquo;</em></div>
+
+    <div class="doc-card doc-evening">
+      <div class="doc-header"><span class="doc-time">7:00 PM</span><span class="doc-name">🪞 Daily reflection</span></div>
+      <div class="doc-content">
+        Today: <strong>3 meetings, 1 architecture decision, 2 follow-ups due Friday.</strong><br>
+        Pattern noticed: third week of intake delays — worth a process retro.<br>
+        Promoted to long-term wiki: 4 facts, 2 relationship updates.
+      </div>
     </div>
-    <div class="tile">
-      <div class="tile-title">🌙 Memory consolidation</div>
-      <div class="tile-body">3 AM — short-term notes promoted to long-term wiki, stale entries pruned. The way sleep does it for humans.</div>
+
+    <div class="doc-card doc-night">
+      <div class="doc-header"><span class="doc-time">3:00 AM</span><span class="doc-name">🌙 Memory consolidation</span></div>
+      <div class="doc-content">
+        12 short-term notes promoted, 3 stale entries pruned, 47 wiki backlinks reindexed. The way sleep does it for humans — runs while I&rsquo;m off.
+      </div>
     </div>
-    <div class="tile">
-      <div class="tile-title">📊 Weekly pattern extraction</div>
-      <div class="tile-body"><em>&ldquo;VPN issues spiked Mon/Wed/Fri — systemic, not user error.&rdquo;</em> Things no daily report would catch.</div>
+
+    <div class="doc-card doc-weekly">
+      <div class="doc-header"><span class="doc-time">SUN 8 AM</span><span class="doc-name">📊 Weekly pattern extraction</span></div>
+      <div class="doc-content">
+        <strong>&ldquo;VPN issues spiked Mon/Wed/Fri — systemic, not user error.&rdquo;</strong> Drafted a Henry ticket. Cross-day patterns no daily report would catch.
+      </div>
     </div>
-    <div class="tile">
-      <div class="tile-title">✍️ LinkedIn weekly drafts</div>
-      <div class="tile-body">Sundays — 3 post drafts in my voice, grounded in this week&rsquo;s actual decisions and work.</div>
+
+    <div class="doc-card doc-weekly">
+      <div class="doc-header"><span class="doc-time">SUN 10 AM</span><span class="doc-name">✍️ LinkedIn weekly drafts</span></div>
+      <div class="doc-content">
+        3 post drafts in my voice, grounded in this week&rsquo;s actual decisions and work — review beats drafting from scratch.
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ SLIDE 10: WHAT THIS ACTUALLY DOES ═══ -->
-<section>
+<!-- ═══ SLIDE 10: OUTCOMES (stat banner) ═══ -->
+<section data-background-color="#0a0a0f">
   <span class="label">Outcomes</span>
   <h2>What the system actually delivers</h2>
-  <div class="tile-grid">
-    <div class="tile">
-      <div class="tile-title">⏱  2&ndash;3 hours/week saved</div>
-      <div class="tile-body">Research, prep, triage, news scanning, follow-up tracking. The crons gather; I do the judgment.</div>
+
+  <div class="stat-row">
+    <div class="stat-card">
+      <div class="stat-num">2–3</div>
+      <div class="stat-unit">hours / week saved</div>
+      <div class="stat-note">Research, prep, triage, news scanning, follow-up tracking — the crons gather; I do the judgment.</div>
     </div>
-    <div class="tile">
-      <div class="tile-title">📈  Pattern recognition I&rsquo;d miss</div>
-      <div class="tile-body">&ldquo;VPN failed 5 of 7 days&rdquo; doesn&rsquo;t surface in daily reports. Weekly synthesis surfaces it.</div>
+    <div class="stat-card">
+      <div class="stat-num">190</div>
+      <div class="stat-unit">wiki pages indexed</div>
+      <div class="stat-note">Triggered context loading — the layer most personal-AI projects skip.</div>
     </div>
-    <div class="tile">
-      <div class="tile-title">🧠  Institutional memory</div>
-      <div class="tile-body">&ldquo;Why did we pick this over that?&rdquo; has an answer. &ldquo;When did we last discuss X?&rdquo; has a date.</div>
+    <div class="stat-card">
+      <div class="stat-num">46</div>
+      <div class="stat-unit">cron jobs orchestrated</div>
+      <div class="stat-note">Synthesis pipeline running 24/7 — morning briefings, evening reflection, night consolidation.</div>
     </div>
-    <div class="tile">
-      <div class="tile-title">🎯  Never starting from zero</div>
-      <div class="tile-body">Every conversation begins with 48 hours of context, curated long-term memory, triggered wiki lookups.</div>
+    <div class="stat-card">
+      <div class="stat-num">∞</div>
+      <div class="stat-unit">cross-session continuity</div>
+      <div class="stat-note">Decisions write back. Patterns persist. Future sessions inherit what past ones learned.</div>
     </div>
-    <div class="tile">
-      <div class="tile-title">💡  Opportunities surfaced proactively</div>
-      <div class="tile-body">Opportunity scanner + AI news digest find campus projects matching priorities. 60 sec to review.</div>
-    </div>
-    <div class="tile">
-      <div class="tile-title">↻  Cross-session continuity</div>
-      <div class="tile-body">Decisions write back to wiki. Patterns write to PATTERNS.md. Future sessions inherit what present sessions learn.</div>
-    </div>
+  </div>
+
+  <div class="outcome-summary">
+    <div class="outcome-row"><span class="outcome-icon">📈</span><span><strong>Pattern recognition I&rsquo;d miss</strong> — &ldquo;VPN failed 5 of 7 days&rdquo; doesn&rsquo;t surface in any daily report. Weekly synthesis surfaces it automatically.</span></div>
+    <div class="outcome-row"><span class="outcome-icon">🧠</span><span><strong>Institutional memory</strong> — &ldquo;Why did we pick this over that?&rdquo; has an answer. &ldquo;When did we last discuss X?&rdquo; has a date and a transcript link.</span></div>
+    <div class="outcome-row"><span class="outcome-icon">🎯</span><span><strong>Never starting from zero</strong> — every conversation begins with 48 hours of context, curated long-term memory, and triggered wiki lookups.</span></div>
   </div>
 </section>
 
-<!-- ═══ SLIDE 9: WHAT ELSE BECOMES POSSIBLE ═══ -->
-<section>
+<!-- ═══ SLIDE 11: WHAT ELSE BECOMES POSSIBLE (horizon timeline) ═══ -->
+<section class="light-slide" data-background-color="#ffffff">
   <span class="label">Forward-Looking</span>
-  <h2>What else becomes possible — once the foundation is in place</h2>
-  <div class="tile-grid cols-2">
-    <div class="tile">
-      <div class="tile-title">📋  Meeting prep automation</div>
-      <div class="tile-body">Auto-compile attendee wiki pages, recent interactions, open commitments, and a one-page prep doc before every meeting. No more walking in cold.</div>
+  <h2>What else becomes possible — the foundation is in place</h2>
+
+  <div class="horizon">
+    <div class="horizon-col horizon-now">
+      <div class="horizon-label">📍 Now &nbsp;·&nbsp; Proven daily</div>
+      <div class="horizon-item"><strong>46 cron jobs in production</strong>Morning briefings, evening synthesis, night consolidation, weekly patterns.</div>
+      <div class="horizon-item"><strong>Triggered wiki retrieval</strong>190 pages, loaded on demand based on what the conversation references.</div>
+      <div class="horizon-item"><strong>Cross-session continuity</strong>Decisions and patterns persist across days, weeks, and threads.</div>
     </div>
-    <div class="tile">
-      <div class="tile-title">🔔  Proactive nudges</div>
-      <div class="tile-body">&ldquo;This problem has come up three weeks in a row — here are the options you&rsquo;ve already explored.&rdquo; The agent notices patterns without being asked.</div>
+    <div class="horizon-col horizon-next">
+      <div class="horizon-label">⏭ Next 30 days &nbsp;·&nbsp; Implementation</div>
+      <div class="horizon-item"><strong>📋 Meeting prep automation</strong>Auto-compile attendee wikis, recent interactions, and open commitments before every meeting. Walk in warm.</div>
+      <div class="horizon-item"><strong>🔔 Proactive nudges</strong>&ldquo;This problem has come up three weeks in a row — here are the options you&rsquo;ve already explored.&rdquo;</div>
+      <div class="horizon-item"><strong>✍️ Draft-first comms expansion</strong>Memos, project briefs, status updates — grounded in actual context, not generic AI writing.</div>
     </div>
-    <div class="tile">
-      <div class="tile-title">✍️  Draft-first communications</div>
-      <div class="tile-body">Emails and memos drafted in your voice, grounded in your actual context — not generic AI writing. Review beats drafting from scratch.</div>
-    </div>
-    <div class="tile">
-      <div class="tile-title">🏛️  Decision archaeology</div>
-      <div class="tile-body">&ldquo;Why did we pick this architecture two years ago?&rdquo; → immediate answer with full reasoning, the voices that disagreed, the tradeoffs.</div>
+    <div class="horizon-col horizon-later">
+      <div class="horizon-label">🌅 Beyond &nbsp;·&nbsp; What unlocks</div>
+      <div class="horizon-item"><strong>🏛 Decision archaeology</strong>&ldquo;Why did we pick this two years ago?&rdquo; → immediate answer with full reasoning, the voices that disagreed, the tradeoffs.</div>
+      <div class="horizon-item"><strong>👥 Team-level memory</strong>Opt-in shared wikis. Team patterns surface without crossing personal boundaries.</div>
+      <div class="horizon-item"><strong>🏫 Department insights</strong>Anonymized aggregates: &ldquo;trending pain points this week&rdquo; from many agents, never individual records.</div>
     </div>
   </div>
-  <p class="lead" style="margin-top: 0.8em; font-size: 0.56em !important; font-style: italic; color: var(--text-dim);">
-    Most of these are implementation work, not research. The hard part — the knowledge layer — is built.
+
+  <p style="margin-top: 0.6em; font-size: 0.50em; font-style: italic; color: #475569; text-align: center;">
+    Most of these are implementation work, not research. The hard part — the knowledge layer — is already built.
   </p>
 </section>
 
