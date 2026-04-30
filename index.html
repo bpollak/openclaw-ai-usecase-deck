@@ -76,7 +76,7 @@
   .split-bullets { flex: 1; min-width: 0; }
   .speaking-points { list-style: none; padding: 0; margin: 0; }
   .speaking-points li {
-    font-size: 0.34em; line-height: 1.5; color: #334155;
+    font-size: 0.42em; line-height: 1.5; color: #334155;
     padding: 0.55em 0; border-top: 1px solid rgba(15,23,42,0.10);
   }
   .speaking-points li:first-child { border-top: none; padding-top: 0; }
@@ -103,7 +103,7 @@
   .card-body { font-size: 0.36em; color: var(--text-dim); line-height: 1.5; }
 
   /* ── Model matrix table ── */
-  .matrix { width: 100%; border-collapse: collapse; font-size: 0.32em; margin-top: 0.3em; }
+  .matrix { width: 100%; border-collapse: collapse; font-size: 0.38em; margin-top: 0.3em; }
   .matrix th { text-align: left; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.85em; padding: 0.5em 0.7em; border-bottom: 1px solid var(--border); }
   .matrix td { padding: 0.4em 0.7em; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--text); }
   .matrix td.alias { font-family: 'JetBrains Mono', monospace; font-size: 0.86em; color: var(--cyan); }
@@ -116,8 +116,8 @@
   .tile-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.5em; margin-top: 0.3em; }
   .tile-grid.cols-2 { grid-template-columns: 1fr 1fr; }
   .tile { padding: 0.5em 0.65em; border-radius: 10px; border: 1px solid var(--border); background: var(--surface); }
-  .tile-title { font-size: 0.32em; font-weight: 700; color: var(--white); margin-bottom: 0.15em; }
-  .tile-body { font-size: 0.26em; color: var(--text-dim); line-height: 1.5; }
+  .tile-title { font-size: 0.40em; font-weight: 700; color: var(--white); margin-bottom: 0.15em; }
+  .tile-body { font-size: 0.32em; color: var(--text-dim); line-height: 1.5; }
 
   /* ── Header on diagram slides (light) ── */
   .light-slide h2 { font-size: 1.2em; margin-bottom: 0.2em; }
@@ -401,7 +401,7 @@
 <section>
   <span class="label">The Inference Layer</span>
   <h2>Model allocation — matching jobs to capabilities</h2>
-  <p class="lead" style="font-size: 0.42em !important; margin-bottom: 0.4em;">
+  <p class="lead" style="font-size: 0.50em !important; margin-bottom: 0.4em;">
     <strong>45 of 46 enabled jobs run on TritonAI</strong> — UCSD&rsquo;s institutional gateway, on-prem at SDSC.<br>
     One job stays on OpenAI Codex as a cross-provider canary.
   </p>
@@ -421,7 +421,7 @@
       <tr class="canary"><td class="tier">Cross-provider canary</td><td class="alias">codex</td><td>OpenAI Codex · gpt-5.5</td><td>Provider-quota-monitor only</td><td class="count">1</td></tr>
     </tbody>
   </table>
-  <div class="pullquote" style="margin-top: 0.5em; font-size: 0.42em;">
+  <div class="pullquote" style="margin-top: 0.5em; font-size: 0.50em;">
     Provider lock-in is the moat AI vendors want.<br>
     <strong>Aliases plus a multi-provider gateway keep that moat from forming around your automation.</strong>
   </div>
@@ -481,7 +481,7 @@
       <div class="tile-body">&ldquo;Why did we pick this architecture two years ago?&rdquo; → immediate answer with full reasoning, the voices that disagreed, the tradeoffs.</div>
     </div>
   </div>
-  <p class="lead" style="margin-top: 0.8em; font-style: italic; color: var(--text-dim);">
+  <p class="lead" style="margin-top: 0.8em; font-size: 0.56em !important; font-style: italic; color: var(--text-dim);">
     Most of these are implementation work, not research. The hard part — the knowledge layer — is built.
   </p>
 </section>
@@ -508,47 +508,28 @@
   </div>
 </section>
 
-<!-- ═══ SLIDE 11: THE REAL QUESTION ═══ -->
-<section class="center-slide" data-background-color="#0a0a0f">
-  <div style="max-width: 1000px; margin: 0 auto; padding-top: 0.6em;">
-    <span class="label" style="display:block; margin-bottom: 0.6em;">The Real Question</span>
-    <div style="font-size: 1.0em; font-weight: 800; line-height: 1.15; color: var(--white); margin-bottom: 0.8em;">
-      This isn&rsquo;t<br>&ldquo;can AI do this?&rdquo;
-    </div>
-    <p class="lead" style="margin: 0 auto 0.6em auto; max-width: 820px;">
-      The technology mostly exists. The hard problem is <strong>design, governance, and procurement</strong>.<br>
-      What would it take to do this responsibly, at scale, in a way a 30,000-employee university can actually adopt?
-    </p>
-    <div class="pullquote" style="margin: 1em auto; max-width: 800px; text-align: left;">
-      Every AI vendor is converging on the same lock-in: a single app turning chat into an agent, using <em>your context</em> as the moat. Switch vendors, lose it.<br>
-      <strong>Knowledge in your filesystem, in open formats, under your control flips that.</strong><br>
-      The context layer is the moat — and it doesn&rsquo;t belong to the vendor.
-    </div>
-  </div>
-</section>
-
-<!-- ═══ SLIDE 12: DISCUSSION ═══ -->
+<!-- ═══ SLIDE 11: DISCUSSION ═══ -->
 <section class="center-slide" data-background-color="#050508">
-  <div style="max-width: 1000px; margin: 0 auto; padding-top: 0.4em;">
-    <span class="label" style="display:block; margin-bottom: 0.5em;">Discussion</span>
-    <div style="font-size: 0.85em; font-weight: 800; line-height: 1.2; color: var(--white); margin-bottom: 0.8em;">
-      Three things I&rsquo;d love<br>to talk about
+  <div style="max-width: 1100px; margin: 0 auto; padding-top: 0.3em;">
+    <span class="label" style="display:block; margin-bottom: 0.5em; font-size: 0.40em;">Discussion</span>
+    <div style="font-size: 1.0em; font-weight: 800; line-height: 1.15; color: var(--white); margin-bottom: 0.7em;">
+      Where do we go<br>from here?
     </div>
-    <div style="display: flex; flex-direction: column; gap: 0.6em; max-width: 820px; margin: 0 auto; text-align: left;">
+    <div style="display: flex; flex-direction: column; gap: 0.55em; max-width: 920px; margin: 0 auto; text-align: left;">
       <div class="tile">
-        <div class="tile-title">1. Pattern transferability</div>
-        <div class="tile-body">What&rsquo;s the smallest version of this that would deliver value for a typical staff member?</div>
+        <div class="tile-title">1. Data sources &amp; MCP</div>
+        <div class="tile-body">These tools are clearly valuable for this kind of work — which campus data sources should we be connecting through MCP, and where would those integrations move the needle most?</div>
       </div>
       <div class="tile">
-        <div class="tile-title">2. Privacy boundaries</div>
-        <div class="tile-body">What governance work needs to happen before team-level sharing is safe to ship?</div>
+        <div class="tile-title">2. Governing access</div>
+        <div class="tile-body">How do we govern access to those data sources at the campus level — sanctioned MCP servers, scoped credentials, audit trails, and a sharing model staff and faculty can trust?</div>
       </div>
       <div class="tile">
-        <div class="tile-title">3. Campus integration</div>
-        <div class="tile-body">TritonAI is the institutional gateway — what&rsquo;s the right relationship between personal agents and the platform?</div>
+        <div class="tile-title">3. Over to Shawn Munro</div>
+        <div class="tile-body">Shawn is going to talk next about opportunities to address this through our APIs and hosting platforms — making these patterns first-class on UCSD infrastructure rather than one-off personal experiments.</div>
       </div>
     </div>
-    <div style="margin-top: 1.2em; display: flex; justify-content: center; gap: 1.6em; font-size: 0.36em; font-family: 'JetBrains Mono', monospace;">
+    <div style="margin-top: 1.0em; display: flex; justify-content: center; gap: 1.6em; font-size: 0.40em; font-family: 'JetBrains Mono', monospace;">
       <a href="https://brettcpollak.com/ai-agent-architecture" style="color: var(--blue); text-decoration: none;">brettcpollak.com/ai-agent-architecture</a>
       <a href="https://github.com/bpollak/mission-control" style="color: var(--cyan); text-decoration: none;">github.com/bpollak/mission-control</a>
     </div>
