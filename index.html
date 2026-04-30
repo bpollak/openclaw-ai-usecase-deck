@@ -130,9 +130,10 @@
   .reveal .controls {
     color: var(--blue);
     right: auto !important;
-    left: 16px !important;
-    bottom: 50% !important;
-    transform: translateY(50%);
+    left: 24px !important;
+    bottom: 16px !important;
+    top: auto !important;
+    transform: none !important;
   }
 
   @keyframes pulse { 0%,100% { opacity: 0.6; } 50% { opacity: 1; } }
@@ -380,36 +381,6 @@
         </ul>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ═══ SLIDE 6: DURABLE LAYER ═══ -->
-<section>
-  <span class="label">The Durable Layer</span>
-  <h2>Knowledge graph + wiki — brain stem and cortex</h2>
-  <div class="two-card">
-    <div class="card card-blue">
-      <div class="card-eyebrow">Knowledge Graph</div>
-      <div class="card-headline">201 nodes · 244 edges</div>
-      <div class="card-body">
-        People, technologies, vendors, decisions, projects.<br>
-        Edges: <em>meets_with, often_meets_with, uses</em>.<br>
-        <strong>Fast, shallow, relational</strong> — &ldquo;who works on X.&rdquo;
-      </div>
-    </div>
-    <div class="card card-amber">
-      <div class="card-eyebrow">Wiki</div>
-      <div class="card-headline">190 narrative pages</div>
-      <div class="card-body">
-        Markdown pages mirroring high-weight entities.<br>
-        Auto-promoted from graph; enriched by meetings + manual edits.<br>
-        <strong>Slow, rich, narrative</strong> — &ldquo;why did we choose X.&rdquo;
-      </div>
-    </div>
-  </div>
-  <div class="pullquote" style="margin-top: 0.9em;">
-    Plus a nightly Confluence sync brings in <strong>2,500+ pages</strong> from 9 UCSD ITS spaces<br>
-    — runbooks, team docs, AI governance — so the agent sees what the org has written down.
   </div>
 </section>
 
