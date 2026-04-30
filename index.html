@@ -135,6 +135,19 @@
     top: auto !important;
     transform: none !important;
   }
+  .reveal .controls .navigate-left,
+  .reveal .controls .navigate-right {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+  .reveal .controls .navigate-left:not(.enabled),
+  .reveal .controls .navigate-right:not(.enabled) {
+    opacity: 0.3 !important;
+  }
+  .reveal .controls .navigate-up,
+  .reveal .controls .navigate-down {
+    display: none !important;
+  }
 
   @keyframes pulse { 0%,100% { opacity: 0.6; } 50% { opacity: 1; } }
   @keyframes orbit { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
