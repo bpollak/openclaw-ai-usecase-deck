@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Personal AI Architecture — Brett Pollak</title>
+<title>A Model-Agnostic Memory System — Brett Pollak</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -69,6 +69,21 @@
   .diagram-frame { flex: 1; display: flex; align-items: center; justify-content: center; min-height: 0; }
   .diagram-frame img { max-width: 100%; max-height: 540px; object-fit: contain; }
 
+  /* ── Split layout (image left, bullets right) for diagram slides ── */
+  .split-layout { display: flex; gap: 1.4em; align-items: center; flex: 1; min-height: 0; margin-top: 0.3em; }
+  .split-image { flex: 1.55; display: flex; align-items: center; justify-content: center; min-width: 0; }
+  .split-image img { max-width: 100%; max-height: 500px; object-fit: contain; }
+  .split-bullets { flex: 1; min-width: 0; }
+  .speaking-points { list-style: none; padding: 0; margin: 0; }
+  .speaking-points li {
+    font-size: 0.34em; line-height: 1.5; color: #334155;
+    padding: 0.55em 0; border-top: 1px solid rgba(15,23,42,0.10);
+  }
+  .speaking-points li:first-child { border-top: none; padding-top: 0; }
+  .speaking-points li:last-child { padding-bottom: 0; }
+  .speaking-points li strong { color: #0f172a; font-weight: 700; }
+  .speaking-points li .pt-lead { display: block; font-weight: 700; color: #1e40af; font-size: 1em; margin-bottom: 0.15em; letter-spacing: -0.01em; }
+
   /* ── Pull quote ── */
   .pullquote {
     border-left: 4px solid var(--blue); padding: 0.6em 0 0.6em 1em;
@@ -115,7 +130,26 @@
   .reveal .controls { color: var(--blue); }
 
   @keyframes pulse { 0%,100% { opacity: 0.6; } 50% { opacity: 1; } }
+  @keyframes orbit { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
   .pulse { animation: pulse 3s ease-in-out infinite; }
+  .orbit-slow { animation: orbit 30s linear infinite; transform-origin: 170px 190px; }
+  .orbit-med { animation: orbit 20s linear infinite reverse; transform-origin: 170px 190px; }
+
+  /* ── Hub & spoke (What is OpenClaw) ── */
+  .hub-layout { display: flex; gap: 1.5em; align-items: center; margin-top: 0.3em; }
+  .hub-visual { flex: 0 0 380px; height: 400px; position: relative; }
+  .hub-text { flex: 1; }
+  .concept-item { display: flex; align-items: flex-start; gap: 0.5em; padding: 0.25em 0; margin-bottom: 0.05em; }
+  .concept-icon { flex-shrink: 0; width: 30px; height: 30px; border-radius: 9px; display: flex; align-items: center; justify-content: center; }
+  .concept-icon svg { width: 16px; height: 16px; }
+  .ci-blue { background: var(--glow-blue); }
+  .ci-cyan { background: var(--glow-cyan); }
+  .ci-emerald { background: var(--glow-emerald); }
+  .ci-amber { background: rgba(255,221,68,0.12); }
+  .ci-violet { background: rgba(205,180,255,0.12); }
+  .ci-rose { background: rgba(255,144,168,0.12); }
+  .concept-label { font-size: 0.40em; font-weight: 700; color: var(--white); line-height: 1.3; }
+  .concept-desc { font-size: 0.32em; color: var(--text-dim); line-height: 1.45; margin-top: 0.05em; }
 </style>
 </head>
 <body>
@@ -157,16 +191,115 @@
   </div>
   <div style="position:relative; z-index:2;">
     <div class="title-badge">AI Use Case Meeting · 2026-05-01</div>
-    <div class="title-word" style="margin-top: 0.4em;">Personal AI<br>Architecture</div>
-    <div class="title-sub">Building one that actually knows you</div>
-    <div style="margin-top: 1.2em;">
+    <div class="title-word" style="margin-top: 0.4em; font-size: 3.2em;">A Model-Agnostic<br>Memory System</div>
+    <div class="title-sub">Building personal AI memory that doesn&rsquo;t belong to a vendor</div>
+    <div style="margin-top: 0.9em; max-width: 880px; margin-left: auto; margin-right: auto; font-size: 0.42em; color: var(--text-dim); line-height: 1.55;">
+      Anthropic, OpenAI, and Google are racing to make context the moat — by integrating your personal and enterprise data into <em>their</em> memory systems.<br>
+      The more useful they get, the harder it is to leave.<br>
+      <strong style="color: var(--cyan);">This talk is about building that memory layer as <em>yours</em> instead.</strong>
+    </div>
+    <div style="margin-top: 1em;">
       <div class="title-meta">Brett Pollak · Executive Director, Workplace Technology</div>
       <div class="title-meta">UC San Diego</div>
     </div>
   </div>
 </section>
 
-<!-- ═══ SLIDE 2: THE PROBLEM ═══ -->
+<!-- ═══ SLIDE 2: WHAT IS OPENCLAW ═══ -->
+<section>
+  <h2>What is OpenClaw?</h2>
+  <p class="lead">An open-source agent runtime that connects chat, tools, memory, and automation into one self-hosted system.</p>
+
+  <div class="hub-layout">
+    <div class="hub-visual">
+      <svg viewBox="-30 -10 400 410" style="width: 100%; height: 100%;">
+        <circle cx="170" cy="190" r="150" fill="none" stroke="rgba(112,176,255,0.18)" stroke-width="1.2" stroke-dasharray="4 4"/>
+        <circle cx="170" cy="190" r="105" fill="none" stroke="rgba(80,240,255,0.15)" stroke-width="1" stroke-dasharray="3 5"/>
+        <g stroke="rgba(255,255,255,0.22)" stroke-width="1.5">
+          <line x1="170" y1="190" x2="170" y2="42"/>
+          <line x1="170" y1="190" x2="310" y2="110"/>
+          <line x1="170" y1="190" x2="318" y2="250"/>
+          <line x1="170" y1="190" x2="240" y2="335"/>
+          <line x1="170" y1="190" x2="100" y2="335"/>
+          <line x1="170" y1="190" x2="22" y2="250"/>
+          <line x1="170" y1="190" x2="30" y2="110"/>
+        </g>
+        <circle cx="170" cy="190" r="46" fill="rgba(112,176,255,0.06)"/>
+        <circle cx="170" cy="190" r="38" fill="rgba(112,176,255,0.15)" stroke="var(--blue)" stroke-width="2.5"/>
+        <circle cx="170" cy="190" r="24" fill="rgba(112,176,255,0.25)"/>
+        <text x="170" y="186" text-anchor="middle" fill="var(--blue)" font-size="9" font-weight="700" letter-spacing="1" font-family="JetBrains Mono">OPEN</text>
+        <text x="170" y="198" text-anchor="middle" fill="var(--cyan)" font-size="9" font-weight="700" letter-spacing="1" font-family="JetBrains Mono">CLAW</text>
+
+        <circle cx="170" cy="42" r="36" fill="rgba(255,221,68,0.12)"/>
+        <circle cx="170" cy="42" r="32" fill="rgba(255,221,68,0.28)" stroke="var(--amber)" stroke-width="2.2"/>
+        <text x="170" y="37" text-anchor="middle" fill="var(--amber)" font-size="16">🧠</text>
+        <text x="170" y="52" text-anchor="middle" fill="var(--amber)" font-size="7" font-weight="700">35+ MODELS</text>
+
+        <circle cx="310" cy="110" r="36" fill="rgba(80,240,255,0.1)"/>
+        <circle cx="310" cy="110" r="32" fill="rgba(80,240,255,0.28)" stroke="var(--cyan)" stroke-width="2.2"/>
+        <text x="310" y="105" text-anchor="middle" fill="var(--cyan)" font-size="16">💬</text>
+        <text x="310" y="120" text-anchor="middle" fill="var(--cyan)" font-size="7" font-weight="700">CHANNELS</text>
+
+        <circle cx="318" cy="250" r="36" fill="rgba(205,180,255,0.1)"/>
+        <circle cx="318" cy="250" r="32" fill="rgba(205,180,255,0.28)" stroke="var(--violet)" stroke-width="2.2"/>
+        <text x="318" y="245" text-anchor="middle" fill="var(--violet)" font-size="16">🔧</text>
+        <text x="318" y="260" text-anchor="middle" fill="var(--violet)" font-size="7" font-weight="700">TOOLS</text>
+
+        <circle cx="240" cy="335" r="36" fill="rgba(96,255,200,0.1)"/>
+        <circle cx="240" cy="335" r="32" fill="rgba(96,255,200,0.28)" stroke="var(--emerald)" stroke-width="2.2"/>
+        <text x="240" y="330" text-anchor="middle" fill="var(--emerald)" font-size="16">⚡</text>
+        <text x="240" y="345" text-anchor="middle" fill="var(--emerald)" font-size="7" font-weight="700">AGENTS</text>
+
+        <circle cx="100" cy="335" r="36" fill="rgba(255,144,168,0.1)"/>
+        <circle cx="100" cy="335" r="32" fill="rgba(255,144,168,0.28)" stroke="var(--rose)" stroke-width="2.2"/>
+        <text x="100" y="330" text-anchor="middle" fill="var(--rose)" font-size="16">📎</text>
+        <text x="100" y="345" text-anchor="middle" fill="var(--rose)" font-size="7" font-weight="700">MEDIA</text>
+
+        <circle cx="22" cy="250" r="36" fill="rgba(112,176,255,0.1)"/>
+        <circle cx="22" cy="250" r="32" fill="rgba(112,176,255,0.28)" stroke="var(--blue)" stroke-width="2.2"/>
+        <text x="22" y="245" text-anchor="middle" fill="var(--blue)" font-size="16">📱</text>
+        <text x="22" y="260" text-anchor="middle" fill="var(--blue)" font-size="7" font-weight="700">NODES</text>
+
+        <circle cx="30" cy="110" r="36" fill="rgba(96,255,200,0.1)"/>
+        <circle cx="30" cy="110" r="32" fill="rgba(96,255,200,0.28)" stroke="var(--emerald)" stroke-width="2.2"/>
+        <text x="30" y="105" text-anchor="middle" fill="var(--emerald)" font-size="16">⏰</text>
+        <text x="30" y="120" text-anchor="middle" fill="var(--emerald)" font-size="7" font-weight="700">CRON</text>
+
+        <g class="orbit-slow"><circle cx="170" cy="40" r="4" fill="var(--cyan)" opacity="0.8"/></g>
+        <g class="orbit-med"><circle cx="275" cy="190" r="3.5" fill="var(--emerald)" opacity="0.7"/></g>
+      </svg>
+    </div>
+
+    <div class="hub-text">
+      <div class="concept-item">
+        <div class="concept-icon ci-emerald"><svg viewBox="0 0 18 18" fill="none"><path d="M4 14V8l5-4 5 4v6" stroke="var(--emerald)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><rect x="7" y="10" width="4" height="4" stroke="var(--emerald)" stroke-width="1.2"/></svg></div>
+        <div><div class="concept-label">Self-Hosted Gateway</div><div class="concept-desc">Runs on your hardware — Mac, Linux, server. Your data never leaves your control. MIT licensed, open source.</div></div>
+      </div>
+      <div class="concept-item">
+        <div class="concept-icon ci-cyan"><svg viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="6" stroke="var(--cyan)" stroke-width="1.2"/><path d="M6 9h6M9 6v6" stroke="var(--cyan)" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+        <div><div class="concept-label">Multi-Channel</div><div class="concept-desc">One gateway serves WhatsApp, Telegram, Discord, iMessage, Slack, Teams — simultaneously.</div></div>
+      </div>
+      <div class="concept-item">
+        <div class="concept-icon ci-amber"><svg viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="4" stroke="var(--amber)" stroke-width="1.5"/><path d="M9 2v2M9 14v2M2 9h2M14 9h2" stroke="var(--amber)" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+        <div><div class="concept-label">35+ Model Providers</div><div class="concept-desc">Anthropic, OpenAI, Google, self-hosted (Ollama, vLLM, SGLang), or any OpenAI-compatible endpoint. Multi-model routing with automatic failover.</div></div>
+      </div>
+      <div class="concept-item">
+        <div class="concept-icon ci-violet"><svg viewBox="0 0 18 18" fill="none"><rect x="3" y="3" width="12" height="12" rx="2" stroke="var(--violet)" stroke-width="1.2"/><path d="M7 9l2 2 4-4" stroke="var(--violet)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><div class="concept-label">Agent-Native Runtime</div><div class="concept-desc">Built-in tool use, sessions, persistent memory, cron scheduling, sub-agent orchestration, workflow pipelines.</div></div>
+      </div>
+      <div class="concept-item">
+        <div class="concept-icon ci-blue"><svg viewBox="0 0 18 18" fill="none"><circle cx="6" cy="7" r="3" stroke="var(--blue)" stroke-width="1.2"/><circle cx="12" cy="11" r="3" stroke="var(--blue)" stroke-width="1.2"/><line x1="8.5" y1="9" x2="9.5" y2="9.5" stroke="var(--blue)" stroke-width="1.2"/></svg></div>
+        <div><div class="concept-label">Mobile &amp; Browser Nodes</div><div class="concept-desc">Pair iOS, Android, and browser nodes for camera, Canvas, screen recording, location, voice workflows.</div></div>
+      </div>
+      <div class="concept-item">
+        <div class="concept-icon ci-rose"><svg viewBox="0 0 18 18" fill="none"><path d="M3 9l4 4L15 5" stroke="var(--rose)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><div class="concept-label">Workspace Files</div><div class="concept-desc"><span style="font-family:'JetBrains Mono'; color:var(--rose);">SOUL.md</span>, <span style="font-family:'JetBrains Mono'; color:var(--amber);">AGENTS.md</span>, <span style="font-family:'JetBrains Mono'; color:var(--cyan);">USER.md</span>, <span style="font-family:'JetBrains Mono'; color:var(--blue);">MEMORY.md</span>, plus daily memory logs — identity, rules, context, and curated long-term memory in plain markdown.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SLIDE 3: THE PROBLEM ═══ -->
 <section>
   <span class="label">The Problem</span>
   <h2>Generic AI is generic.<br>Useful AI knows your world.</h2>
@@ -184,45 +317,66 @@
   </p>
 </section>
 
-<!-- ═══ SLIDE 3: ARCHITECTURE OVERVIEW (DIAGRAM) ═══ -->
+<!-- ═══ SLIDE 3: ARCHITECTURE OVERVIEW (DIAGRAM + BULLETS) ═══ -->
 <section class="light-slide" data-background-color="#ffffff">
   <div class="diagram-slide">
     <span class="label">The Architecture</span>
     <h2>One pipeline, three components</h2>
-    <div class="diagram-frame">
-      <img src="images/hero-pipeline.png" alt="Data sources → Knowledge & memory → Agent actions pipeline">
-    </div>
-    <div class="caption" style="text-align:center;">
-      Raw signals flow left → right through accumulation and synthesis crons into the durable knowledge layer,<br>
-      where the agent pulls them back out at the moment of conversation.
+    <div class="split-layout">
+      <div class="split-image">
+        <img src="images/hero-pipeline.png" alt="Data sources → Knowledge & memory → Agent actions pipeline">
+      </div>
+      <div class="split-bullets">
+        <ul class="speaking-points">
+          <li><span class="pt-lead">Three components, one pipeline</span>Data sources → knowledge &amp; memory → agent actions. Each piece is independently swappable.</li>
+          <li><span class="pt-lead">Knowledge is the moat</span>Most personal-AI projects stop at &ldquo;connect to email.&rdquo; The interesting work is what comes next: capture, synthesize, retrieve.</li>
+          <li><span class="pt-lead">Synthesis is where the value lives</span>30+ cron jobs turn raw signals into durable knowledge — not just chat, a daily institutional memory build.</li>
+          <li><span class="pt-lead">Open formats, not vendor lock</span>Markdown + JSON on disk. Switch tools, keep your knowledge.</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ SLIDE 4: THREE LAYERS (DIAGRAM) ═══ -->
+<!-- ═══ SLIDE 4: THREE LAYERS (DIAGRAM + BULLETS) ═══ -->
 <section class="light-slide" data-background-color="#ffffff">
   <div class="diagram-slide">
     <span class="label">Context Loading</span>
     <h2>Three layers — context is a budget, not a pantry</h2>
-    <div class="diagram-frame">
-      <img src="images/three-layer.png" alt="Three concentric layers: always loaded, triggered, explicit">
-    </div>
-    <div class="caption" style="text-align:center;">
-      Layer 1 always-loaded (~15 KB) · Layer 2 triggered on conversation (190 wiki pages) · Layer 3 explicit deep-dive
+    <div class="split-layout">
+      <div class="split-image">
+        <img src="images/three-layer.png" alt="Three concentric layers: always loaded, triggered, explicit">
+      </div>
+      <div class="split-bullets">
+        <ul class="speaking-points">
+          <li><span class="pt-lead">Layer 1 — Always loaded (~15 KB)</span>Identity, user profile, work patterns, today + yesterday. Cheap, fixed, every interaction.</li>
+          <li><span class="pt-lead">Layer 2 — Triggered (190 wiki pages)</span>Mention a colleague → reads their wiki page. Mention a vendor → reads tech-stack page. <strong>The biggest unlock.</strong></li>
+          <li><span class="pt-lead">Layer 3 — Explicit only</span>Full transcripts, raw graph JSON, dated memory files. Rare deep-dives.</li>
+          <li><span class="pt-lead">Most projects skip Layer 2</span>Without triggered retrieval, an accumulating wiki sits unused. The agent only knows what fits in the opening prompt.</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ SLIDE 5: DAILY RHYTHM (DIAGRAM) ═══ -->
+<!-- ═══ SLIDE 5: DAILY RHYTHM (DIAGRAM + BULLETS) ═══ -->
 <section class="light-slide" data-background-color="#ffffff">
   <div class="diagram-slide">
     <span class="label">The Pipeline</span>
     <h2>46 cron jobs on a predictable daily rhythm</h2>
-    <div class="diagram-frame">
-      <img src="images/daily-rhythm.png" alt="24-hour clock showing accumulation, synthesis, and consolidation jobs">
-    </div>
-    <div class="caption" style="text-align:center;">
-      Morning accumulation → evening synthesis → night consolidation → Sunday cross-day pattern extraction
+    <div class="split-layout">
+      <div class="split-image">
+        <img src="images/daily-rhythm.png" alt="24-hour clock showing accumulation, synthesis, and consolidation jobs">
+      </div>
+      <div class="split-bullets">
+        <ul class="speaking-points">
+          <li><span class="pt-lead">🌅 Morning (6–9 AM)</span>Calendar briefing, AI news digest, opportunity scan, campus pain monitor, wiki ingest. Everything ready before I open a laptop.</li>
+          <li><span class="pt-lead">🌆 Evening (5:30–7:35 PM)</span>Email triage with drafts, meeting debrief, daily reflection, context promotion to long-term memory.</li>
+          <li><span class="pt-lead">🌙 Night (3 AM)</span>Memory consolidation — short-term → long-term, the way sleep does for humans.</li>
+          <li><span class="pt-lead">📅 Weekly (Sunday)</span>Cross-day pattern extraction. &ldquo;VPN failed Mon, Wed, Fri&rdquo; → &ldquo;VPN is systemically broken this week.&rdquo;</li>
+          <li><span class="pt-lead">The rhythm is the pipeline</span>Not the individual jobs — the <em>order</em> they fire in is what turns raw files into institutional knowledge.</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -346,17 +500,24 @@
   </p>
 </section>
 
-<!-- ═══ SLIDE 10: SCALING (DIAGRAM) ═══ -->
+<!-- ═══ SLIDE 10: SCALING (DIAGRAM + BULLETS) ═══ -->
 <section class="light-slide" data-background-color="#ffffff">
   <div class="diagram-slide">
     <span class="label">The Vision</span>
     <h2>Scaling to UC San Diego — what if every staff member had one?</h2>
-    <div class="diagram-frame">
-      <img src="images/scaling-pyramid.png" alt="Four-tier scaling: personal, team, department, campus">
-    </div>
-    <div class="caption" style="text-align:center; max-width: 800px; margin-left:auto; margin-right:auto;">
-      <strong>Privacy is the precondition.</strong> Personal data never leaves the personal agent.<br>
-      Each tier is opt-in, anonymized, or aggregate-only — never individual records flowing upward.
+    <div class="split-layout">
+      <div class="split-image">
+        <img src="images/scaling-pyramid.png" alt="Four-tier scaling: personal, team, department, campus">
+      </div>
+      <div class="split-bullets">
+        <ul class="speaking-points">
+          <li><span class="pt-lead">1 · Personal — own agent, own data</span>Proven daily. Every staff member gets dedicated runtime, isolated data store, governance default of &ldquo;this is yours.&rdquo;</li>
+          <li><span class="pt-lead">2 · Team — opt-in sharing only</span>Team wiki visible to members; 1:1s and personal notes stay private. Nothing crosses the boundary automatically.</li>
+          <li><span class="pt-lead">3 · Department — anonymized aggregates</span>&ldquo;Trending pain points this week&rdquo; — patterns from many agents, not records. Identity stripped before aggregation.</li>
+          <li><span class="pt-lead">4 · Campus — statistical patterns only</span>Connective tissue across departments. Never individual records, never attributable content.</li>
+          <li><span class="pt-lead">🛡️ Privacy is the precondition</span>Sharing boundaries are first-class features, not bolt-ons. Without that guarantee at every level, nothing ships.</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
