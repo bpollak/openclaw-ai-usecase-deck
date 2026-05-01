@@ -104,12 +104,12 @@
 
   /* ── Model matrix table ── */
   .matrix { width: 100%; border-collapse: collapse; font-size: 0.36em; margin-top: 0.3em; }
-  .matrix th { text-align: left; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.85em; padding: 0.45em 0.7em; border-bottom: 1px solid var(--border); vertical-align: bottom; }
-  .matrix td { padding: 0.45em 0.7em; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--text); vertical-align: top; }
+  .matrix th { text-align: left; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.85em; padding: 0.35em 0.7em; border-bottom: 1px solid var(--border); vertical-align: bottom; }
+  .matrix td { padding: 0.32em 0.7em; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--text); vertical-align: middle; }
   .matrix td.alias { font-family: 'JetBrains Mono', monospace; font-size: 0.86em; color: var(--cyan); }
   .matrix td.tier { color: var(--white); font-weight: 600; }
   .matrix td.count { text-align: right; font-weight: 700; color: var(--white); font-variant-numeric: tabular-nums; }
-  .matrix td .why { color: var(--text-dim); font-style: italic; font-size: 0.86em; margin-top: 3px; line-height: 1.45; }
+  .matrix td .why { color: var(--text-dim); font-style: italic; font-size: 0.92em; }
   .matrix tr.canary { background: rgba(255,221,68,0.06); }
   .matrix tr.canary td.alias { color: var(--amber); }
 
@@ -630,63 +630,63 @@
         <td class="tier">Light monitor</td>
         <td class="alias">tritonai-haiku</td>
         <td>TritonAI · Claude Haiku 4.5</td>
-        <td><div>Token refresh · MS Graph sync · status pings</div><div class="why">Sub-second latency, cheap per-call, instruction-follows reliably on short stateless work.</div></td>
+        <td><div>Token refresh · MS Graph sync · status pings &nbsp;<span class="why">— Sub-second latency, cheap per-call, instruction-follows reliably on short stateless work.</span></div></td>
         <td class="count">12</td>
       </tr>
       <tr>
         <td class="tier">Synthesis &amp; agentic</td>
         <td class="alias">kimi-k2.5</td>
         <td>TritonAI · Moonshot Kimi K2.5</td>
-        <td><div>Morning briefing · daily reflection · opportunity scan</div><div class="why">256K context + strong tool use — handles multi-source synthesis without losing the thread.</div></td>
+        <td><div>Morning briefing · daily reflection · opportunity scan &nbsp;<span class="why">— 256K context + strong tool use — handles multi-source synthesis without losing the thread.</span></div></td>
         <td class="count">9</td>
       </tr>
       <tr>
         <td class="tier">Single-shot agentic</td>
         <td class="alias">gpt-oss-120b</td>
         <td>TritonAI · OpenAI gpt-oss 120B</td>
-        <td><div>Security audits · candidate scoring · one-shot decisions</div><div class="why">Excellent single-pass reasoning with structured-output discipline; no tool-loops needed.</div></td>
+        <td><div>Security audits · candidate scoring · one-shot decisions &nbsp;<span class="why">— Excellent single-pass reasoning with structured-output discipline; no tool-loops needed.</span></div></td>
         <td class="count">7</td>
       </tr>
       <tr>
         <td class="tier">Long-form generation</td>
         <td class="alias">mistral-large-3</td>
         <td>TritonAI · Mistral Large 3 675B</td>
-        <td><div>LinkedIn drafts · UCSD newsletter · wiki ingestion</div><div class="why">Best narrative flow on TritonAI — preserves voice across long-form prose without sounding generic.</div></td>
+        <td><div>LinkedIn drafts · UCSD newsletter · wiki ingestion &nbsp;<span class="why">— Best narrative flow on TritonAI — preserves voice across long-form prose without sounding generic.</span></div></td>
         <td class="count">5</td>
       </tr>
       <tr>
         <td class="tier">Heavy reasoning</td>
         <td class="alias">tritonai-opus</td>
         <td>TritonAI · Claude Opus 4.7</td>
-        <td><div>Architecture review · weekly pattern extraction · decision archaeology</div><div class="why">Catches subtle multi-day patterns and edge cases smaller models miss; worth the cost for low-frequency deep work.</div></td>
+        <td><div>Architecture review · weekly pattern extraction · decision archaeology &nbsp;<span class="why">— Catches subtle multi-day patterns and edge cases smaller models miss; worth the cost for low-frequency deep work.</span></div></td>
         <td class="count">3</td>
       </tr>
       <tr>
         <td class="tier">Mid-tier multimodal</td>
         <td class="alias">gemma-4</td>
         <td>TritonAI · Gemma 4 26B</td>
-        <td><div>Meeting prep · relationship mapping · image-aware tasks</div><div class="why">Only TritonAI model with reliable image+text understanding at low cost — needed for screenshots, whiteboard photos, slide review.</div></td>
+        <td><div>Meeting prep · relationship mapping · image-aware tasks &nbsp;<span class="why">— Only TritonAI model with reliable image+text understanding at low cost — needed for screenshots, whiteboard photos, slide review.</span></div></td>
         <td class="count">2</td>
       </tr>
       <tr>
         <td class="tier">Fastest light monitor</td>
         <td class="alias">tritonai-mistral-small</td>
         <td>TritonAI · Mistral Small 3.2</td>
-        <td><div>Hourly henry-api health · infrastructure pings</div><div class="why">Lowest cold-start latency on TritonAI — fits high-frequency hygiene that runs every hour.</div></td>
+        <td><div>Hourly henry-api health · infrastructure pings &nbsp;<span class="why">— Lowest cold-start latency on TritonAI — fits high-frequency hygiene that runs every hour.</span></div></td>
         <td class="count">2</td>
       </tr>
       <tr>
         <td class="tier">Provider diversity</td>
         <td class="alias">tritonai-nemotron-instant</td>
         <td>TritonAI · NVIDIA Nemotron 3</td>
-        <td><div>Weekly memory prune (diversity sample)</div><div class="why">Different model lineage from the rest of the stack — sanity-checks routing and exposes silent regressions.</div></td>
+        <td><div>Weekly memory prune (diversity sample) &nbsp;<span class="why">— Different model lineage from the rest of the stack — sanity-checks routing and exposes silent regressions.</span></div></td>
         <td class="count">1</td>
       </tr>
       <tr class="canary">
         <td class="tier">OpenAI Codex (canary + CLI)</td>
         <td class="alias">codex</td>
         <td>OpenAI Codex · gpt-5.5</td>
-        <td><div>Provider-quota canary + Codex-CLI workload (web fetch, terminal access)</div><div class="why">1 job is the cross-provider canary on different infra (detects TritonAI-wide outages). 4 workload jobs use Codex CLI tools that aren&rsquo;t in the TritonAI catalog: ai-source-sync, granola-meeting-debrief, teams-message-sync, henry-enhancement-daily.</div></td>
+        <td><div>Provider-quota canary + Codex-CLI workload (web fetch, terminal access) &nbsp;<span class="why">— 1 job is the cross-provider canary on different infra (detects TritonAI-wide outages). 4 workload jobs use Codex CLI tools that aren&rsquo;t in the TritonAI catalog: ai-source-sync, granola-meeting-debrief, teams-message-sync, henry-enhancement-daily.</span></div></td>
         <td class="count">5</td>
       </tr>
     </tbody>
@@ -749,11 +749,6 @@
         </div>
       </div>
     </div>
-  </div>
-
-  <div class="pullquote" style="margin-top: 0.5em; font-size: 0.46em;">
-    Provider lock-in is the moat AI vendors want.<br>
-    <strong>Aliases plus a multi-provider gateway keep that moat from forming around your automation.</strong>
   </div>
 </section>
 
