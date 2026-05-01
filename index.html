@@ -698,7 +698,30 @@
       <span style="color: var(--text); font-weight: 600;">across the ecosystem · 46 jobs daily</span>
       <span style="margin-left: auto; color: var(--text-dim); font-size: 0.85em; font-style: italic;">on-prem open-source models on UCSD GPUs excluded (sunk infra)</span>
     </div>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8em; padding-top: 0.4em; border-top: 1px solid rgba(255,255,255,0.06);">
+
+    <!-- Vendor comparison strip -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.6em; padding: 0.45em 0; margin-bottom: 0.4em; border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06);">
+      <div style="text-align: center;">
+        <div style="color: var(--text-dim); font-size: 0.78em; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.15em;">Same pipeline · single vendor</div>
+        <div style="color: var(--emerald); font-weight: 800; font-size: 1.2em;">~$30/mo</div>
+        <div style="color: var(--text); font-size: 0.82em; margin-top: 0.1em;"><strong>Model-agnostic gateway</strong></div>
+        <div style="color: var(--text-dim); font-size: 0.78em; margin-top: 0.1em;">29 jobs free on TritonAI open-source · 17 on metered API</div>
+      </div>
+      <div style="text-align: center; border-left: 1px solid rgba(255,255,255,0.06); border-right: 1px solid rgba(255,255,255,0.06); padding: 0 0.4em;">
+        <div style="color: var(--text-dim); font-size: 0.78em; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.15em;">Anthropic only</div>
+        <div style="color: var(--rose); font-weight: 800; font-size: 1.2em;">~$70/mo &nbsp;<span style="font-size: 0.7em; color: var(--text-dim); font-weight: 600;">2.3&times;</span></div>
+        <div style="color: var(--text); font-size: 0.82em; margin-top: 0.1em;"><strong>Haiku · Sonnet · Opus</strong></div>
+        <div style="color: var(--text-dim); font-size: 0.78em; margin-top: 0.1em;">All synthesis on Sonnet · no cross-provider canary</div>
+      </div>
+      <div style="text-align: center;">
+        <div style="color: var(--text-dim); font-size: 0.78em; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.15em;">OpenAI only</div>
+        <div style="color: var(--rose); font-weight: 800; font-size: 1.2em;">~$90/mo &nbsp;<span style="font-size: 0.7em; color: var(--text-dim); font-weight: 600;">3.0&times;</span></div>
+        <div style="color: var(--text); font-size: 0.82em; margin-top: 0.1em;"><strong>gpt-5.5 · gpt-5.5-mini</strong></div>
+        <div style="color: var(--text-dim); font-size: 0.78em; margin-top: 0.1em;">Higher per-token + reasoning mode · no canary</div>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8em;">
       <div style="border-right: 1px solid rgba(255,255,255,0.06); padding-right: 0.8em;">
         <div style="display: flex; align-items: baseline; gap: 0.5em; margin-bottom: 0.25em;">
           <span style="color: var(--cyan); font-weight: 800; font-size: 1.2em;">~$13/mo</span>
