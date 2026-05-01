@@ -349,97 +349,93 @@
   <span class="label">The Problem</span>
   <h2>Generic AI is generic.<br>Useful AI knows your world.</h2>
 
-  <svg viewBox="0 0 1100 330" style="width: 100%; max-width: 1000px; height: auto; display: block; margin: 0.6em 0 0.5em 0;">
-    <!-- shared question bar -->
+  <svg viewBox="0 0 1300 330" style="width: 100%; max-width: 1180px; height: auto; display: block; margin: 0.6em 0 0.5em 0;">
+    <!-- shared question bar (centered in new viewBox) -->
     <g>
-      <rect x="370" y="6" width="360" height="28" rx="14" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.18)" stroke-width="0.8"/>
-      <text x="550" y="25" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="15" font-style="italic" font-family="Space Grotesk, sans-serif">&ldquo;Who should I follow up with this week?&rdquo;</text>
+      <rect x="470" y="6" width="360" height="28" rx="14" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.18)" stroke-width="0.8"/>
+      <text x="650" y="25" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="15" font-style="italic" font-family="Space Grotesk, sans-serif">&ldquo;Who should I follow up with this week?&rdquo;</text>
     </g>
 
-    <!-- LEFT: Generic AI -->
+    <!-- LEFT: Generic AI · centered around x=180 -->
     <g>
-      <text x="200" y="62" text-anchor="middle" fill="#9090a8" font-size="18" font-weight="700" letter-spacing="3" font-family="JetBrains Mono">ASK A CHATBOT</text>
-      <text x="200" y="84" text-anchor="middle" fill="#6a6a7c" font-size="16" letter-spacing="1" font-style="italic" font-family="Space Grotesk, sans-serif">their memory of you</text>
-      <!-- shrunk aura, clear of the chat-bubble flow -->
-      <circle cx="200" cy="180" r="68" fill="none" stroke="rgba(160,160,180,0.18)" stroke-width="1" stroke-dasharray="4 6"/>
+      <text x="180" y="62" text-anchor="middle" fill="#9090a8" font-size="18" font-weight="700" letter-spacing="3" font-family="JetBrains Mono">ASK A CHATBOT</text>
+      <text x="180" y="84" text-anchor="middle" fill="#6a6a7c" font-size="16" letter-spacing="1" font-style="italic" font-family="Space Grotesk, sans-serif">their memory of you</text>
+      <circle cx="180" cy="180" r="68" fill="none" stroke="rgba(160,160,180,0.18)" stroke-width="1" stroke-dasharray="4 6"/>
 
       <!-- past chats flowing into vendor-locked memory -->
-      <line x1="310" y1="115" x2="240" y2="155" stroke="rgba(160,160,180,0.35)" stroke-width="1.2"/>
-      <circle cx="310" cy="115" r="16" fill="rgba(160,160,180,0.06)" stroke="rgba(160,160,180,0.4)" stroke-width="1.2"/>
-      <text x="310" y="121" text-anchor="middle" font-size="18">💬</text>
-      <text x="346" y="118" text-anchor="start" fill="#8a8aa0" font-size="14" font-weight="700" letter-spacing="1.4" font-family="JetBrains Mono">YOUR CHATS</text>
-      <text x="346" y="134" text-anchor="start" fill="#6a6a7c" font-size="11" letter-spacing="0.8" font-family="JetBrains Mono">(in their cloud)</text>
+      <line x1="290" y1="115" x2="220" y2="155" stroke="rgba(160,160,180,0.35)" stroke-width="1.2"/>
+      <circle cx="290" cy="115" r="16" fill="rgba(160,160,180,0.06)" stroke="rgba(160,160,180,0.4)" stroke-width="1.2"/>
+      <text x="290" y="121" text-anchor="middle" font-size="18">💬</text>
+      <text x="326" y="118" text-anchor="start" fill="#8a8aa0" font-size="14" font-weight="700" letter-spacing="1.4" font-family="JetBrains Mono">YOUR CHATS</text>
+      <text x="326" y="134" text-anchor="start" fill="#6a6a7c" font-size="11" letter-spacing="0.8" font-family="JetBrains Mono">(in their cloud)</text>
 
       <!-- AI core -->
-      <circle cx="200" cy="180" r="50" fill="rgba(160,160,180,0.05)" stroke="rgba(160,160,180,0.4)" stroke-width="2"/>
-      <circle cx="200" cy="180" r="32" fill="rgba(160,160,180,0.08)"/>
-      <text x="200" y="188" text-anchor="middle" fill="#a0a0b8" font-size="26" font-weight="700" font-family="Space Grotesk, sans-serif">AI</text>
+      <circle cx="180" cy="180" r="50" fill="rgba(160,160,180,0.05)" stroke="rgba(160,160,180,0.4)" stroke-width="2"/>
+      <circle cx="180" cy="180" r="32" fill="rgba(160,160,180,0.08)"/>
+      <text x="180" y="188" text-anchor="middle" fill="#a0a0b8" font-size="26" font-weight="700" font-family="Space Grotesk, sans-serif">AI</text>
 
-      <!-- small lock indicator on the AI core showing memory is vendor-owned -->
-      <g transform="translate(240, 144)">
+      <!-- lock indicator -->
+      <g transform="translate(220, 144)">
         <circle cx="0" cy="0" r="12" fill="rgba(160,160,180,0.18)" stroke="rgba(160,160,180,0.55)" stroke-width="1.2"/>
         <text x="0" y="4" text-anchor="middle" font-size="14">🔒</text>
       </g>
 
-      <text x="200" y="305" text-anchor="middle" fill="#8a8aa0" font-size="14" font-style="italic" font-family="Space Grotesk, sans-serif">&ldquo;Based on past chats: maybe Sarah?&rdquo;</text>
+      <text x="180" y="305" text-anchor="middle" fill="#8a8aa0" font-size="14" font-style="italic" font-family="Space Grotesk, sans-serif">&ldquo;Based on past chats: maybe Sarah?&rdquo;</text>
     </g>
 
-    <!-- CENTER: + KNOWLEDGE LAYER -->
+    <!-- CENTER: + KNOWLEDGE LAYER · centered around x=650 -->
     <g>
-      <text x="540" y="146" text-anchor="middle" fill="#50f0ff" font-size="18" font-weight="700" letter-spacing="3" font-family="JetBrains Mono">+ KNOWLEDGE LAYER</text>
-      <text x="540" y="167" text-anchor="middle" fill="rgba(80,240,255,0.7)" font-size="16" letter-spacing="1" font-family="Space Grotesk, sans-serif">memory · context · history</text>
-      <path d="M 460 192 L 620 192 M 605 182 L 620 192 L 605 202" stroke="#50f0ff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-      <text x="540" y="226" text-anchor="middle" fill="rgba(80,240,255,0.45)" font-size="14" letter-spacing="2.5" font-family="JetBrains Mono">SAME MODEL · DIFFERENT BRAIN</text>
+      <text x="650" y="146" text-anchor="middle" fill="#50f0ff" font-size="18" font-weight="700" letter-spacing="3" font-family="JetBrains Mono">+ KNOWLEDGE LAYER</text>
+      <text x="650" y="167" text-anchor="middle" fill="rgba(80,240,255,0.7)" font-size="16" letter-spacing="1" font-family="Space Grotesk, sans-serif">memory · context · history</text>
+      <path d="M 560 192 L 740 192 M 725 182 L 740 192 L 725 202" stroke="#50f0ff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="650" y="226" text-anchor="middle" fill="rgba(80,240,255,0.45)" font-size="14" letter-spacing="2.5" font-family="JetBrains Mono">SAME MODEL · DIFFERENT BRAIN</text>
     </g>
 
-    <!-- RIGHT: Your Agent -->
+    <!-- RIGHT: Your Agent · centered around x=1120 -->
     <g>
-      <text x="880" y="62" text-anchor="middle" fill="#ffffff" font-size="18" font-weight="700" letter-spacing="3" font-family="JetBrains Mono">ASK YOUR AGENT</text>
-      <text x="880" y="84" text-anchor="middle" fill="#50f0ff" font-size="16" letter-spacing="1" font-style="italic" font-family="Space Grotesk, sans-serif">your world</text>
+      <text x="1120" y="62" text-anchor="middle" fill="#ffffff" font-size="18" font-weight="700" letter-spacing="3" font-family="JetBrains Mono">ASK YOUR AGENT</text>
+      <text x="1120" y="84" text-anchor="middle" fill="#50f0ff" font-size="16" letter-spacing="1" font-style="italic" font-family="Space Grotesk, sans-serif">your world</text>
 
       <!-- glow halo -->
-      <circle cx="880" cy="180" r="100" fill="rgba(80,240,255,0.04)"/>
+      <circle cx="1120" cy="180" r="100" fill="rgba(80,240,255,0.04)"/>
 
-      <!-- spokes (icons now at radius ~118 from AI core, well clear of halo) -->
+      <!-- spokes -->
       <g stroke-width="1.5" fill="none">
-        <line x1="963" y1="97" x2="880" y2="180" stroke="rgba(255,221,68,0.45)"/>
-        <line x1="797" y1="97" x2="880" y2="180" stroke="rgba(80,240,255,0.45)"/>
-        <line x1="963" y1="263" x2="880" y2="180" stroke="rgba(205,180,255,0.45)"/>
-        <line x1="797" y1="263" x2="880" y2="180" stroke="rgba(96,255,200,0.45)"/>
+        <line x1="1198" y1="102" x2="1120" y2="180" stroke="rgba(255,221,68,0.45)"/>
+        <line x1="1042" y1="102" x2="1120" y2="180" stroke="rgba(80,240,255,0.45)"/>
+        <line x1="1198" y1="258" x2="1120" y2="180" stroke="rgba(205,180,255,0.45)"/>
+        <line x1="1042" y1="258" x2="1120" y2="180" stroke="rgba(96,255,200,0.45)"/>
       </g>
 
-      <!-- context nodes (top-right: calendar) -->
+      <!-- context nodes -->
       <g>
-        <circle cx="963" cy="97" r="18" fill="rgba(255,221,68,0.14)" stroke="#ffdd44" stroke-width="1.5"/>
-        <text x="963" y="104" text-anchor="middle" font-size="18">📅</text>
-        <text x="999" y="100" text-anchor="start" fill="#ffdd44" font-size="14" font-weight="700" letter-spacing="1.4" font-family="JetBrains Mono">CALENDAR</text>
+        <circle cx="1198" cy="102" r="18" fill="rgba(255,221,68,0.14)" stroke="#ffdd44" stroke-width="1.5"/>
+        <text x="1198" y="109" text-anchor="middle" font-size="18">📅</text>
+        <text x="1226" y="105" text-anchor="start" fill="#ffdd44" font-size="14" font-weight="700" letter-spacing="1.4" font-family="JetBrains Mono">CALENDAR</text>
       </g>
-      <!-- top-left: meetings -->
       <g>
-        <circle cx="797" cy="97" r="18" fill="rgba(80,240,255,0.14)" stroke="#50f0ff" stroke-width="1.5"/>
-        <text x="797" y="104" text-anchor="middle" font-size="18">💬</text>
-        <text x="761" y="100" text-anchor="end" fill="#50f0ff" font-size="14" font-weight="700" letter-spacing="1.4" font-family="JetBrains Mono">MEETINGS</text>
+        <circle cx="1042" cy="102" r="18" fill="rgba(80,240,255,0.14)" stroke="#50f0ff" stroke-width="1.5"/>
+        <text x="1042" y="109" text-anchor="middle" font-size="18">💬</text>
+        <text x="1014" y="105" text-anchor="end" fill="#50f0ff" font-size="14" font-weight="700" letter-spacing="1.4" font-family="JetBrains Mono">MEETINGS</text>
       </g>
-      <!-- bottom-right: projects -->
       <g>
-        <circle cx="963" cy="263" r="18" fill="rgba(205,180,255,0.14)" stroke="#cdb4ff" stroke-width="1.5"/>
-        <text x="963" y="270" text-anchor="middle" font-size="18">📋</text>
-        <text x="999" y="266" text-anchor="start" fill="#cdb4ff" font-size="14" font-weight="700" letter-spacing="1.4" font-family="JetBrains Mono">PROJECTS</text>
+        <circle cx="1198" cy="258" r="18" fill="rgba(205,180,255,0.14)" stroke="#cdb4ff" stroke-width="1.5"/>
+        <text x="1198" y="265" text-anchor="middle" font-size="18">📋</text>
+        <text x="1226" y="261" text-anchor="start" fill="#cdb4ff" font-size="14" font-weight="700" letter-spacing="1.4" font-family="JetBrains Mono">PROJECTS</text>
       </g>
-      <!-- bottom-left: campus -->
       <g>
-        <circle cx="797" cy="263" r="18" fill="rgba(96,255,200,0.14)" stroke="#60ffc8" stroke-width="1.5"/>
-        <text x="797" y="270" text-anchor="middle" font-size="18">🏫</text>
-        <text x="761" y="266" text-anchor="end" fill="#60ffc8" font-size="14" font-weight="700" letter-spacing="1.4" font-family="JetBrains Mono">CAMPUS</text>
+        <circle cx="1042" cy="258" r="18" fill="rgba(96,255,200,0.14)" stroke="#60ffc8" stroke-width="1.5"/>
+        <text x="1042" y="265" text-anchor="middle" font-size="18">🏫</text>
+        <text x="1014" y="261" text-anchor="end" fill="#60ffc8" font-size="14" font-weight="700" letter-spacing="1.4" font-family="JetBrains Mono">CAMPUS</text>
       </g>
 
-      <!-- AI core, drawn on top of spokes -->
-      <circle cx="880" cy="180" r="50" fill="rgba(112,176,255,0.18)" stroke="#70b0ff" stroke-width="2.5"/>
-      <circle cx="880" cy="180" r="32" fill="rgba(80,240,255,0.30)"/>
-      <text x="880" y="188" text-anchor="middle" fill="#ffffff" font-size="26" font-weight="700" font-family="Space Grotesk, sans-serif">AI</text>
+      <!-- AI core -->
+      <circle cx="1120" cy="180" r="50" fill="rgba(112,176,255,0.18)" stroke="#70b0ff" stroke-width="2.5"/>
+      <circle cx="1120" cy="180" r="32" fill="rgba(80,240,255,0.30)"/>
+      <text x="1120" y="188" text-anchor="middle" fill="#ffffff" font-size="26" font-weight="700" font-family="Space Grotesk, sans-serif">AI</text>
 
       <!-- grounded answer -->
-      <text x="880" y="305" text-anchor="middle" fill="#ffffff" font-size="14" font-style="italic" font-family="Space Grotesk, sans-serif">&ldquo;Sarah — RFP review still waiting on her since Tuesday.&rdquo;</text>
+      <text x="1120" y="305" text-anchor="middle" fill="#ffffff" font-size="14" font-style="italic" font-family="Space Grotesk, sans-serif">&ldquo;Sarah — RFP review still waiting on her since Tuesday.&rdquo;</text>
     </g>
   </svg>
 
