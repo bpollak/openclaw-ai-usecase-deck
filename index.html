@@ -740,78 +740,81 @@
 
 </section>
 
-<!-- ═══ SLIDE 9: COST COMPARISON (apples to apples across vendors) ═══ -->
+<!-- ═══ SLIDE 9: COST COMPARISON (vertical lanes per vendor) ═══ -->
 <section data-background-color="#050508">
   <span class="label">Cost across the ecosystem</span>
   <h2 style="margin-bottom: 0.15em;">Same 46 jobs, three providers</h2>
-  <p class="caption" style="margin-bottom: 0.7em;">The savings concentrate in the personalized layer where free open-source synthesis carries the load.</p>
+  <p class="caption" style="margin-bottom: 0.7em;">Read each column top-to-bottom — vendor totals up top, then how Core and Brett-specific jobs break down underneath.</p>
 
-  <!-- CORE row -->
-  <div style="margin-bottom: 0.55em;">
-    <div style="display: flex; align-items: baseline; gap: 0.7em; margin-bottom: 0.25em; padding-bottom: 0.18em; border-bottom: 1px solid rgba(255,255,255,0.1);">
-      <span style="font-size: 0.32em; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--cyan);">Core memory system</span>
-      <span style="font-size: 0.28em; color: var(--text-dim); font-style: italic;">15 jobs · universal pipeline anyone could adopt</span>
+  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.6em; align-items: stretch;">
+    <!-- ────────── COLUMN 1: OUR GATEWAY ────────── -->
+    <div style="display: flex; flex-direction: column; gap: 0.4em;">
+      <!-- Total header -->
+      <div style="padding: 0.55em 0.7em; border-radius: 10px; background: rgba(96,255,200,0.10); border: 2px solid rgba(96,255,200,0.55); text-align: center;">
+        <div style="font-size: 0.24em; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--emerald); margin-bottom: 0.15em;">Model-agnostic gateway</div>
+        <div style="font-size: 1.0em; font-weight: 800; color: var(--emerald); line-height: 1;">~$40/mo</div>
+        <div style="font-size: 0.26em; color: var(--text-dim); margin-top: 0.25em;">46 jobs · baseline</div>
+      </div>
+      <!-- Core sub -->
+      <div style="padding: 0.45em 0.7em; border-radius: 10px; background: rgba(96,255,200,0.05); border: 1px solid rgba(96,255,200,0.3); flex: 1;">
+        <div style="font-size: 0.22em; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cyan); margin-bottom: 0.15em;">Core memory · 15 jobs</div>
+        <div style="font-size: 0.6em; font-weight: 800; color: var(--emerald); line-height: 1; margin-bottom: 0.25em;">~$13/mo</div>
+        <div style="font-size: 0.24em; color: var(--text-dim); line-height: 1.5;">Haiku passthrough · Opus reviews · Codex cross-provider canary</div>
+      </div>
+      <!-- Brett sub -->
+      <div style="padding: 0.45em 0.7em; border-radius: 10px; background: rgba(96,255,200,0.05); border: 1px solid rgba(96,255,200,0.3); flex: 1;">
+        <div style="font-size: 0.22em; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--violet); margin-bottom: 0.15em;">Brett-specific · 31 jobs</div>
+        <div style="font-size: 0.6em; font-weight: 800; color: var(--emerald); line-height: 1; margin-bottom: 0.25em;">~$27/mo</div>
+        <div style="font-size: 0.24em; color: var(--text-dim); line-height: 1.5;">Free synthesis on TritonAI open-source · Codex CLI workload · weekly Opus deep-dive</div>
+      </div>
     </div>
-    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.55em;">
-      <div style="padding: 0.5em 0.7em; border-radius: 10px; background: rgba(96,255,200,0.08); border: 1px solid rgba(96,255,200,0.4);">
-        <div style="font-size: 0.24em; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--emerald); margin-bottom: 0.2em;">Model-agnostic gateway</div>
-        <div style="font-size: 0.7em; font-weight: 800; color: var(--emerald); line-height: 1; margin-bottom: 0.3em;">~$13/mo</div>
-        <div style="font-size: 0.26em; color: var(--text-dim); line-height: 1.5;">Haiku passthrough · Opus monthly/quarterly reviews · Codex cross-provider canary</div>
+
+    <!-- ────────── COLUMN 2: ANTHROPIC ONLY ────────── -->
+    <div style="display: flex; flex-direction: column; gap: 0.4em;">
+      <!-- Total header -->
+      <div style="padding: 0.55em 0.7em; border-radius: 10px; background: rgba(112,176,255,0.10); border: 2px solid rgba(112,176,255,0.55); text-align: center;">
+        <div style="font-size: 0.24em; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.15em;">Anthropic only</div>
+        <div style="font-size: 1.0em; font-weight: 800; color: var(--blue); line-height: 1;">~$80/mo &nbsp;<span style="font-size: 0.42em; color: var(--text-dim); font-weight: 600;">2&times;</span></div>
+        <div style="font-size: 0.26em; color: var(--text-dim); margin-top: 0.25em;">46 jobs · single-vendor lock-in</div>
       </div>
-      <div style="padding: 0.5em 0.7em; border-radius: 10px; background: rgba(112,176,255,0.08); border: 1px solid rgba(112,176,255,0.4);">
-        <div style="font-size: 0.24em; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.2em;">Anthropic only</div>
-        <div style="font-size: 0.7em; font-weight: 800; color: var(--blue); line-height: 1; margin-bottom: 0.3em;">~$20/mo &nbsp;<span style="font-size: 0.55em; color: var(--text-dim); font-weight: 600;">1.5&times;</span></div>
-        <div style="font-size: 0.26em; color: var(--text-dim); line-height: 1.5;">Haiku · Sonnet · Opus across all 15 jobs · no cross-provider canary</div>
+      <!-- Core sub -->
+      <div style="padding: 0.45em 0.7em; border-radius: 10px; background: rgba(112,176,255,0.05); border: 1px solid rgba(112,176,255,0.3); flex: 1;">
+        <div style="font-size: 0.22em; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cyan); margin-bottom: 0.15em;">Core memory · 15 jobs</div>
+        <div style="font-size: 0.6em; font-weight: 800; color: var(--blue); line-height: 1; margin-bottom: 0.25em;">~$20/mo &nbsp;<span style="font-size: 0.5em; color: var(--text-dim); font-weight: 600;">1.5&times;</span></div>
+        <div style="font-size: 0.24em; color: var(--text-dim); line-height: 1.5;">Haiku · Sonnet · Opus across all 15 jobs · no cross-provider canary</div>
       </div>
-      <div style="padding: 0.5em 0.7em; border-radius: 10px; background: rgba(255,144,168,0.08); border: 1px solid rgba(255,144,168,0.4);">
-        <div style="font-size: 0.24em; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.2em;">OpenAI only</div>
-        <div style="font-size: 0.7em; font-weight: 800; color: var(--rose); line-height: 1; margin-bottom: 0.3em;">~$22/mo &nbsp;<span style="font-size: 0.55em; color: var(--text-dim); font-weight: 600;">1.7&times;</span></div>
-        <div style="font-size: 0.26em; color: var(--text-dim); line-height: 1.5;">gpt-5.5-mini for hygiene · gpt-5.5 for reviews · no cross-provider canary</div>
+      <!-- Brett sub -->
+      <div style="padding: 0.45em 0.7em; border-radius: 10px; background: rgba(112,176,255,0.05); border: 1px solid rgba(112,176,255,0.3); flex: 1;">
+        <div style="font-size: 0.22em; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--violet); margin-bottom: 0.15em;">Brett-specific · 31 jobs</div>
+        <div style="font-size: 0.6em; font-weight: 800; color: var(--blue); line-height: 1; margin-bottom: 0.25em;">~$60/mo &nbsp;<span style="font-size: 0.5em; color: var(--text-dim); font-weight: 600;">2.2&times;</span></div>
+        <div style="font-size: 0.24em; color: var(--text-dim); line-height: 1.5;">All synthesis on Sonnet · long-form on Sonnet · Opus deep-dive · no Codex CLI tools</div>
+      </div>
+    </div>
+
+    <!-- ────────── COLUMN 3: OPENAI ONLY ────────── -->
+    <div style="display: flex; flex-direction: column; gap: 0.4em;">
+      <!-- Total header -->
+      <div style="padding: 0.55em 0.7em; border-radius: 10px; background: rgba(255,144,168,0.10); border: 2px solid rgba(255,144,168,0.55); text-align: center;">
+        <div style="font-size: 0.24em; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.15em;">OpenAI only</div>
+        <div style="font-size: 1.0em; font-weight: 800; color: var(--rose); line-height: 1;">~$100/mo &nbsp;<span style="font-size: 0.42em; color: var(--text-dim); font-weight: 600;">2.5&times;</span></div>
+        <div style="font-size: 0.26em; color: var(--text-dim); margin-top: 0.25em;">46 jobs · single-vendor lock-in</div>
+      </div>
+      <!-- Core sub -->
+      <div style="padding: 0.45em 0.7em; border-radius: 10px; background: rgba(255,144,168,0.05); border: 1px solid rgba(255,144,168,0.3); flex: 1;">
+        <div style="font-size: 0.22em; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cyan); margin-bottom: 0.15em;">Core memory · 15 jobs</div>
+        <div style="font-size: 0.6em; font-weight: 800; color: var(--rose); line-height: 1; margin-bottom: 0.25em;">~$22/mo &nbsp;<span style="font-size: 0.5em; color: var(--text-dim); font-weight: 600;">1.7&times;</span></div>
+        <div style="font-size: 0.24em; color: var(--text-dim); line-height: 1.5;">gpt-5.5-mini for hygiene · gpt-5.5 for reviews · no cross-provider canary</div>
+      </div>
+      <!-- Brett sub -->
+      <div style="padding: 0.45em 0.7em; border-radius: 10px; background: rgba(255,144,168,0.05); border: 1px solid rgba(255,144,168,0.3); flex: 1;">
+        <div style="font-size: 0.22em; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--violet); margin-bottom: 0.15em;">Brett-specific · 31 jobs</div>
+        <div style="font-size: 0.6em; font-weight: 800; color: var(--rose); line-height: 1; margin-bottom: 0.25em;">~$78/mo &nbsp;<span style="font-size: 0.5em; color: var(--text-dim); font-weight: 600;">2.9&times;</span></div>
+        <div style="font-size: 0.24em; color: var(--text-dim); line-height: 1.5;">Synthesis + long-form on gpt-5.5 · gpt-5.5 deep-dive · Codex CLI native</div>
       </div>
     </div>
   </div>
 
-  <!-- BRETT row -->
-  <div style="margin-bottom: 0.5em;">
-    <div style="display: flex; align-items: baseline; gap: 0.7em; margin-bottom: 0.25em; padding-bottom: 0.18em; border-bottom: 1px solid rgba(255,255,255,0.1);">
-      <span style="font-size: 0.32em; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--violet);">Brett-specific layer</span>
-      <span style="font-size: 0.28em; color: var(--text-dim); font-style: italic;">31 jobs · personal data sources, voice-matched outputs, monitoring</span>
-    </div>
-    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.55em;">
-      <div style="padding: 0.5em 0.7em; border-radius: 10px; background: rgba(96,255,200,0.08); border: 1px solid rgba(96,255,200,0.4);">
-        <div style="font-size: 0.24em; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--emerald); margin-bottom: 0.2em;">Model-agnostic gateway</div>
-        <div style="font-size: 0.7em; font-weight: 800; color: var(--emerald); line-height: 1; margin-bottom: 0.3em;">~$27/mo</div>
-        <div style="font-size: 0.26em; color: var(--text-dim); line-height: 1.5;">Free voice/synthesis on TritonAI open-source · Codex CLI workload · weekly Opus deep-dive</div>
-      </div>
-      <div style="padding: 0.5em 0.7em; border-radius: 10px; background: rgba(112,176,255,0.08); border: 1px solid rgba(112,176,255,0.4);">
-        <div style="font-size: 0.24em; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.2em;">Anthropic only</div>
-        <div style="font-size: 0.7em; font-weight: 800; color: var(--blue); line-height: 1; margin-bottom: 0.3em;">~$60/mo &nbsp;<span style="font-size: 0.55em; color: var(--text-dim); font-weight: 600;">2.2&times;</span></div>
-        <div style="font-size: 0.26em; color: var(--text-dim); line-height: 1.5;">All synthesis on Sonnet · long-form on Sonnet · Opus deep-dive · no Codex CLI tools</div>
-      </div>
-      <div style="padding: 0.5em 0.7em; border-radius: 10px; background: rgba(255,144,168,0.08); border: 1px solid rgba(255,144,168,0.4);">
-        <div style="font-size: 0.24em; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.2em;">OpenAI only</div>
-        <div style="font-size: 0.7em; font-weight: 800; color: var(--rose); line-height: 1; margin-bottom: 0.3em;">~$78/mo &nbsp;<span style="font-size: 0.55em; color: var(--text-dim); font-weight: 600;">2.9&times;</span></div>
-        <div style="font-size: 0.26em; color: var(--text-dim); line-height: 1.5;">Synthesis + long-form on gpt-5.5 · gpt-5.5 deep-dive · Codex CLI native</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- TOTAL bar -->
-  <div style="padding: 0.45em 0.85em; border-radius: 10px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: baseline; font-size: 0.36em;">
-    <span style="color: var(--text); font-weight: 700; text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.7em;">Total · 46 jobs</span>
-    <span>
-      <span style="color: var(--emerald); font-weight: 800;">~$40/mo</span>
-      <span style="color: var(--text-dim); font-size: 0.78em;">&nbsp;ours</span>
-      <span style="color: var(--text-dim); margin: 0 0.5em;">·</span>
-      <span style="color: var(--blue); font-weight: 800;">~$80/mo</span>
-      <span style="color: var(--text-dim); font-size: 0.78em;">&nbsp;Anthropic (2&times;)</span>
-      <span style="color: var(--text-dim); margin: 0 0.5em;">·</span>
-      <span style="color: var(--rose); font-weight: 800;">~$100/mo</span>
-      <span style="color: var(--text-dim); font-size: 0.78em;">&nbsp;OpenAI (2.5&times;)</span>
-    </span>
-  </div>
-
-  <p style="font-size: 0.30em; color: var(--text-dim); font-style: italic; margin-top: 0.5em; text-align: center;">
+  <p style="font-size: 0.28em; color: var(--text-dim); font-style: italic; margin-top: 0.55em; text-align: center;">
     On-prem open-source models on UCSD GPUs excluded (sunk infra at SDSC). Estimates based on April 2026 token consumption and published API pricing.
   </p>
 </section>
