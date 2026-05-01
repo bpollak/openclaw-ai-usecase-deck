@@ -665,7 +665,7 @@
   <span class="label">The Inference Layer</span>
   <h2>Model allocation — matching jobs to capabilities</h2>
   <p class="lead" style="font-size: 0.46em !important; margin-bottom: 0.3em;">
-    <strong>41 of 46 enabled jobs run on TritonAI</strong> (UCSD&rsquo;s institutional gateway, on-prem at SDSC); 5 run on OpenAI Codex — 1 cross-provider canary + 4 jobs that need Codex CLI tools.
+    <strong>41 of 46 enabled jobs run on TritonAI</strong> (UCSD&rsquo;s institutional gateway, on-prem at SDSC); 5 run on OpenAI Codex — 1 cross-vendor outage detector + 4 jobs that need Codex CLI tools.
   </p>
   <table class="matrix">
     <thead>
@@ -729,10 +729,10 @@
         <td class="count">1</td>
       </tr>
       <tr class="canary">
-        <td class="tier">OpenAI Codex (canary + CLI)</td>
+        <td class="tier">OpenAI Codex (outage detector + CLI)</td>
         <td class="alias">codex</td>
         <td>OpenAI Codex · gpt-5.5</td>
-        <td><div>Provider-quota canary + Codex-CLI workload (web fetch, terminal access) &nbsp;<span class="why">— 1 job is the cross-provider canary on different infra (detects TritonAI-wide outages). 4 workload jobs use Codex CLI tools that aren&rsquo;t in the TritonAI catalog: ai-source-sync, granola-meeting-debrief, teams-message-sync, henry-enhancement-daily.</span></div></td>
+        <td><div>Cross-vendor outage detector + Codex-CLI workload (web fetch, terminal access) &nbsp;<span class="why">— 1 job is the cross-vendor outage detector on different infra (detects TritonAI-wide outages). 4 workload jobs use Codex CLI tools that aren&rsquo;t in the TritonAI catalog: ai-source-sync, granola-meeting-debrief, teams-message-sync, henry-enhancement-daily.</span></div></td>
         <td class="count">5</td>
       </tr>
     </tbody>
@@ -765,7 +765,7 @@
       <div style="padding: 0.55em 0.75em; border-radius: 10px; background: rgba(96,255,200,0.05); border: 1px solid rgba(96,255,200,0.3); flex: 1;">
         <div style="font-size: 0.38em; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cyan); margin-bottom: 0.2em;">Core memory · 15 jobs</div>
         <div style="font-size: 0.78em; font-weight: 800; color: var(--emerald); line-height: 1; margin-bottom: 0.3em;">~$13/mo</div>
-        <div style="font-size: 0.38em; color: var(--text-dim); line-height: 1.55;">Haiku passthrough · Opus reviews · Codex cross-provider canary</div>
+        <div style="font-size: 0.38em; color: var(--text-dim); line-height: 1.55;">Haiku passthrough · Opus reviews · Codex cross-vendor outage detector</div>
       </div>
       <!-- Brett sub -->
       <div style="padding: 0.55em 0.75em; border-radius: 10px; background: rgba(96,255,200,0.05); border: 1px solid rgba(96,255,200,0.3); flex: 1;">
@@ -786,7 +786,7 @@
       <div style="padding: 0.55em 0.75em; border-radius: 10px; background: rgba(112,176,255,0.05); border: 1px solid rgba(112,176,255,0.3); flex: 1;">
         <div style="font-size: 0.38em; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cyan); margin-bottom: 0.2em;">Core memory · 15 jobs</div>
         <div style="font-size: 0.78em; font-weight: 800; color: var(--blue); line-height: 1; margin-bottom: 0.3em;">~$20/mo &nbsp;<span style="font-size: 0.55em; color: var(--text-dim); font-weight: 600;">1.5&times;</span></div>
-        <div style="font-size: 0.38em; color: var(--text-dim); line-height: 1.55;">Haiku · Sonnet · Opus across all 15 jobs · no cross-provider canary</div>
+        <div style="font-size: 0.38em; color: var(--text-dim); line-height: 1.55;">Haiku · Sonnet · Opus across all 15 jobs · no cross-vendor outage detector</div>
       </div>
       <!-- Brett sub -->
       <div style="padding: 0.55em 0.75em; border-radius: 10px; background: rgba(112,176,255,0.05); border: 1px solid rgba(112,176,255,0.3); flex: 1;">
@@ -807,7 +807,7 @@
       <div style="padding: 0.55em 0.75em; border-radius: 10px; background: rgba(255,144,168,0.05); border: 1px solid rgba(255,144,168,0.3); flex: 1;">
         <div style="font-size: 0.38em; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cyan); margin-bottom: 0.2em;">Core memory · 15 jobs</div>
         <div style="font-size: 0.78em; font-weight: 800; color: var(--rose); line-height: 1; margin-bottom: 0.3em;">~$22/mo &nbsp;<span style="font-size: 0.55em; color: var(--text-dim); font-weight: 600;">1.7&times;</span></div>
-        <div style="font-size: 0.38em; color: var(--text-dim); line-height: 1.55;">gpt-5.5-mini for hygiene · gpt-5.5 for reviews · no cross-provider canary</div>
+        <div style="font-size: 0.38em; color: var(--text-dim); line-height: 1.55;">gpt-5.5-mini for hygiene · gpt-5.5 for reviews · no cross-vendor outage detector</div>
       </div>
       <!-- Brett sub -->
       <div style="padding: 0.55em 0.75em; border-radius: 10px; background: rgba(255,144,168,0.05); border: 1px solid rgba(255,144,168,0.3); flex: 1;">
