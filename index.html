@@ -334,7 +334,7 @@
     </svg>
   </div>
   <div style="position:relative; z-index:2;">
-    <div class="title-badge">AI Use Case Meeting · 2026-05-01</div>
+    <div class="title-badge">AI Use Case Meeting · 2026-06-08</div>
     <div class="title-word" style="margin-top: 0.4em; font-size: 3.2em;">A Model-Agnostic<br>Memory System</div>
     <div class="title-sub">Building personal AI memory that doesn&rsquo;t belong to a vendor</div>
     <div style="margin-top: 1.4em;">
@@ -467,7 +467,7 @@
     </span>
   </div>
   <p class="lead" style="margin-top: 0.5em;">
-    An <strong style="color: var(--emerald);">open-source</strong> agent runtime that connects chat, tools, memory, and automation into one self-hosted system. <span style="color: var(--text-dim); font-size: 0.92em;">347k+ GitHub stars · MIT licensed · runs entirely on your infrastructure.</span>
+    An <strong style="color: var(--emerald);">open-source</strong> agent runtime that connects chat, tools, memory, and automation into one self-hosted system. <span style="color: var(--text-dim); font-size: 0.92em;">378k+ GitHub stars · MIT licensed · runs entirely on your infrastructure.</span>
   </p>
 
   <div class="hub-layout">
@@ -572,7 +572,7 @@
         <ul class="speaking-points">
           <li><span class="pt-lead">Three components, one pipeline</span>Data sources → knowledge &amp; memory → agent actions. Each piece is independently swappable.</li>
           <li><span class="pt-lead">Knowledge is the moat</span>Most personal-AI projects stop at &ldquo;connect to email.&rdquo; The interesting work is what comes next: capture, synthesize, retrieve.</li>
-          <li><span class="pt-lead">Synthesis is where the value lives</span>46 cron jobs turn raw signals into durable knowledge — not just chat, a daily institutional memory build.</li>
+          <li><span class="pt-lead">Synthesis is where the value lives</span>78 cron jobs turn raw signals into durable knowledge — not just chat, a daily institutional memory build.</li>
           <li><span class="pt-lead">Mission Control — the surface I work from</span>Next.js dashboard at <a href="https://mission-control-lime-chi-50.vercel.app" target="_blank" rel="noopener" style="font-family:'JetBrains Mono', monospace; color: #1e40af;">mission-control.vercel.app</a>. Cron outputs land as task cards, decisions queue for review, jobs report status. Telegram pushes the urgent; the dashboard holds the rest.</li>
           <li><span class="pt-lead">Open formats, not vendor lock</span>Markdown + JSON on disk. Switch tools, keep your knowledge.</li>
         </ul>
@@ -593,7 +593,7 @@
       <div class="split-bullets">
         <ul class="speaking-points">
           <li><span class="pt-lead">Layer 1 — Always loaded (~15 KB)</span>Identity, user profile, work patterns, today + yesterday. Cheap, fixed, every interaction.</li>
-          <li><span class="pt-lead">Layer 2 — Triggered (190 wiki pages)</span>Mention a colleague → reads their wiki page. Mention a vendor → reads tech-stack page. <strong>The biggest unlock.</strong></li>
+          <li><span class="pt-lead">Layer 2 — Triggered (270 wiki pages)</span>Mention a colleague → reads their wiki page. Mention a vendor → reads tech-stack page. <strong>The biggest unlock.</strong></li>
           <li><span class="pt-lead">Layer 3 — Explicit only</span>Full transcripts, raw graph JSON, dated memory files. Rare deep-dives.</li>
           <li><span class="pt-lead">Most projects skip Layer 2</span>Without triggered retrieval, an accumulating wiki sits unused. The agent only knows what fits in the opening prompt.</li>
         </ul>
@@ -606,7 +606,7 @@
 <section class="light-slide" data-background-color="#fcfdfe" style="background: #fcfdfe;">
   <div class="diagram-slide">
     <span class="label">The Pipeline</span>
-    <h2>46 cron jobs on a predictable daily rhythm</h2>
+    <h2>78 cron jobs on a predictable daily rhythm</h2>
     <div class="split-layout">
       <div class="split-image">
         <img src="images/daily-rhythm.png" alt="24-hour clock showing accumulation, synthesis, and consolidation jobs">
@@ -675,7 +675,7 @@
   <span class="label">The Inference Layer</span>
   <h2>Model allocation — matching jobs to capabilities</h2>
   <p class="lead" style="font-size: 0.46em !important; margin-bottom: 0.3em;">
-    <strong>41 of 46 enabled jobs run on TritonAI</strong> (UCSD&rsquo;s institutional gateway, on-prem at SDSC); 5 run on OpenAI Codex — 1 cross-vendor outage detector + 4 jobs that need Codex CLI tools.
+    <strong>All 69 active jobs run on TritonAI</strong> (UCSD&rsquo;s institutional gateway, on-prem at SDSC) — zero vendor lock-in. 78 total configured, 9 disabled/deferred. 100% model-agnostic routing through TritonAI&rsquo;s LiteLLM gateway.
   </p>
   <table class="matrix">
     <thead>
@@ -683,67 +683,60 @@
     </thead>
     <tbody>
       <tr>
-        <td class="tier">Light monitor</td>
-        <td class="alias">tritonai-haiku</td>
-        <td>TritonAI · Claude Haiku 4.5</td>
-        <td><div>Token refresh · MS Graph sync · status pings &nbsp;<span class="why">— Sub-second latency, cheap per-call, instruction-follows reliably on short stateless work.</span></div></td>
-        <td class="count">12</td>
-      </tr>
-      <tr>
-        <td class="tier">Synthesis &amp; agentic</td>
-        <td class="alias">kimi-k2.5</td>
-        <td>TritonAI · Moonshot Kimi K2.5</td>
-        <td><div>Morning briefing · daily reflection · opportunity scan &nbsp;<span class="why">— 256K context + strong tool use — handles multi-source synthesis without losing the thread.</span></div></td>
-        <td class="count">9</td>
-      </tr>
-      <tr>
-        <td class="tier">Single-shot agentic</td>
+        <td class="tier">Heavy agentic</td>
         <td class="alias">gpt-oss-120b</td>
         <td>TritonAI · OpenAI gpt-oss 120B</td>
-        <td><div>Security audits · candidate scoring · one-shot decisions &nbsp;<span class="why">— Excellent single-pass reasoning with structured-output discipline; no tool-loops needed.</span></div></td>
-        <td class="count">7</td>
+        <td><div>Briefings · opportunity scans · weekly signal synthesis · backlog triage · LinkedIn candidates &nbsp;<span class="why">— Best value: powerful single-shot reasoning at TritonAI open-source cost. Handles multi-step agentic work across the full pipeline.</span></div></td>
+        <td class="count">22</td>
+      </tr>
+      <tr>
+        <td class="tier">Lightweight sync</td>
+        <td class="alias">mistral-small-3.2</td>
+        <td>TritonAI · Mistral Small 3.2</td>
+        <td><div>Token refresh · Gmail/Drive sync · confluence sync · disk watchdog · API health pings &nbsp;<span class="why">— Lowest latency on TritonAI, cheap per-call — perfect for stateless hygiene work that fires every 15-60 min.</span></div></td>
+        <td class="count">18</td>
+      </tr>
+      <tr>
+        <td class="tier">Mid-tier synthesis</td>
+        <td class="alias">gemma-4</td>
+        <td>TritonAI · Gemma 4 26B</td>
+        <td><div>Daily reflection · nightly context promotion · wiki ingest · team knowledge ops · evening wrap &nbsp;<span class="why">— Strong multimodal + 1M context window — handles synthesis, image understanding, and multi-source reasoning at low cost.</span></div></td>
+        <td class="count">16</td>
       </tr>
       <tr>
         <td class="tier">Long-form generation</td>
         <td class="alias">mistral-large-3</td>
         <td>TritonAI · Mistral Large 3 675B</td>
-        <td><div>LinkedIn drafts · UCSD newsletter · wiki ingestion &nbsp;<span class="why">— Best narrative flow on TritonAI — preserves voice across long-form prose without sounding generic.</span></div></td>
+        <td><div>UCSD AI newsletter · LinkedIn post drafts · architecture reviews · vision tracking &nbsp;<span class="why">— Best narrative flow on TritonAI — preserves voice across long-form prose without sounding generic.</span></div></td>
+        <td class="count">6</td>
+      </tr>
+      <tr>
+        <td class="tier">Deep reasoning</td>
+        <td class="alias">sonnet</td>
+        <td>TritonAI · Claude Sonnet 4.6</td>
+        <td><div>Email triage · weekly AI deep-dive · identity drift review · provider quota monitoring &nbsp;<span class="why">— Reserved for jobs that need careful analysis, multi-source verification, and nuanced judgment — worth the premium for low-frequency high-stakes work.</span></div></td>
         <td class="count">5</td>
       </tr>
       <tr>
-        <td class="tier">Heavy reasoning</td>
-        <td class="alias">tritonai-opus</td>
-        <td>TritonAI · Claude Opus 4.7</td>
-        <td><div>Architecture review · weekly pattern extraction · decision archaeology &nbsp;<span class="why">— Catches subtle multi-day patterns and edge cases smaller models miss; worth the cost for low-frequency deep work.</span></div></td>
-        <td class="count">3</td>
+        <td class="tier">Specialized code</td>
+        <td class="alias">deepseek-v4</td>
+        <td>TritonAI · DeepSeek V4 Flash Max</td>
+        <td><div>Overnight code maintenance &nbsp;<span class="why">— Code-specific reasoning that handles refactoring, dependency updates, and repo hygiene without drift.</span></div></td>
+        <td class="count">1</td>
       </tr>
       <tr>
-        <td class="tier">Mid-tier multimodal</td>
-        <td class="alias">gemma-4</td>
-        <td>TritonAI · Gemma 4 26B</td>
-        <td><div>Meeting prep · relationship mapping · image-aware tasks &nbsp;<span class="why">— Only TritonAI model with reliable image+text understanding at low cost — needed for screenshots, whiteboard photos, slide review.</span></div></td>
-        <td class="count">2</td>
-      </tr>
-      <tr>
-        <td class="tier">Fastest light monitor</td>
-        <td class="alias">tritonai-mistral-small</td>
-        <td>TritonAI · Mistral Small 3.2</td>
-        <td><div>Hourly henry-api health · infrastructure pings &nbsp;<span class="why">— Lowest cold-start latency on TritonAI — fits high-frequency hygiene that runs every hour.</span></div></td>
-        <td class="count">2</td>
-      </tr>
-      <tr>
-        <td class="tier">Provider diversity</td>
-        <td class="alias">tritonai-nemotron-instant</td>
-        <td>TritonAI · NVIDIA Nemotron 3</td>
-        <td><div>Weekly memory prune (diversity sample) &nbsp;<span class="why">— Different model lineage from the rest of the stack — sanity-checks routing and exposes silent regressions.</span></div></td>
+        <td class="tier">Health check</td>
+        <td class="alias">gpt-oss-120b</td>
+        <td>TritonAI · OpenAI gpt-oss 120B</td>
+        <td><div>Henry API health ping &nbsp;<span class="why">— Same model as heavy agentic tier; just a single hourly status check that doesn&rsquo;t need its own category.</span></div></td>
         <td class="count">1</td>
       </tr>
       <tr class="canary">
-        <td class="tier">OpenAI Codex (outage detector + CLI)</td>
-        <td class="alias">codex</td>
-        <td>OpenAI Codex · gpt-5.5</td>
-        <td><div>Cross-vendor outage detector + Codex-CLI workload (web fetch, terminal access) &nbsp;<span class="why">— 1 job is the cross-vendor outage detector on different infra (detects TritonAI-wide outages). 4 workload jobs use Codex CLI tools that aren&rsquo;t in the TritonAI catalog: ai-source-sync, granola-meeting-debrief, teams-message-sync, henry-enhancement-daily.</span></div></td>
-        <td class="count">5</td>
+        <td class="tier">System default</td>
+        <td class="alias">default</td>
+        <td>TritonAI · DeepSeek V4 Flash Max</td>
+        <td><div>Feature reminder &nbsp;<span class="why">— Unpinned job inherits the system default model. One catch-all that keeps complexity low.</span></div></td>
+        <td class="count">1</td>
       </tr>
     </tbody>
   </table>
@@ -753,10 +746,10 @@
 <!-- ═══ SLIDE 9: COST COMPARISON (vertical lanes per vendor) ═══ -->
 <section data-background-color="#050508">
   <span class="label">Cost across the ecosystem</span>
-  <h2 style="margin-bottom: 0.15em;">Same 46 jobs, three providers</h2>
-  <p class="caption" style="margin-bottom: 0.7em;">Read each column top-to-bottom — vendor totals up top, then how Core and Brett-specific jobs break down underneath.</p>
+  <h2 style="margin-bottom: 0.15em;">Same 69 active jobs, three pricing scenarios</h2>
+  <p class="caption" style="margin-bottom: 0.7em;">Read each column top-to-bottom — vendor totals up top, then how Core memory and Brett-specific jobs break down underneath.</p>
 
-  <!-- Column headers (outside the boxes, like table headers) -->
+  <!-- Column headers -->
   <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.6em; margin-bottom: 0.4em;">
     <div style="text-align: center; font-size: 0.40em; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; color: var(--emerald); padding-bottom: 0.3em; border-bottom: 3px solid var(--emerald);">Model-agnostic gateway</div>
     <div style="text-align: center; font-size: 0.40em; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue); padding-bottom: 0.3em; border-bottom: 3px solid var(--blue);">Anthropic only</div>
@@ -764,24 +757,24 @@
   </div>
 
   <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.6em; align-items: stretch;">
-    <!-- ────────── COLUMN 1: OUR GATEWAY ────────── -->
+    <!-- ────────── COLUMN 1: TRITONAI GATEWAY ────────── -->
     <div style="display: flex; flex-direction: column; gap: 0.4em;">
       <!-- Total card -->
       <div style="padding: 0.6em 0.7em; border-radius: 10px; background: rgba(96,255,200,0.10); border: 2px solid rgba(96,255,200,0.55); text-align: center;">
-        <div style="font-size: 1.25em; font-weight: 800; color: var(--emerald); line-height: 1;">~$40/mo</div>
-        <div style="font-size: 0.40em; color: var(--text); margin-top: 0.25em;">46 jobs &middot; <span style="color: var(--text-dim);">baseline</span></div>
+        <div style="font-size: 1.25em; font-weight: 800; color: var(--emerald); line-height: 1;">~$50/mo</div>
+        <div style="font-size: 0.40em; color: var(--text); margin-top: 0.25em;">69 jobs &middot; <span style="color: var(--text-dim);">baseline</span></div>
       </div>
       <!-- Core sub -->
       <div style="padding: 0.55em 0.75em; border-radius: 10px; background: rgba(96,255,200,0.05); border: 1px solid rgba(96,255,200,0.3); flex: 1;">
-        <div style="font-size: 0.38em; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cyan); margin-bottom: 0.2em;">Core memory · 15 jobs</div>
-        <div style="font-size: 0.78em; font-weight: 800; color: var(--emerald); line-height: 1; margin-bottom: 0.3em;">~$13/mo</div>
-        <div style="font-size: 0.38em; color: var(--text-dim); line-height: 1.55;"><strong style="color: var(--emerald); font-weight: 700;">Free synthesis on TritonAI open-source</strong> (Kimi K2.5 reflection, Mistral wiki ingest, gpt-oss audits) · Haiku hygiene · Opus reviews · Codex outage detector</div>
+        <div style="font-size: 0.38em; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cyan); margin-bottom: 0.2em;">Core memory · 23 jobs</div>
+        <div style="font-size: 0.78em; font-weight: 800; color: var(--emerald); line-height: 1; margin-bottom: 0.3em;">~$15/mo</div>
+        <div style="font-size: 0.38em; color: var(--text-dim); line-height: 1.55;"><strong style="color: var(--emerald); font-weight: 700;">Mostly open-source on TritonAI</strong> (Gemma 4 synthesis, gpt-oss briefings, Mistral Small hygiene) · Sonnet for deep reasoning</div>
       </div>
       <!-- Brett sub -->
       <div style="padding: 0.55em 0.75em; border-radius: 10px; background: rgba(96,255,200,0.05); border: 1px solid rgba(96,255,200,0.3); flex: 1;">
-        <div style="font-size: 0.38em; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--violet); margin-bottom: 0.2em;">Brett-specific · 31 jobs</div>
-        <div style="font-size: 0.78em; font-weight: 800; color: var(--emerald); line-height: 1; margin-bottom: 0.3em;">~$27/mo</div>
-        <div style="font-size: 0.38em; color: var(--text-dim); line-height: 1.55;">Free synthesis on TritonAI open-source · Codex CLI workload · weekly Opus deep-dive</div>
+        <div style="font-size: 0.38em; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--violet); margin-bottom: 0.2em;">Brett-specific · 46 jobs</div>
+        <div style="font-size: 0.78em; font-weight: 800; color: var(--emerald); line-height: 1; margin-bottom: 0.3em;">~$35/mo</div>
+        <div style="font-size: 0.38em; color: var(--text-dim); line-height: 1.55;">Open-source synthesis + gpt-oss agentic work + Mistral Large long-form + Sonnet deep-dive · zero vendor lock-in</div>
       </div>
     </div>
 
@@ -789,20 +782,20 @@
     <div style="display: flex; flex-direction: column; gap: 0.4em;">
       <!-- Total card -->
       <div style="padding: 0.6em 0.7em; border-radius: 10px; background: rgba(112,176,255,0.10); border: 2px solid rgba(112,176,255,0.55); text-align: center;">
-        <div style="font-size: 1.25em; font-weight: 800; color: var(--blue); line-height: 1;">~$80/mo &nbsp;<span style="font-size: 0.45em; color: var(--text-dim); font-weight: 600;">2&times;</span></div>
-        <div style="font-size: 0.40em; color: var(--text); margin-top: 0.25em;">46 jobs &middot; <span style="color: var(--text-dim);">single-vendor lock-in</span></div>
+        <div style="font-size: 1.25em; font-weight: 800; color: var(--blue); line-height: 1;">~$130/mo &nbsp;<span style="font-size: 0.45em; color: var(--text-dim); font-weight: 600;">2.6&times;</span></div>
+        <div style="font-size: 0.40em; color: var(--text); margin-top: 0.25em;">69 jobs &middot; <span style="color: var(--text-dim);">single-vendor lock-in</span></div>
       </div>
       <!-- Core sub -->
       <div style="padding: 0.55em 0.75em; border-radius: 10px; background: rgba(112,176,255,0.05); border: 1px solid rgba(112,176,255,0.3); flex: 1;">
-        <div style="font-size: 0.38em; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cyan); margin-bottom: 0.2em;">Core memory · 15 jobs</div>
-        <div style="font-size: 0.78em; font-weight: 800; color: var(--blue); line-height: 1; margin-bottom: 0.3em;">~$20/mo &nbsp;<span style="font-size: 0.55em; color: var(--text-dim); font-weight: 600;">1.5&times;</span></div>
-        <div style="font-size: 0.38em; color: var(--text-dim); line-height: 1.55;">Haiku · Sonnet · Opus across all 15 jobs · no cross-vendor outage detector</div>
+        <div style="font-size: 0.38em; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cyan); margin-bottom: 0.2em;">Core memory · 23 jobs</div>
+        <div style="font-size: 0.78em; font-weight: 800; color: var(--blue); line-height: 1; margin-bottom: 0.3em;">~$35/mo &nbsp;<span style="font-size: 0.55em; color: var(--text-dim); font-weight: 600;">2.3&times;</span></div>
+        <div style="font-size: 0.38em; color: var(--text-dim); line-height: 1.55;">Haiku · Sonnet · Opus across all 23 jobs · no open-source savings · no cross-provider diversity</div>
       </div>
       <!-- Brett sub -->
       <div style="padding: 0.55em 0.75em; border-radius: 10px; background: rgba(112,176,255,0.05); border: 1px solid rgba(112,176,255,0.3); flex: 1;">
-        <div style="font-size: 0.38em; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--violet); margin-bottom: 0.2em;">Brett-specific · 31 jobs</div>
-        <div style="font-size: 0.78em; font-weight: 800; color: var(--blue); line-height: 1; margin-bottom: 0.3em;">~$60/mo &nbsp;<span style="font-size: 0.55em; color: var(--text-dim); font-weight: 600;">2.2&times;</span></div>
-        <div style="font-size: 0.38em; color: var(--text-dim); line-height: 1.55;">All synthesis on Sonnet · long-form on Sonnet · Opus deep-dive · no Codex CLI tools</div>
+        <div style="font-size: 0.38em; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--violet); margin-bottom: 0.2em;">Brett-specific · 46 jobs</div>
+        <div style="font-size: 0.78em; font-weight: 800; color: var(--blue); line-height: 1; margin-bottom: 0.3em;">~$95/mo &nbsp;<span style="font-size: 0.55em; color: var(--text-dim); font-weight: 600;">2.7&times;</span></div>
+        <div style="font-size: 0.38em; color: var(--text-dim); line-height: 1.55;">All synthesis on Sonnet · long-form on Sonnet · Opus deep-dive · no open-source fallback</div>
       </div>
     </div>
 
@@ -810,26 +803,26 @@
     <div style="display: flex; flex-direction: column; gap: 0.4em;">
       <!-- Total card -->
       <div style="padding: 0.6em 0.7em; border-radius: 10px; background: rgba(255,144,168,0.10); border: 2px solid rgba(255,144,168,0.55); text-align: center;">
-        <div style="font-size: 1.25em; font-weight: 800; color: var(--rose); line-height: 1;">~$100/mo &nbsp;<span style="font-size: 0.45em; color: var(--text-dim); font-weight: 600;">2.5&times;</span></div>
-        <div style="font-size: 0.40em; color: var(--text); margin-top: 0.25em;">46 jobs &middot; <span style="color: var(--text-dim);">single-vendor lock-in</span></div>
+        <div style="font-size: 1.25em; font-weight: 800; color: var(--rose); line-height: 1;">~$160/mo &nbsp;<span style="font-size: 0.45em; color: var(--text-dim); font-weight: 600;">3.2&times;</span></div>
+        <div style="font-size: 0.40em; color: var(--text); margin-top: 0.25em;">69 jobs &middot; <span style="color: var(--text-dim);">single-vendor lock-in</span></div>
       </div>
       <!-- Core sub -->
       <div style="padding: 0.55em 0.75em; border-radius: 10px; background: rgba(255,144,168,0.05); border: 1px solid rgba(255,144,168,0.3); flex: 1;">
-        <div style="font-size: 0.38em; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cyan); margin-bottom: 0.2em;">Core memory · 15 jobs</div>
-        <div style="font-size: 0.78em; font-weight: 800; color: var(--rose); line-height: 1; margin-bottom: 0.3em;">~$22/mo &nbsp;<span style="font-size: 0.55em; color: var(--text-dim); font-weight: 600;">1.7&times;</span></div>
-        <div style="font-size: 0.38em; color: var(--text-dim); line-height: 1.55;">gpt-5.5-mini for hygiene · gpt-5.5 for reviews · no cross-vendor outage detector</div>
+        <div style="font-size: 0.38em; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cyan); margin-bottom: 0.2em;">Core memory · 23 jobs</div>
+        <div style="font-size: 0.78em; font-weight: 800; color: var(--rose); line-height: 1; margin-bottom: 0.3em;">~$40/mo &nbsp;<span style="font-size: 0.55em; color: var(--text-dim); font-weight: 600;">2.7&times;</span></div>
+        <div style="font-size: 0.38em; color: var(--text-dim); line-height: 1.55;">gpt-5.5-mini for hygiene · gpt-5.5 for agentic · no open-source savings</div>
       </div>
       <!-- Brett sub -->
       <div style="padding: 0.55em 0.75em; border-radius: 10px; background: rgba(255,144,168,0.05); border: 1px solid rgba(255,144,168,0.3); flex: 1;">
-        <div style="font-size: 0.38em; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--violet); margin-bottom: 0.2em;">Brett-specific · 31 jobs</div>
-        <div style="font-size: 0.78em; font-weight: 800; color: var(--rose); line-height: 1; margin-bottom: 0.3em;">~$78/mo &nbsp;<span style="font-size: 0.55em; color: var(--text-dim); font-weight: 600;">2.9&times;</span></div>
-        <div style="font-size: 0.38em; color: var(--text-dim); line-height: 1.55;">Synthesis + long-form on gpt-5.5 · gpt-5.5 deep-dive · Codex CLI native</div>
+        <div style="font-size: 0.38em; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--violet); margin-bottom: 0.2em;">Brett-specific · 46 jobs</div>
+        <div style="font-size: 0.78em; font-weight: 800; color: var(--rose); line-height: 1; margin-bottom: 0.3em;">~$120/mo &nbsp;<span style="font-size: 0.55em; color: var(--text-dim); font-weight: 600;">3.4&times;</span></div>
+        <div style="font-size: 0.38em; color: var(--text-dim); line-height: 1.55;">Synthesis + long-form on gpt-5.5 · gpt-5.5 for deep-dives · no model diversity</div>
       </div>
     </div>
   </div>
 
   <p style="font-size: 0.40em; color: var(--text-dim); font-style: italic; margin-top: 0.55em; text-align: center;">
-    On-prem open-source models on UCSD GPUs excluded (sunk infra at SDSC). Estimates based on April 2026 token consumption and published API pricing.
+    On-prem open-source models on UCSD GPUs excluded (sunk infra at SDSC). Estimates based on June 2026 token consumption and published API pricing. Core vs Brett-specific split estimated from job allocation patterns.
   </p>
 </section>
 
@@ -903,14 +896,14 @@
       <div class="stat-note">Research, prep, triage, news scanning, follow-up tracking — the crons gather; I do the judgment.</div>
     </div>
     <div class="stat-card">
-      <div class="stat-num">190</div>
+      <div class="stat-num">270</div>
       <div class="stat-unit">wiki pages indexed</div>
-      <div class="stat-note">Triggered context loading — the layer most personal-AI projects skip.</div>
+      <div class="stat-note">Triggered context loading — the layer most personal-AI projects skip. 80 new pages since May 1.</div>
     </div>
     <div class="stat-card">
-      <div class="stat-num">46</div>
-      <div class="stat-unit">cron jobs orchestrated</div>
-      <div class="stat-note">Synthesis pipeline running 24/7 — morning briefings, evening reflection, night consolidation.</div>
+      <div class="stat-num">78</div>
+      <div class="stat-unit">cron jobs configured</div>
+      <div class="stat-note">Synthesis pipeline running 24/7 — 69 active, 9 disabled/deferred. Morning briefings, evening reflection, night consolidation.</div>
     </div>
     <div class="stat-card">
       <div class="stat-num">∞</div>
@@ -934,8 +927,8 @@
   <div class="horizon">
     <div class="horizon-col horizon-now">
       <div class="horizon-label">📍 Now &nbsp;·&nbsp; Proven daily</div>
-      <div class="horizon-item"><strong>46 cron jobs in production</strong>Morning briefings, evening synthesis, night consolidation, weekly patterns.</div>
-      <div class="horizon-item"><strong>Triggered wiki retrieval</strong>190 pages, loaded on demand based on what the conversation references.</div>
+      <div class="horizon-item"><strong>78 cron jobs configured (69 active)</strong>Morning briefings, evening synthesis, night consolidation, weekly patterns — plus 9 experimental or seasonal jobs ready to enable.</div>
+      <div class="horizon-item"><strong>Triggered wiki retrieval</strong>270 pages, loaded on demand based on what the conversation references.</div>
       <div class="horizon-item"><strong>Cross-session continuity</strong>Decisions and patterns persist across days, weeks, and threads.</div>
     </div>
     <div class="horizon-col horizon-next">
